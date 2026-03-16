@@ -1,0 +1,43 @@
+﻿<nav [class.scrolled]="isScrolled()" class="navbar">
+  <div class="navbar__inner">
+    <button class="navbar__logo" (click)="scrollTo('hero')">
+      <span class="logo-text">JH</span>
+    </button>
+
+    <div class="navbar__links" [class.open]="menuOpen()">
+      <button class="nav-link" (click)="scrollTo('about')">{{ i18n.t('nav.about') }}</button>
+      <button class="nav-link" (click)="scrollTo('skills')">{{ i18n.t('nav.skills') }}</button>
+      <button class="nav-link" (click)="scrollTo('experience')">{{ i18n.t('nav.experience') }}</button>
+      <button class="nav-link" (click)="scrollTo('projects')">{{ i18n.t('nav.projects') }}</button>
+      <button class="nav-link" (click)="scrollTo('education')">{{ i18n.t('nav.education') }}</button>
+      <button class="nav-link cta" (click)="scrollTo('contact')">{{ i18n.t('nav.contact') }}</button>
+    </div>
+
+    <div class="navbar__right">
+      <div class="lang-switcher">
+        <button class="lang-switcher__btn" (click)="toggleLangMenu($event)">
+          {{ currentLangLabel }}
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        @if (langMenuOpen()) {
+          <div class="lang-switcher__menu">
+            @for (l of langs; track l.code) {
+              <button class="lang-switcher__option" [class.active]="i18n.lang() === l.code" (click)="switchLang(l.code, $event)">
+                <img [src]="l.flag" [alt]="l.label" class="lang-flag-img" />
+                {{ l.label }}
+              </button>
+            }
+          </div>
+        }
+      </div>
+
+      <button class="navbar__burger" (click)="toggleMenu()" [attr.aria-label]="menuOpen() ? 'Close' : 'Menu'">
+        <span [class.open]="menuOpen()"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+@if (menuOpen()) {
+  <div class="overlay" (click)="closeMenu()"></div>
+}

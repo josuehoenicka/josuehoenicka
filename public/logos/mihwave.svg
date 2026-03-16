@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 110" fill="#ffffff">
+  <!-- Left foot - sole -->
+  <path d="M15 95 C5 95 0 82 2 65 C4 48 10 42 18 42 C26 42 32 48 34 65 C36 82 30 95 15 95Z" fill="#ffffff"/>
+  <!-- Left foot toes -->
+  <ellipse cx="6" cy="39" rx="4" ry="5" fill="#ffffff"/>
+  <ellipse cx="13" cy="33" rx="4" ry="5" fill="#ffffff"/>
+  <ellipse cx="21" cy="31" rx="4" ry="5.5" fill="#ffffff"/>
+  <ellipse cx="29" cy="33" rx="3.5" ry="5" fill="#ffffff"/>
+  <ellipse cx="35" cy="38" rx="3" ry="4.5" fill="#ffffff"/>
+  <!-- Right foot - sole -->
+  <path d="M75 95 C65 95 60 82 62 65 C64 48 70 42 78 42 C86 42 92 48 94 65 C96 82 90 95 75 95Z" fill="#ffffff"/>
+  <!-- Right foot toes -->
+  <ellipse cx="66" cy="39" rx="3" ry="4.5" fill="#ffffff"/>
+  <ellipse cx="72" cy="33" rx="3.5" ry="5" fill="#ffffff"/>
+  <ellipse cx="80" cy="31" rx="4" ry="5.5" fill="#ffffff"/>
+  <ellipse cx="88" cy="33" rx="4" ry="5" fill="#ffffff"/>
+  <ellipse cx="95" cy="39" rx="4" ry="5" fill="#ffffff"/>
+</svg>

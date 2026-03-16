@@ -1,0 +1,35 @@
+﻿<section id="experience" class="section experience">
+  <div class="container">
+    <h2 class="section-title">{{ i18n.t('experience.title') }}</h2>
+    <br />
+    <div class="timeline">
+      @for (exp of experiences; track exp.company; let i = $index) {
+        <div class="timeline__item">
+          <div class="timeline__marker">
+            <div class="dot" [class.active]="i === 0"></div>
+            @if (i < experiences.length - 1) {
+              <div class="line"></div>
+            }
+          </div>
+          <div class="timeline__content">
+            <div class="timeline__header">
+              <h3 class="timeline__company">{{ exp.company }}</h3>
+              <span class="timeline__period">{{ exp.period }}</span>
+            </div>
+            <div class="timeline__roles">
+              @for (role of exp.roles; track role) {
+                <span class="role-badge">{{ role }}</span>
+              }
+            </div>
+            <p class="timeline__description">{{ exp.description }}</p>
+            <div class="timeline__tags">
+              @for (tag of exp.tags; track tag) {
+                <span class="tech-tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

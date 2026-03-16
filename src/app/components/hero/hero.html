@@ -1,0 +1,23 @@
+﻿<section id="hero" class="hero">
+  <div class="hero__grid"></div>
+  <div class="hero__horizon"></div>
+  <div class="hero__stars"></div>
+  <div class="hero__glow"></div>
+  <div class="hero__glow hero__glow--secondary"></div>
+  <div class="hero__content">
+    <span class="hero__badge">{{ i18n.t('hero.badge') }}</span>
+    <h1 class="hero__title">
+      {{ i18n.t('hero.title_pre') }} <span class="highlight">{{ i18n.t('hero.title_highlight') }}</span> {{ i18n.t('hero.title_post') }}
+    </h1>
+  </div>
+  <app-carousel />
+  <button class="hero__cta" (click)="warpTo('contact')">
+    {{ i18n.t('hero.cta') }}
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 17l9.2-9.2M7 7h10v10"/>
+    </svg>
+  </button>
+  <div class="hero__scroll">
+    <div class="scroll-line"></div>
+  </div>
+</section>

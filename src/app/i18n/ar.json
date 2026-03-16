@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "about": "عني",
+    "skills": "المهارات",
+    "experience": "الخبرة",
+    "projects": "المشاريع",
+    "education": "التعليم",
+    "contact": "اتصل"
+  },
+  "hero": {
+    "badge": "Josue Hoenicka",
+    "title_pre": "دعنا",
+    "title_highlight": "نحقق",
+    "title_post": "فكرتك أو مشروعك معاً",
+    "subtitle": "أحول الأفكار إلى منتجات رقمية عالية التأثير، أجمع بين البحث والتطوير عبر المنصات والذكاء الاصطناعي.",
+    "cta": "هيا نبدأ"
+  },
+  "carousel": {
+    "label": "الشركات التي أضفت فيها قيمة"
+  },
+  "about": {
+    "title": "عني",
+    "subtitle": "مهمتي وعرض القيمة",
+    "quote": "أبحث في المواضيع بعمق لفهم التحديات المعقدة واقتراح حلول تساعد الناس. أركز على إضفاء الوضوح على المواقف الصعبة وربط الأفكار عبر بيئات اجتماعية ورقمية متنوعة، متواصلاً بعدة لغات لضمان أن هذا التعاون لا يعرف حدوداً.",
+    "years": "+7",
+    "years_label": "سنوات خبرة",
+    "languages_count": "3",
+    "languages_label": "لغات",
+    "products": "+15",
+    "products_label": "منتجات أُطلقت"
+  },
+  "skills": {
+    "title": "المهارات",
+    "subtitle": "المكدس التقني والقدرات واللغات",
+    "technical": "مهارات تقنية",
+    "soft": "مهارات شخصية",
+    "languages": "اللغات",
+    "soft_skills": [
+      "العمل الجماعي",
+      "التفكير التكيفي",
+      "القيادة التقنية",
+      "إدارة الفرق",
+      "المثابرة",
+      "الاهتمام بالتفاصيل",
+      "التعلم السريع",
+      "حل المشكلات",
+      "المهارات الشخصية",
+      "الذكاء العاطفي"
+    ],
+    "lang_es": "الإسبانية",
+    "lang_en": "الإنجليزية",
+    "lang_pt": "البرتغالية"
+  },
+  "experience": {
+    "title": "الخبرة",
+    "subtitle": "مسيرتي المهنية في شركات التكنولوجيا",
+    "present": "حالياً",
+    "heynow_period": "أبريل 2025 - حالياً",
+    "heynow_desc": "شركة أوروغوية رائدة في حلول الذكاء الاصطناعي مع أكثر من 250 عميلاً في أمريكا اللاتينية والكاريبي وأمريكا الشمالية وأوروبا. انضممت كمهندس واجهات أمامية، قدت إعادة تصميم المنتج وتوسيع بنية الواجهة الأمامية. ثم تطورت إلى مطور Full Stack AI.",
+    "revenue_period": "أبريل 2025 - حالياً",
+    "revenue_desc": "شركة B2B متخصصة في استراتيجيات الإيرادات والنمو التجاري. تطوير منصات رقمية لإدارة وتحسين العمليات التجارية B2B.",
+    "liberasoft_period": "أبريل 2019 - أبريل 2025",
+    "liberasoft_desc": "شركة أرجنتينية بخبرة تزيد عن 20 عاماً في تطوير نظام ERP سحابي معياري. تعكس سنواتي السبع تطوراً مستمراً: من بناء واجهات باستخدام Angular و PrimeNG، إلى قيادة بنية الواجهة الأمامية، والتوسع إلى Full Stack باستخدام Node.js وMySQL وMongoDB، وأخيراً دمج الذكاء الاصطناعي مع n8n وPython وRAG."
+  },
+  "projects": {
+    "title": "المشاريع",
+    "subtitle": "المنتجات التي أضفت فيها قيمة",
+    "view_project": "عرض المشروع",
+    "heynow_desc": "مجموعة وكلاء AI لأتمتة العمليات والوكلاء الافتراضيين بالذكاء الاصطناعي.",
+    "liberasoft_desc": "نظام إدارة ERP وWMS سحابي معياري للشركات الصغيرة والكبيرة.",
+    "verifood_desc": "تطبيق متعدد المنصات مع AI لأخصائيي التغذية.",
+    "ler_desc": "نظام إدارة الاتصالات الصادرة لتحسين التواصل والمتابعة.",
+    "mihwave_desc": "منصة اتصالات رقمية مسيحية لربط المجتمعات.",
+    "revenue_desc": "منصة B2B للإيرادات والنمو التجاري للشركات."
+  },
+  "education": {
+    "title": "التعليم",
+    "subtitle": "الخلفية الأكاديمية والشهادات",
+    "items": {
+      "uba": { "institution": "Universidad de Buenos Aires", "desc": "الإنجليزية" },
+      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "البرمجة بـ React.js و Node.js" },
+      "unr": { "institution": "Universidad Nacional de Rosario", "desc": "بكالوريوس علوم الحاسب" },
+      "eempi": { "institution": "EEMPI N°3060", "desc": "دبلوم الثانوية العلمية" },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "البرمجة بـ Python" },
+      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "البرمجة بـ JavaScript و Ruby" },
+      "codoacodo": { "institution": "Codo a Codo (BA Ciudad)", "desc": "مطور Full-Stack JavaScript" },
+      "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "الأمن السيبراني واتصالات 5G" },
+      "platzi": { "institution": "Platzi", "desc": "+10 شهادات تقنية" },
+      "freecodecamp": { "institution": "Freecodecamp", "desc": "شهادتان تقنيتان" }
+    }
+  },
+  "contact": {
+    "title": "مستعد للعمل معاً؟",
+    "subtitle": "دعنا نتواصل ونحقق مشروعك القادم",
+    "footer": "جميع الحقوق محفوظة."
+  }
+}

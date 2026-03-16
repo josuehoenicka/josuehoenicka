@@ -1,0 +1,57 @@
+﻿<section id="projects" class="section projects">
+  <div class="container">
+    <h2 class="section-title">{{ i18n.t('projects.title') }}</h2>
+    <br />
+    <div class="showcase">
+      <div class="showcase__main">
+        <div class="showcase__card" [style.background]="projects[activeIndex()].gradient">
+          <div class="showcase__card-inner">
+            <div class="showcase__icon">
+              <img [src]="projects[activeIndex()].logoUrl" [alt]="projects[activeIndex()].name + ' logo'" class="showcase__logo" />
+            </div>
+            <h3 class="showcase__name">{{ projects[activeIndex()].name }}</h3>
+            <p class="showcase__desc">{{ i18n.t(projects[activeIndex()].descKey) }}</p>
+            <div class="showcase__tags">
+              @for (tag of projects[activeIndex()].tags; track tag) {
+                <span class="showcase__tag">{{ tag }}</span>
+              }
+            </div>
+            @if (projects[activeIndex()].url) {
+              <a [href]="projects[activeIndex()].url" target="_blank" rel="noopener noreferrer" class="showcase__link">
+                {{ i18n.t('projects.view_project') }}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17l9.2-9.2M7 7h10v10"/>
+                </svg>
+              </a>
+            }
+          </div>
+        </div>
+
+        <!-- Navigation arrows -->
+        <div class="showcase__nav">
+          <button class="showcase__arrow" (click)="prev()" aria-label="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <span class="showcase__counter">{{ activeIndex() + 1 }} / {{ projects.length }}</span>
+          <button class="showcase__arrow" (click)="next()" aria-label="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Thumbnail list -->
+      <div class="showcase__thumbs">
+        @for (project of projects; track project.name; let i = $index) {
+          <button
+            class="thumb"
+            [class.active]="activeIndex() === i"
+            (click)="setActive(i)"
+          >
+            <span class="thumb__dot" [style.background]="project.gradient"></span>
+            <span class="thumb__name">{{ project.name }}</span>
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</section>

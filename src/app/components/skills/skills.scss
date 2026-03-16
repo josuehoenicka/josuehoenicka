@@ -1,0 +1,115 @@
+﻿.skills__grid {
+  display: grid;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.skill-group {
+  &--full {
+    @media (min-width: 768px) {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+
+    svg { color: var(--accent); }
+  }
+}
+
+// Technical skills - flowing text like soft skills
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.tech-item {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  padding: 0.375rem 0;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  &::after {
+    content: '\00a0·\00a0';
+    color: var(--border-light);
+  }
+
+  &:last-child::after {
+    content: '';
+  }
+}
+
+// Soft skills - flowing text
+.soft-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.soft-item {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  padding: 0.375rem 0;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--accent);
+  }
+
+  &::after {
+    content: '\00a0·\00a0';
+    color: var(--border-light);
+  }
+
+  &:last-child::after {
+    content: '';
+  }
+}
+
+// Languages
+.languages {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.lang-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  span {
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+}
+
+.lang-flag {
+  width: 36px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}

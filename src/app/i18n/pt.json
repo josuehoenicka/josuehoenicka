@@ -1,0 +1,112 @@
+{
+  "nav": {
+    "about": "Sobre mim",
+    "skills": "Habilidades",
+    "experience": "Experiência",
+    "projects": "Projetos",
+    "education": "Educação",
+    "contact": "Contato"
+  },
+  "hero": {
+    "badge": "Josue Hoenicka",
+    "title_pre": "Vamos",
+    "title_highlight": "materializar",
+    "title_post": "sua ideia ou empreendimento juntos",
+    "subtitle": "Transformo ideias em produtos digitais de alto impacto, combinando pesquisa, desenvolvimento cross-platform e inteligência artificial.",
+    "cta": "Sim, vamos"
+  },
+  "carousel": {
+    "label": "Empresas onde contribuí com valor"
+  },
+  "about": {
+    "title": "Sobre mim",
+    "subtitle": "Minha missão e proposta de valor",
+    "quote": "Investigo temas em profundidade com o objetivo de entender desafios complexos e propor soluções que ajudem as pessoas. Me concentro em trazer clareza a situações difíceis e em conectar ideias em diversos ambientes sociais ou digitais, comunicando-me em múltiplos idiomas para garantir que esta colaboração não tenha fronteiras.",
+    "years": "+7",
+    "years_label": "Anos de experiência",
+    "languages_count": "3",
+    "languages_label": "Idiomas",
+    "products": "+15",
+    "products_label": "Produtos lançados"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "subtitle": "Stack técnico, habilidades e idiomas",
+    "technical": "Habilidades técnicas",
+    "soft": "Habilidades interpessoais",
+    "languages": "Idiomas",
+    "soft_skills": [
+      "Trabalho em equipe",
+      "Pensamento adaptivo",
+      "Liderança técnica",
+      "Gestão de equipes",
+      "Perseverança",
+      "Atenção ao detalhe",
+      "Aprendizado rápido",
+      "Resolução de problemas",
+      "Relações interpessoais",
+      "Inteligência emocional"
+    ],
+    "lang_es": "Espanhol",
+    "lang_en": "Inglês",
+    "lang_pt": "Português"
+  },
+  "experience": {
+    "title": "Experiência",
+    "subtitle": "Minha trajetória profissional em empresas de tecnologia",
+    "present": "Atualmente",
+    "heynow_period": "abr. 2025 - Atualmente",
+    "heynow_desc": "Empresa uruguaia de IA líder em soluções de inteligência artificial com mais de 250 clientes na América Latina, Caribe, América do Norte e Europa. Ingressei como Front-End Architect, liderando o redesign do produto e escalando a arquitetura front-end. Depois evolui para o cargo de Full Stack AI Developer, expandindo meu alcance ao desenvolvimento completo das plataformas, incluindo a infraestrutura de comunicação agent to agent (A2A).",
+    "revenue_period": "abr. 2025 - Atualmente",
+    "revenue_desc": "Empresa B2B especializada em estratégias de revenue e crescimento comercial. Desenvolvimento de plataformas digitais para gestão e otimização de processos comerciais B2B.",
+    "liberasoft_period": "abr. 2019 - abr. 2025",
+    "liberasoft_desc": "Empresa argentina com mais de 20 anos de experiência desenvolvendo um ERP modular em nuvem. Meus 7 anos refletem uma evolução contínua: desde construir interfaces com Angular e PrimeNG, até liderar a arquitetura frontend, expandir para Full Stack com Node.js, MySQL e MongoDB, e finalmente integrar IA ao produto com n8n, Python e RAG para funcionalidades de IA generativa."
+  },
+  "projects": {
+    "title": "Projetos",
+    "subtitle": "Produtos onde contribuí com valor",
+    "view_project": "Ver projeto",
+    "heynow_desc": "Suíte de agentes AI para automação de processos e agentes virtuais com inteligência artificial.",
+    "liberasoft_desc": "Sistema de gestão ERP e WMS modular em nuvem para PMEs e grandes empresas.",
+    "verifood_desc": "App multiplataforma com IA para nutricionistas, facilitando o acompanhamento nutricional.",
+    "ler_desc": "Sistema de gestão de outbound para otimizar comunicação e acompanhamento.",
+    "mihwave_desc": "Plataforma cristã digital de telecomunicações para conectar comunidades.",
+    "revenue_desc": "Plataforma B2B de revenue e crescimento comercial para empresas."
+  },
+  "education": {
+    "title": "Educação",
+    "subtitle": "Formação acadêmica e certificações",
+    "items": {
+      "uba": { "institution": "Universidad de Buenos Aires", "desc": "Inglês" },
+      "utn": {
+        "institution": "Universidad Tecnológica Nacional",
+        "desc": "Programação com React.js e Node.js"
+      },
+      "unr": {
+        "institution": "Universidad Nacional de Rosario",
+        "desc": "Bacharelado em Ciências da Computação"
+      },
+      "eempi": { "institution": "EEMPI N°3060", "desc": "Diploma de Ensino Médio em Ciências" },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Programação com Python" },
+      "argprog": {
+        "institution": "Argentina Programa (CESSI)",
+        "desc": "Programação com JavaScript e Ruby"
+      },
+      "codoacodo": {
+        "institution": "Codo a Codo (BA Ciudad)",
+        "desc": "Desenvolvedor Full-Stack JavaScript"
+      },
+      "movistar": {
+        "institution": "Fundación Telefónica Movistar",
+        "desc": "Cibersegurança e Telecomunicações 5G"
+      },
+      "platzi": { "institution": "Platzi", "desc": "+10 certificações no setor tech" },
+      "freecodecamp": { "institution": "Freecodecamp", "desc": "2 certificações no setor tech" }
+    }
+  },
+  "contact": {
+    "title": "Pronto para trabalhar juntos?",
+    "subtitle": "Vamos nos conectar e tornar seu próximo projeto realidade",
+    "footer": "Todos os direitos reservados."
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "nav": {
+    "about": "关于我",
+    "skills": "技能",
+    "experience": "经验",
+    "projects": "项目",
+    "education": "教育",
+    "contact": "联系"
+  },
+  "hero": {
+    "badge": "Josue Hoenicka",
+    "title_pre": "让我们一起",
+    "title_highlight": "实现",
+    "title_post": "你的想法或创业项目",
+    "subtitle": "我将创意转化为高影响力的数字产品，结合研究、跨平台开发和人工智能。",
+    "cta": "开始吧"
+  },
+  "carousel": {
+    "label": "我曾贡献价值的公司"
+  },
+  "about": {
+    "title": "关于我",
+    "subtitle": "我的使命与价值主张",
+    "quote": "我深入研究课题，以理解复杂挑战并提出帮助人们的解决方案。我专注于为困难情况带来清晰度，并在各种社会或数字环境中连接想法，用多种语言交流以确保合作无国界。",
+    "years": "+7",
+    "years_label": "年经验",
+    "languages_count": "3",
+    "languages_label": "语言",
+    "products": "+15",
+    "products_label": "已发布产品"
+  },
+  "skills": {
+    "title": "技能",
+    "subtitle": "技术栈、能力与语言",
+    "technical": "技术技能",
+    "soft": "软技能",
+    "languages": "语言",
+    "soft_skills": [
+      "团队合作",
+      "适应性思维",
+      "技术领导力",
+      "团队管理",
+      "毅力",
+      "注重细节",
+      "快速学习",
+      "解决问题",
+      "人际关系",
+      "情商"
+    ],
+    "lang_es": "西班牙语",
+    "lang_en": "英语",
+    "lang_pt": "葡萄牙语"
+  },
+  "experience": {
+    "title": "经验",
+    "subtitle": "我在科技公司的职业历程",
+    "present": "至今",
+    "heynow_period": "2025年4月 - 至今",
+    "heynow_desc": "乌拉圭AI公司，是人工智能解决方案的领导者，在拉丁美洲、加勒比海、北美和欧洲拥有250多个客户。我以前端架构师身份加入，领导产品重新设计和前端架构扩展。随后晋升为全栈AI开发者，将工作范围扩展到平台的完整开发，包括代理间通信(A2A)基础设施。",
+    "revenue_period": "2025年4月 - 至今",
+    "revenue_desc": "专注于收入策略和商业增长的B2B公司。开发数字平台，用于管理和优化B2B商业流程。",
+    "liberasoft_period": "2019年4月 - 2025年4月",
+    "liberasoft_desc": "阿根廷公司，拥有20多年开发模块化云ERP的经验。我的7年反映了持续的演进：从使用Angular和PrimeNG构建界面，到领导前端架构，扩展到使用Node.js、MySQL和MongoDB的全栈开发，最终使用n8n、Python和RAG将AI集成到产品中，实现生成式AI功能。"
+  },
+  "projects": {
+    "title": "项目",
+    "subtitle": "我贡献价值的产品",
+    "view_project": "查看项目",
+    "heynow_desc": "AI代理套件，用于流程自动化和人工智能虚拟代理。",
+    "liberasoft_desc": "模块化云ERP和WMS管理系统，面向中小企业和大型企业。",
+    "verifood_desc": "面向营养师的跨平台AI应用，便于营养跟踪。",
+    "ler_desc": "外呼管理系统，优化沟通和跟进。",
+    "mihwave_desc": "基督教数字电信平台，连接社区。",
+    "revenue_desc": "B2B收入和商业增长平台。"
+  },
+  "education": {
+    "title": "教育",
+    "subtitle": "学术背景与认证",
+    "items": {
+      "uba": { "institution": "布宜诺斯艾利斯大学", "desc": "英语" },
+      "utn": { "institution": "国立技术大学", "desc": "React.js和Node.js编程" },
+      "unr": { "institution": "罗萨里奥国立大学", "desc": "计算机科学学士" },
+      "eempi": { "institution": "EEMPI N°3060", "desc": "理科高中文凭" },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Python编程" },
+      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "JavaScript和Ruby编程" },
+      "codoacodo": { "institution": "Codo a Codo (BA Ciudad)", "desc": "全栈JavaScript开发者" },
+      "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "网络安全与5G电信" },
+      "platzi": { "institution": "Platzi", "desc": "10+科技领域认证" },
+      "freecodecamp": { "institution": "Freecodecamp", "desc": "2项科技领域认证" }
+    }
+  },
+  "contact": {
+    "title": "准备一起合作吗？",
+    "subtitle": "让我们联系，一起实现你的下一个项目",
+    "footer": "版权所有。"
+  }
+}

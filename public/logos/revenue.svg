@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 80" fill="#ffffff">
+  <!-- Bowtie/butterfly icon -->
+  <!-- Left vertical bar -->
+  <rect x="0" y="4" width="8" height="72" fill="#ffffff"/>
+  <!-- Top horizontal bar -->
+  <rect x="0" y="4" width="80" height="8" fill="#ffffff"/>
+  <!-- Bottom horizontal bar -->
+  <rect x="0" y="68" width="80" height="8" fill="#ffffff"/>
+  <!-- Right vertical bar -->
+  <rect x="72" y="4" width="8" height="72" fill="#ffffff"/>
+  <!-- Left diagonal top to center -->
+  <polygon points="8,12 40,36 40,44 8,68" fill="#ffffff"/>
+  <!-- Right diagonal top to center -->
+  <polygon points="72,12 40,36 40,44 72,68" fill="#ffffff"/>
+  <!-- Center vertical bar -->
+  <rect x="36" y="4" width="8" height="72" fill="#ffffff"/>
+  <!-- REVENUE text -->
+  <text x="100" y="56" font-family="Arial,Helvetica,sans-serif" font-size="52" font-weight="800" letter-spacing="3" fill="#ffffff">REVENUE</text>
+  <!-- B2B superscript -->
+  <text x="390" y="30" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="800" fill="#ffffff">B2B</text>
+</svg>

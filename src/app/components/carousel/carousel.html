@@ -1,0 +1,19 @@
+@if (companies.length > 0) {
+  <section class="carousel-section">
+    <div class="carousel-track-wrapper">
+      <div class="carousel-track">
+        @for (company of duplicatedCompanies; track $index) {
+          <a
+            class="carousel-item"
+            [href]="company.websiteUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            [title]="company.name"
+          >
+            <img [src]="company.logoUrl" [alt]="company.name + ' logo'" />
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+}
