@@ -1,12 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { I18nService } from '../../services/i18n.service';
-import { Carousel } from '../carousel/carousel';
 
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
-  imports: [Carousel],
 })
 export class Hero {
   readonly i18n = inject(I18nService);

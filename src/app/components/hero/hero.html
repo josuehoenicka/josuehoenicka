@@ -5,12 +5,9 @@
   <div class="hero__glow"></div>
   <div class="hero__glow hero__glow--secondary"></div>
   <div class="hero__content">
-    <span class="hero__badge">{{ i18n.t('hero.badge') }}</span>
-    <h1 class="hero__title">
-      {{ i18n.t('hero.title_pre') }} <span class="highlight">{{ i18n.t('hero.title_highlight') }}</span> {{ i18n.t('hero.title_post') }}
-    </h1>
+    <span class="hero__greeting">{{ i18n.t('hero.greeting') }}</span>
+    <h1 class="hero__title">Josue Hoenicka</h1>
   </div>
-  <app-carousel />
   <button class="hero__cta" (click)="warpTo('contact')">
     {{ i18n.t('hero.cta') }}
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

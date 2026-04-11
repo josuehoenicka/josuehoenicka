@@ -151,19 +151,19 @@ main {
 }
 
 .section-title {
-  font-size: 1.75rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
   color: var(--text-primary);
 
   @media (min-width: 768px) {
-    font-size: 2.25rem;
+    font-size: 1.75rem;
   }
 }
 
 .section-subtitle {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   margin-bottom: 2.5rem;
   max-width: 600px;
 

@@ -1,0 +1,45 @@
+.interculturality {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 4rem;
+
+  &__header {
+    margin-bottom: 2.5rem;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  &__subtitle {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+}

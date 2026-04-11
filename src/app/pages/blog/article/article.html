@@ -1,0 +1,62 @@
+@if (article(); as a) {
+  <section class="article-page">
+    <div class="article-page__nav">
+      <a routerLink="/technology" class="article-page__back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        {{ i18n.t('technology.back_to_list') }}
+      </a>
+      @if (youtubeUrl()) {
+        <a class="article-page__watch-video" (click)="scrollToVideo()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          {{ i18n.t('technology.watch_video') }}
+        </a>
+      }
+    </div>
+
+    <div class="article-page__split">
+      <div class="article-page__content">
+        <div class="article-page__header">
+          <div class="article-page__meta">
+            <span class="article-page__area">{{ a.area }}</span>
+            @for (t of a.techs; track t) {
+              <span class="article-page__tech">{{ t }}</span>
+            }
+            <span class="article-page__diff" [attr.data-diff]="a.difficulty">
+              {{ i18n.t('technology.difficulty.' + a.difficulty) }}
+            </span>
+          </div>
+          <h1 class="article-page__title">{{ i18n.t('technology.articles.' + a.slug + '.title') }}</h1>
+        </div>
+        <div [innerHTML]="renderedContent()" (click)="onContentClick($event)"></div>
+      </div>
+      <div class="article-page__video" id="article-video">
+        <div class="video-sticky">
+          <div class="video-container">
+            @if (youtubeUrl(); as url) {
+              <iframe
+                [src]="url"
+                title="Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            } @else {
+              <div class="video-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="23 7 16 12 23 17 23 7"/>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                </svg>
+                <p>{{ i18n.t('technology.no_video') }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="article-page article-page--404">
+    <h1>{{ i18n.t('technology.not_found') }}</h1>
+    <a routerLink="/technology">{{ i18n.t('technology.back_to_list') }}</a>
+  </section>
+}

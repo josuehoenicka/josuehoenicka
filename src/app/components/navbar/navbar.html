@@ -1,20 +1,57 @@
 ﻿<nav [class.scrolled]="isScrolled()" class="navbar">
   <div class="navbar__inner">
+    <!-- Desktop: JH logo -->
     <button class="navbar__logo" (click)="scrollTo('hero')">
       <span class="logo-text">JH</span>
     </button>
 
-    <div class="navbar__links" [class.open]="menuOpen()">
-      <button class="nav-link" (click)="scrollTo('about')">{{ i18n.t('nav.about') }}</button>
-      <button class="nav-link" (click)="scrollTo('skills')">{{ i18n.t('nav.skills') }}</button>
-      <button class="nav-link" (click)="scrollTo('experience')">{{ i18n.t('nav.experience') }}</button>
-      <button class="nav-link" (click)="scrollTo('projects')">{{ i18n.t('nav.projects') }}</button>
-      <button class="nav-link" (click)="scrollTo('education')">{{ i18n.t('nav.education') }}</button>
-      <button class="nav-link cta" (click)="scrollTo('contact')">{{ i18n.t('nav.contact') }}</button>
+    <!-- Desktop nav links -->
+    <div class="navbar__links">
+      <a class="nav-link nav-link--home" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ i18n.t('nav.about_me') }}</a>
+      <a class="nav-link" routerLink="/technology" routerLinkActive="active">{{ i18n.t('nav.technology') }}</a>
+      <a class="nav-link" routerLink="/interculturality" routerLinkActive="active">{{ i18n.t('nav.interculturality') }}</a>
+      <a class="nav-link" routerLink="/kinesthetics" routerLinkActive="active">{{ i18n.t('nav.kinesthetics') }}</a>
     </div>
 
+    <!-- Mobile nav buttons -->
+    <div class="navbar__mobile-nav">
+      <button class="mobile-nav-btn" [class.active]="isRoute('/')" (click)="scrollTo('hero')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>{{ i18n.t('nav.home') }}</span>
+      </button>
+      <button class="mobile-nav-btn" [class.active]="isRoute('/technology')" (click)="navigateWithWarp('/technology')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+        <span>{{ i18n.t('nav.technology') }}</span>
+      </button>
+      <button class="mobile-nav-btn" [class.active]="isRoute('/interculturality')" (click)="navigateWithWarp('/interculturality')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>{{ i18n.t('nav.interculturality_mobile') }}</span>
+      </button>
+      <button class="mobile-nav-btn" [class.active]="isRoute('/kinesthetics')" (click)="navigateWithWarp('/kinesthetics')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        <span>{{ i18n.t('nav.kinesthetics') }}</span>
+      </button>
+      <div class="lang-switcher lang-switcher--mobile">
+        <button class="mobile-nav-btn" (click)="toggleLangMenu($event)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>{{ i18n.t('nav.language') }}</span>
+        </button>
+        @if (langMenuOpen()) {
+          <div class="lang-switcher__menu">
+            @for (l of langs; track l.code) {
+              <button class="lang-switcher__option" [class.active]="i18n.lang() === l.code" (click)="switchLang(l.code, $event)">
+                <img [src]="l.flag" [alt]="l.label" class="lang-flag-img" />
+                {{ l.label }}
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Desktop lang switcher -->
     <div class="navbar__right">
-      <div class="lang-switcher">
+      <div class="lang-switcher lang-switcher--desktop">
         <button class="lang-switcher__btn" (click)="toggleLangMenu($event)">
           {{ currentLangLabel }}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
@@ -30,14 +67,6 @@
           </div>
         }
       </div>
-
-      <button class="navbar__burger" (click)="toggleMenu()" [attr.aria-label]="menuOpen() ? 'Close' : 'Menu'">
-        <span [class.open]="menuOpen()"></span>
-      </button>
     </div>
   </div>
 </nav>
-
-@if (menuOpen()) {
-  <div class="overlay" (click)="closeMenu()"></div>
-}

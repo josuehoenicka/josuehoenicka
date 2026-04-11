@@ -1,0 +1,56 @@
+@if (entry(); as e) {
+  <section class="discipline-page">
+    <div class="discipline-page__nav">
+      <a routerLink="/kinesthetics" class="discipline-page__back">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        {{ i18n.t('kinesthetics.back_to_list') }}
+      </a>
+      @if (youtubeUrl()) {
+        <a class="discipline-page__watch-video" (click)="scrollToVideo()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          {{ i18n.t('kinesthetics.watch_video') }}
+        </a>
+      }
+    </div>
+
+    <div class="discipline-page__split">
+      <div class="discipline-page__content">
+        <div class="discipline-page__header">
+          <div class="discipline-page__meta">
+            <span class="discipline-page__discipline">{{ i18n.t('kinesthetics.disciplines.' + e.discipline) }}</span>
+          </div>
+          <h1 class="discipline-page__title">{{ i18n.t('kinesthetics.entries.' + e.slug + '.title') }}</h1>
+        </div>
+        <div [innerHTML]="renderedContent()" (click)="onContentClick($event)"></div>
+      </div>
+      <div class="discipline-page__video" id="discipline-video">
+        <div class="video-sticky">
+          <div class="video-container">
+            @if (youtubeUrl(); as url) {
+              <iframe
+                [src]="url"
+                title="Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            } @else {
+              <div class="video-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="23 7 16 12 23 17 23 7"/>
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                </svg>
+                <p>{{ i18n.t('kinesthetics.no_video') }}</p>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="discipline-page discipline-page--404">
+    <h1>{{ i18n.t('kinesthetics.not_found') }}</h1>
+    <a routerLink="/kinesthetics">{{ i18n.t('kinesthetics.back_to_list') }}</a>
+  </section>
+}

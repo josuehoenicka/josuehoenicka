@@ -10,8 +10,8 @@ export class Skills {
   readonly i18n = inject(I18nService);
 
   readonly technicalSkills = [
-    'JavaScript', 'Golang', 'Python', 'Angular', 'Flutter',
-    'Node.js', 'SQL', 'NoSQL', 'n8n', 'Docker', 'Google Cloud', 'Azure',
+    'JavaScript', 'Python', 'C++', 'Google Cloud', 'Linux',
+    'ROS 2', 'Tessel 2', 'Raspberry Pi', 'ESP32',
   ];
 
   get softSkills(): string[] {

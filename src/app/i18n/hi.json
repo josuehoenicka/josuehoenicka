@@ -1,22 +1,17 @@
 {
   "nav": {
-    "about": "मेरे बारे में",
-    "skills": "कौशल",
-    "experience": "अनुभव",
-    "projects": "परियोजनाएं",
-    "education": "शिक्षा",
-    "contact": "संपर्क"
+    "about_me": "मेरे बारे में",
+    "home": "होम",
+    "technology": "प्रौद्योगिकी",
+    "interculturality": "अंतरसांस्कृतिकता",
+    "interculturality_mobile": "अंतरसांस्कृतिक",
+    "kinesthetics": "गतिबोध",
+    "language": "भाषा"
   },
   "hero": {
-    "badge": "Josue Hoenicka",
-    "title_pre": "आइए साथ मिलकर आपके",
-    "title_highlight": "विचार",
-    "title_post": "या उद्यम को साकार करें",
-    "subtitle": "मैं विचारों को उच्च-प्रभाव वाले डिजिटल उत्पादों में बदलता हूं, अनुसंधान, क्रॉस-प्लेटफॉर्म विकास और कृत्रिम बुद्धिमत्ता को मिलाकर।",
-    "cta": "चलिए शुरू करें"
-  },
-  "carousel": {
-    "label": "जिन कंपनियों में मैंने मूल्य जोड़ा"
+    "greeting": "नमस्ते, मैं हूँ",
+    "subtitle": "मैं विचारों को उच्च-प्रभाव वाले डिजिटल उत्पादों में बदलता हूँ, अनुसंधान, क्रॉस-प्लेटफॉर्म विकास और कृत्रिम बुद्धिमत्ता को मिलाकर।",
+    "cta": "मुझसे संपर्क करें"
   },
   "about": {
     "title": "मेरे बारे में",
@@ -38,12 +33,9 @@
     "soft_skills": [
       "टीम वर्क",
       "अनुकूली सोच",
-      "तकनीकी नेतृत्व",
-      "टीम प्रबंधन",
       "दृढ़ता",
       "विस्तार पर ध्यान",
       "तेज़ सीखने वाला",
-      "समस्या समाधान",
       "पारस्परिक कौशल",
       "भावनात्मक बुद्धिमत्ता"
     ],
@@ -56,11 +48,11 @@
     "subtitle": "तकनीकी कंपनियों में मेरी पेशेवर यात्रा",
     "present": "वर्तमान",
     "heynow_period": "अप्रैल 2025 - वर्तमान",
-    "heynow_desc": "उरुग्वे की AI कंपनी, लैटिन अमेरिका, कैरिबियन, उत्तरी अमेरिका और यूरोप में 250 से अधिक ग्राहकों के साथ कृत्रिम बुद्धिमत्ता समाधानों में अग्रणी। मैंने फ्रंट-एंड आर्किटेक्ट के रूप में शामिल होकर उत्पाद पुनर्डिज़ाइन और फ्रंट-एंड आर्किटेक्चर स्केलिंग का नेतृत्व किया। फिर फुल स्टैक AI डेवलपर भूमिका में विकसित हुआ।",
-    "revenue_period": "अप्रैल 2025 - वर्तमान",
-    "revenue_desc": "रेवेन्यू रणनीतियों और व्यावसायिक विकास में विशेषज्ञ B2B कंपनी। B2B व्यावसायिक प्रक्रियाओं के प्रबंधन और अनुकूलन के लिए डिजिटल प्लेटफॉर्म विकास।",
-    "liberasoft_period": "अप्रैल 2019 - अप्रैल 2025",
-    "liberasoft_desc": "अर्जेंटीना की कंपनी, 20 से अधिक वर्षों का मॉड्यूलर क्लाउड ERP विकास अनुभव। मेरे 7 वर्ष निरंतर विकास को दर्शाते हैं: Angular और PrimeNG के साथ इंटरफेस बनाने से, फ्रंटएंड आर्किटेक्चर का नेतृत्व करने, Node.js, MySQL और MongoDB के साथ फुल स्टैक तक विस्तार, और अंत में n8n, Python और RAG के साथ AI एकीकरण।"
+    "heynow_desc": "उरुग्वे की अग्रणी AI कंपनी, लैटिन अमेरिका, कैरेबियन, उत्तरी अमेरिका और यूरोप में 250 से अधिक ग्राहकों के साथ, प्रक्रिया स्वचालन और AI वर्चुअल एजेंटों में विशेषज्ञ। मैंने फ्रंट-एंड आर्किटेक्ट के रूप में शुरू किया, Angular, Docker और Azure पर उत्पाद को फिर से डिज़ाइन और स्केल किया। फिर फुल स्टैक AI डेवलपर में विकसित हुआ।",
+    "liberasoft_period": "दिसंबर 2018 - अप्रैल 2025",
+    "liberasoft_desc": "अर्जेंटीना की कंपनी, 20 से अधिक वर्षों का मॉड्यूलर क्लाउड ERP विकास अनुभव, बिक्री, खरीद, इंवेंटरी, लेखांकन, WMS और AI ऑटोमेशन मॉड्यूल के साथ। मेरे सात वर्ष निरंतर विकास दर्शाते हैं: Angular और PrimeNG से इंटरफेस बनाने से, फ्रंटएंड आर्किटेक्चर का नेतृत्व, Node.js, MySQL और MongoDB के साथ फुल स्टैक तक विस्तार, और अंत में n8n, Python और RAG के साथ AI एकीकरण।",
+    "show_more": "और देखें",
+    "show_less": "कम देखें"
   },
   "projects": {
     "title": "परियोजनाएं",
@@ -78,20 +70,92 @@
     "subtitle": "शैक्षिक पृष्ठभूमि और प्रमाणपत्र",
     "items": {
       "uba": { "institution": "Universidad de Buenos Aires", "desc": "अंग्रेज़ी" },
-      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "React.js और Node.js प्रोग्रामिंग" },
-      "unr": { "institution": "Universidad Nacional de Rosario", "desc": "कंप्यूटर विज्ञान में स्नातक" },
+      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "रोबोटिक्स. फुल-स्टैक विकास" },
       "eempi": { "institution": "EEMPI N°3060", "desc": "विज्ञान हाई स्कूल डिप्लोमा" },
-      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Python प्रोग्रामिंग" },
-      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "JavaScript और Ruby प्रोग्रामिंग" },
-      "codoacodo": { "institution": "Codo a Codo (BA Ciudad)", "desc": "फुल-स्टैक JavaScript डेवलपर" },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Python एल्गोरिदम" },
+      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "Ruby के साथ बुनियादी प्रोग्रामिंग. फुल-स्टैक विकास" },
+      "codoacodo": { "institution": "Codo a Codo 4.0", "desc": "फुल-स्टैक विकास" },
       "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "साइबर सुरक्षा और 5G दूरसंचार" },
-      "platzi": { "institution": "Platzi", "desc": "10+ तकनीकी प्रमाणपत्र" },
-      "freecodecamp": { "institution": "Freecodecamp", "desc": "2 तकनीकी प्रमाणपत्र" }
+      "google": { "institution": "Google", "desc": "MLOps" },
+      "microsoft": { "institution": "Microsoft", "desc": "C#" },
+      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. सॉफ्टवेयर इंजीनियरिंग" },
+      "freecodecamp": { "institution": "freeCodeCamp", "desc": "रिस्पॉन्सिव वेब डिज़ाइन. JavaScript एल्गोरिदम" }
     }
   },
   "contact": {
     "title": "साथ काम करने के लिए तैयार?",
     "subtitle": "आइए जुड़ें और आपके अगले प्रोजेक्ट को साकार करें",
     "footer": "सर्वाधिकार सुरक्षित।"
+  },
+  "technology": {
+    "title": "प्रौद्योगिकी",
+    "subtitle": "उपकरणों के माध्यम से मानव क्षमता का विस्तार और भविष्य को हल करने वाली प्रणालियाँ डिज़ाइन करने के लिए प्रतिभा का अनुप्रयोग।",
+    "back": "वापस",
+    "back_to_list": "वापस",
+    "watch_video": "वीडियो देखें",
+    "no_video": "अभी कोई वीडियो उपलब्ध नहीं है",
+    "not_found": "लेख नहीं मिला",
+    "filter_area": "क्षेत्र",
+    "filter_tech": "तकनीक",
+    "clear_filters": "फ़िल्टर साफ़ करें",
+    "col_title": "शीर्षक",
+    "col_difficulty": "कठिनाई",
+    "no_results": "इन फ़िल्टर से कोई लेख नहीं मिले।",
+    "difficulty": {
+      "easy": "आसान",
+      "normal": "सामान्य",
+      "hard": "कठिन"
+    },
+    "articles": {
+      "1-flashing-led": {
+        "title": "LED Flashes",
+        "desc": "इलेक्ट्रॉनिक्स का 'हैलो वर्ल्ड'। पिन 13 पर एक LED हर सेकंड ब्लिंक करता है।"
+      },
+      "2-hoenix": {
+        "title": "बुद्धिमान रोबोट",
+        "desc": "Raspberry Pi Zero 2 W पर आधारित एक वॉइस-इंटरेक्टिव खिलौना रोबोट जो Groq के Whisper और llama3 API का उपयोग करके सुनता, सोचता और जवाब देता है।"
+      },
+      "3-ultrasonic-sensor": {
+        "title": "अल्ट्रासोनिक सेंसर",
+        "desc": "HC-SR04 दूरी को सेंटीमीटर में मापता है और परिणाम Serial Monitor में दिखाता है।"
+      }
+    }
+  },
+  "interculturality": {
+    "title": "अंतरसांस्कृतिकता",
+    "subtitle": "भाषाओं और यात्राओं में महारत हासिल करके मानसिक सीमाओं के बिना दुनिया में रहने और अन्य वास्तविकताओं के सार से जुड़ने की कला।",
+    "back": "वापस",
+    "no_content": "अभी कोई सामग्री नहीं।"
+  },
+  "kinesthetics": {
+    "title": "गतिबोध",
+    "subtitle": "गति में शरीर की बुद्धिमत्ता और गहरी जागरूकता जो सोचे बिना लय और संतुलन पर महारत हासिल करने देती है।",
+    "back": "वापस",
+    "back_to_list": "वापस",
+    "watch_video": "वीडियो देखें",
+    "no_video": "अभी कोई वीडियो उपलब्ध नहीं है",
+    "not_found": "प्रविष्टि नहीं मिली",
+    "filter_discipline": "अनुशासन",
+    "clear_filters": "फ़िल्टर साफ़ करें",
+    "col_title": "शीर्षक",
+    "col_discipline": "अनुशासन",
+    "col_difficulty": "कठिनाई",
+    "no_results": "इन फ़िल्टर से कोई प्रविष्टि नहीं मिली।",
+    "disciplines": {
+      "freestyle": "Freestyle",
+      "swimming": "तैराकी",
+      "drums": "ढोल"
+    },
+    "difficulty": {
+      "easy": "आसान",
+      "normal": "सामान्य",
+      "hard": "कठिन"
+    },
+    "entries": {
+      "1-freestyle-session": {
+        "title": "डबल अराउंड द वर्ल्ड",
+        "desc": "पहली फ्रीस्टाइल सेशन। मुक्त गति और शारीरिक अभिव्यक्ति।"
+      }
+    }
   }
 }

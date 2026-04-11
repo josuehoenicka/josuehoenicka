@@ -11,23 +11,10 @@ export class Contact {
   readonly currentYear = new Date().getFullYear();
 
   readonly links = [
-    {
-      name: 'Gmail',
-      url: 'mailto:josuehoenicka@gmail.com',
-      icon: 'email',
-      label: 'josuehoenicka@gmail.com',
-    },
-    {
-      name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/josuehoenicka',
-      icon: 'linkedin',
-      label: '/in/josuehoenicka',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/josuehoenicka',
-      icon: 'instagram',
-      label: '@josuehoenicka',
-    },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/josuehoenicka', icon: 'linkedin', label: '/in/josuehoenicka' },
+    { name: 'Instagram', url: 'https://www.instagram.com/josuehoenicka', icon: 'instagram', label: '@josuehoenicka' },
+    { name: 'TikTok', url: 'https://www.tiktok.com/@josue.hoenicka', icon: 'tiktok', label: '@josue.hoenicka' },
+    { name: 'YouTube', url: 'https://www.youtube.com/@josuehoenicka', icon: 'youtube', label: '@josuehoenicka' },
+    { name: 'GitHub', url: 'https://github.com/josuehoenicka', icon: 'github', label: 'josuehoenicka' },
   ];
 }

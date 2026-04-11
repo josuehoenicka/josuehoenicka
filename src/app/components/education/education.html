@@ -4,13 +4,19 @@
     <br/>
     <div class="slider">
       <div class="slider__card">
-        <div class="slider__icon" [style.border-color]="items[activeIndex()].accent">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" [attr.stroke]="items[activeIndex()].accent" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path [attr.d]="items[activeIndex()].icon"/>
-          </svg>
-        </div>
         <h3 class="slider__institution">{{ i18n.t(items[activeIndex()].key + '.institution') }}</h3>
-        <p class="slider__desc">{{ i18n.t(items[activeIndex()].key + '.desc') }}</p>
+
+        <!-- List of certs -->
+        <ul class="slider__certs" [class.expanded]="expanded()">
+          @for (item of getDescItems(); track $index) {
+            <li class="slider__cert-item">{{ item }}</li>
+          }
+        </ul>
+        @if (getDescItems().length > 3) {
+          <button class="slider__toggle" (click)="toggleExpand()">
+            {{ expanded() ? i18n.t('experience.show_less') : i18n.t('experience.show_more') }}
+          </button>
+        }
       </div>
 
       <div class="slider__nav">

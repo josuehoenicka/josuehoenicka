@@ -1,0 +1,390 @@
+.article-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5.5rem 1.5rem 0;
+
+  &--404 {
+    text-align: center;
+    padding-top: 10rem;
+
+    h1 {
+      font-size: 1.5rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--text-secondary);
+      text-decoration: underline;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &__watch-video {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: color 0.2s;
+
+      &:hover {
+        color: var(--text-primary);
+      }
+    }
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &__area {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  &__tech {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    padding: 0.15rem 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  &__diff {
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    &[data-diff="easy"] { color: #02AC66; }
+    &[data-diff="normal"] { color: #FFDE21; }
+    &[data-diff="hard"] { color: #EF280F; }
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  &__split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+    min-height: 400px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      height: auto;
+      align-items: stretch;
+    }
+  }
+
+  &__content {
+    color: var(--text-primary);
+    line-height: 1.7;
+    font-size: 0.9rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 70vh;
+    padding: 1rem 1.5rem 1rem 0;
+    border-right: 1px solid var(--border);
+
+    @media (max-width: 768px) {
+      overflow-y: visible;
+      max-height: none;
+      padding-right: 0;
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+      margin-bottom: 0;
+    }
+
+    ::ng-deep h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 2rem 0 0.75rem;
+      color: var(--text-secondary);
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    ::ng-deep h3 {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    ::ng-deep p {
+      color: var(--text-secondary);
+      margin-bottom: 0.85rem;
+    }
+
+    ::ng-deep ul, ::ng-deep ol {
+      padding-left: 1.5rem;
+      margin-bottom: 0.85rem;
+
+      li {
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+
+        &::marker {
+          color: var(--text-secondary);
+        }
+      }
+    }
+
+    ::ng-deep ol {
+      list-style-type: decimal;
+    }
+
+    ::ng-deep hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    ::ng-deep table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.85rem 0;
+      font-size: 0.85rem;
+
+      th, td {
+        text-align: left;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border);
+      }
+
+      th {
+        font-weight: 600;
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      td {
+        color: var(--text-secondary);
+      }
+    }
+
+    ::ng-deep .code-block {
+      margin: 1rem 0;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      background: #1e1e22;
+
+      .code-block__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.35rem 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .code-block__lang {
+        font-size: 0.65rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .code-block__copy {
+        display: flex;
+        align-items: center;
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        cursor: pointer;
+        padding: 0.2rem;
+        border-radius: 4px;
+        transition: color 0.2s;
+
+        &:hover { color: var(--text-primary); }
+      }
+
+      .code-block__tabs {
+        display: flex;
+      }
+
+      .code-block__tab {
+        background: none;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 0.65rem;
+        font-family: inherit;
+        padding: 0.25rem 0.6rem;
+        cursor: pointer;
+        transition: color 0.2s;
+        font-weight: 400;
+        letter-spacing: 0.03em;
+
+        &--active {
+          color: var(--text-primary);
+          font-weight: 700;
+        }
+
+        &:hover:not(.code-block__tab--active) {
+          color: var(--text-primary);
+        }
+      }
+
+      .code-block__panel {
+        display: none;
+        &--active { display: block; }
+      }
+
+      .code-comment {
+        color: rgba(255, 255, 255, 0.35);
+        font-style: italic;
+      }
+
+      pre {
+        margin: 0;
+        padding: 1rem 1.25rem;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        overflow-x: auto;
+        -webkit-user-select: text;
+        user-select: text;
+
+        code {
+          font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+          font-size: 0.8rem;
+          color: #e6e6e6;
+          line-height: 1.7;
+          background: none;
+          padding: 0;
+          border: none;
+          border-radius: 0;
+        }
+      }
+    }
+
+    ::ng-deep :not(pre) > code {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.8rem;
+      background: #1e1e22;
+      color: #d4d4d4;
+      padding: 0.2rem 0.45rem;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    ::ng-deep strong {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  }
+
+  &__video {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 1.5rem;
+
+    @media (max-width: 768px) {
+      padding-left: 0;
+      padding-top: 2rem;
+      padding-bottom: 5rem;
+    }
+  }
+}
+
+.video-sticky {
+  position: sticky;
+  top: 5rem;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    position: static;
+  }
+}
+
+.video-container {
+  aspect-ratio: 9 / 16;
+  max-height: 70vh;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  margin: 0 auto;
+  max-width: 360px;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+
+    svg {
+      opacity: 0.3;
+    }
+
+    p {
+      font-size: 0.85rem;
+      text-align: center;
+      margin: 0;
+      opacity: 0.6;
+    }
+  }
+}

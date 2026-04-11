@@ -4,11 +4,8 @@
     <br />
     <div class="showcase">
       <div class="showcase__main">
-        <div class="showcase__card" [style.background]="projects[activeIndex()].gradient">
+        <div class="showcase__card">
           <div class="showcase__card-inner">
-            <div class="showcase__icon">
-              <img [src]="projects[activeIndex()].logoUrl" [alt]="projects[activeIndex()].name + ' logo'" class="showcase__logo" />
-            </div>
             <h3 class="showcase__name">{{ projects[activeIndex()].name }}</h3>
             <p class="showcase__desc">{{ i18n.t(projects[activeIndex()].descKey) }}</p>
             <div class="showcase__tags">

@@ -65,8 +65,12 @@
 }
 
 .timeline__company {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
+  }
 }
 
 .timeline__period {
@@ -84,6 +88,10 @@
   flex-wrap: wrap;
   gap: 0.375rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 767px) {
+    display: none;
+  }
 }
 
 .role-badge {
@@ -97,10 +105,40 @@
 }
 
 .timeline__description {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.7;
+  margin-bottom: 0.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 767px) {
+    &.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}
+
+.timeline__toggle {
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
   margin-bottom: 1rem;
+  transition: color 0.2s;
+
+  @media (max-width: 767px) {
+    display: inline-block;
+  }
+
+  &:hover {
+    color: var(--text-primary);
+  }
 }
 
 .timeline__tags {

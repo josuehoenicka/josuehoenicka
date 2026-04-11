@@ -1,22 +1,17 @@
 {
   "nav": {
-    "about": "Обо мне",
-    "skills": "Навыки",
-    "experience": "Опыт",
-    "projects": "Проекты",
-    "education": "Образование",
-    "contact": "Контакт"
+    "about_me": "Обо мне",
+    "home": "Главная",
+    "technology": "Технологии",
+    "interculturality": "Межкультурность",
+    "interculturality_mobile": "Межкультур.",
+    "kinesthetics": "Кинестетика",
+    "language": "Язык"
   },
   "hero": {
-    "badge": "Josue Hoenicka",
-    "title_pre": "Давайте вместе",
-    "title_highlight": "воплотим",
-    "title_post": "вашу идею или проект",
+    "greeting": "Привет, я",
     "subtitle": "Я превращаю идеи в высокоэффективные цифровые продукты, сочетая исследования, кроссплатформенную разработку и искусственный интеллект.",
-    "cta": "Начнём"
-  },
-  "carousel": {
-    "label": "Компании, в которых я создавал ценность"
+    "cta": "Свяжитесь со мной"
   },
   "about": {
     "title": "Обо мне",
@@ -38,12 +33,9 @@
     "soft_skills": [
       "Командная работа",
       "Адаптивное мышление",
-      "Техническое лидерство",
-      "Управление командой",
       "Настойчивость",
       "Внимание к деталям",
       "Быстрое обучение",
-      "Решение проблем",
       "Межличностные навыки",
       "Эмоциональный интеллект"
     ],
@@ -56,11 +48,11 @@
     "subtitle": "Мой профессиональный путь в технологических компаниях",
     "present": "Настоящее время",
     "heynow_period": "Апр. 2025 - Настоящее время",
-    "heynow_desc": "Уругвайская AI-компания, лидер в решениях искусственного интеллекта с более чем 250 клиентами в Латинской Америке, Карибском бассейне, Северной Америке и Европе. Я присоединился как Front-End Architect, возглавив редизайн продукта и масштабирование фронтенд-архитектуры. Затем эволюционировал в роль Full Stack AI Developer.",
-    "revenue_period": "Апр. 2025 - Настоящее время",
-    "revenue_desc": "Компания B2B, специализирующаяся на стратегиях доходов и коммерческом росте. Разработка цифровых платформ для управления и оптимизации коммерческих процессов B2B.",
-    "liberasoft_period": "Апр. 2019 - Апр. 2025",
-    "liberasoft_desc": "Аргентинская компания с более чем 20-летним опытом разработки модульной облачной ERP. Мои 7 лет отражают непрерывную эволюцию: от создания интерфейсов на Angular и PrimeNG, до руководства фронтенд-архитектурой, расширения до Full Stack с Node.js, MySQL и MongoDB, и наконец интеграции AI с n8n, Python и RAG."
+    "heynow_desc": "Ведущая уругвайская AI-компания, специализирующаяся на решениях искусственного интеллекта с более чем 250 клиентами, специализирующаяся на автоматизации процессов и виртуальных агентах с AI. Начал как Front-End Architect, руководя редизайном продукта и масштабированием фронтенд-архитектуры на Angular, Docker и Azure. Затем эволюционировал в Full Stack AI Developer.",
+    "liberasoft_period": "Дек. 2018 - Апр. 2025",
+    "liberasoft_desc": "Аргентинская компания с более чем 20-летним опытом разработки модульной облачной ERP для управления бизнесом, с модулями продаж, закупок, склада, бухгалтерии, WMS и автоматизации с AI. Мои семь лет отражают непрерывную эволюцию: от создания интерфейсов на Angular и PrimeNG, руководство фронтенд-архитектурой, расширение до Full Stack с Node.js, MySQL и MongoDB, и интеграция AI с n8n, Python и RAG.",
+    "show_more": "Показать больше",
+    "show_less": "Показать меньше"
   },
   "projects": {
     "title": "Проекты",
@@ -78,20 +70,92 @@
     "subtitle": "Академическая подготовка и сертификаты",
     "items": {
       "uba": { "institution": "Universidad de Buenos Aires", "desc": "Английский" },
-      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "Программирование на React.js и Node.js" },
-      "unr": { "institution": "Universidad Nacional de Rosario", "desc": "Бакалавр компьютерных наук" },
+      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "Робототехника. Full-Stack разработка" },
       "eempi": { "institution": "EEMPI N°3060", "desc": "Диплом о среднем образовании" },
-      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Программирование на Python" },
-      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "Программирование на JavaScript и Ruby" },
-      "codoacodo": { "institution": "Codo a Codo (BA Ciudad)", "desc": "Full-Stack JavaScript разработчик" },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Алгоритмы Python" },
+      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "Основы программирования на Ruby. Full-Stack разработка" },
+      "codoacodo": { "institution": "Codo a Codo 4.0", "desc": "Full-Stack разработка" },
       "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "Кибербезопасность и телекоммуникации 5G" },
-      "platzi": { "institution": "Platzi", "desc": "10+ сертификатов в IT" },
-      "freecodecamp": { "institution": "Freecodecamp", "desc": "2 сертификата в IT" }
+      "google": { "institution": "Google", "desc": "MLOps" },
+      "microsoft": { "institution": "Microsoft", "desc": "C#" },
+      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. Программная инженерия" },
+      "freecodecamp": { "institution": "freeCodeCamp", "desc": "Адаптивный веб-дизайн. Алгоритмы JavaScript" }
     }
   },
   "contact": {
     "title": "Готовы работать вместе?",
     "subtitle": "Давайте свяжемся и воплотим ваш следующий проект",
     "footer": "Все права защищены."
+  },
+  "technology": {
+    "title": "Технологии",
+    "subtitle": "Расширение человеческих возможностей через инструменты и применение изобретательности для проектирования систем, решающих будущее.",
+    "back": "Назад",
+    "back_to_list": "Назад",
+    "watch_video": "Смотреть видео",
+    "no_video": "Видео пока недоступно",
+    "not_found": "Статья не найдена",
+    "filter_area": "Область",
+    "filter_tech": "Технология",
+    "clear_filters": "Сбросить фильтры",
+    "col_title": "Название",
+    "col_difficulty": "Сложность",
+    "no_results": "Нет статей, соответствующих этим фильтрам.",
+    "difficulty": {
+      "easy": "Легко",
+      "normal": "Нормально",
+      "hard": "Сложно"
+    },
+    "articles": {
+      "1-flashing-led": {
+        "title": "LED Flashes",
+        "desc": "'Hello World' электроники. LED на пине 13 мигает каждую секунду."
+      },
+      "2-hoenix": {
+        "title": "Интеллектуальный робот",
+        "desc": "Голосовой интерактивный робот-игрушка на Raspberry Pi Zero 2 W, который слушает, думает и отвечает с помощью API Groq Whisper и llama3."
+      },
+      "3-ultrasonic-sensor": {
+        "title": "Ультразвуковой датчик",
+        "desc": "HC-SR04 измеряет расстояние в сантиметрах и выводит результат в Serial Monitor."
+      }
+    }
+  },
+  "interculturality": {
+    "title": "Межкультурность",
+    "subtitle": "Искусство жить в мире без ментальных границ через владение языками и путешествия для связи с сущностью других реальностей.",
+    "back": "Назад",
+    "no_content": "Пока нет контента."
+  },
+  "kinesthetics": {
+    "title": "Кинестетика",
+    "subtitle": "Интеллект тела в движении и глубокое осознание, позволяющее овладеть ритмом и равновесием без необходимости думать.",
+    "back": "Назад",
+    "back_to_list": "Назад",
+    "watch_video": "Смотреть видео",
+    "no_video": "Видео пока недоступно",
+    "not_found": "Запись не найдена",
+    "filter_discipline": "Дисциплина",
+    "clear_filters": "Сбросить фильтры",
+    "col_title": "Название",
+    "col_discipline": "Дисциплина",
+    "col_difficulty": "Сложность",
+    "no_results": "Нет записей, соответствующих этим фильтрам.",
+    "disciplines": {
+      "freestyle": "Freestyle",
+      "swimming": "Плавание",
+      "drums": "Барабаны"
+    },
+    "difficulty": {
+      "easy": "Легко",
+      "normal": "Нормально",
+      "hard": "Сложно"
+    },
+    "entries": {
+      "1-freestyle-session": {
+        "title": "Двойной вокруг света",
+        "desc": "Первая сессия фристайла. Свободное движение и телесное выражение."
+      }
+    }
   }
 }

@@ -1,22 +1,17 @@
 {
   "nav": {
-    "about": "عني",
-    "skills": "المهارات",
-    "experience": "الخبرة",
-    "projects": "المشاريع",
-    "education": "التعليم",
-    "contact": "اتصل"
+    "about_me": "عني",
+    "home": "الرئيسية",
+    "technology": "التكنولوجيا",
+    "interculturality": "التثاقف",
+    "interculturality_mobile": "التثاقف",
+    "kinesthetics": "الحس الحركي",
+    "language": "اللغة"
   },
   "hero": {
-    "badge": "Josue Hoenicka",
-    "title_pre": "دعنا",
-    "title_highlight": "نحقق",
-    "title_post": "فكرتك أو مشروعك معاً",
+    "greeting": "مرحبا، أنا",
     "subtitle": "أحول الأفكار إلى منتجات رقمية عالية التأثير، أجمع بين البحث والتطوير عبر المنصات والذكاء الاصطناعي.",
-    "cta": "هيا نبدأ"
-  },
-  "carousel": {
-    "label": "الشركات التي أضفت فيها قيمة"
+    "cta": "تواصل معي"
   },
   "about": {
     "title": "عني",
@@ -38,12 +33,9 @@
     "soft_skills": [
       "العمل الجماعي",
       "التفكير التكيفي",
-      "القيادة التقنية",
-      "إدارة الفرق",
       "المثابرة",
       "الاهتمام بالتفاصيل",
       "التعلم السريع",
-      "حل المشكلات",
       "المهارات الشخصية",
       "الذكاء العاطفي"
     ],
@@ -56,11 +48,11 @@
     "subtitle": "مسيرتي المهنية في شركات التكنولوجيا",
     "present": "حالياً",
     "heynow_period": "أبريل 2025 - حالياً",
-    "heynow_desc": "شركة أوروغوية رائدة في حلول الذكاء الاصطناعي مع أكثر من 250 عميلاً في أمريكا اللاتينية والكاريبي وأمريكا الشمالية وأوروبا. انضممت كمهندس واجهات أمامية، قدت إعادة تصميم المنتج وتوسيع بنية الواجهة الأمامية. ثم تطورت إلى مطور Full Stack AI.",
-    "revenue_period": "أبريل 2025 - حالياً",
-    "revenue_desc": "شركة B2B متخصصة في استراتيجيات الإيرادات والنمو التجاري. تطوير منصات رقمية لإدارة وتحسين العمليات التجارية B2B.",
-    "liberasoft_period": "أبريل 2019 - أبريل 2025",
-    "liberasoft_desc": "شركة أرجنتينية بخبرة تزيد عن 20 عاماً في تطوير نظام ERP سحابي معياري. تعكس سنواتي السبع تطوراً مستمراً: من بناء واجهات باستخدام Angular و PrimeNG، إلى قيادة بنية الواجهة الأمامية، والتوسع إلى Full Stack باستخدام Node.js وMySQL وMongoDB، وأخيراً دمج الذكاء الاصطناعي مع n8n وPython وRAG."
+    "heynow_desc": "شركة أوروغوية رائدة في حلول الذكاء الاصطناعي مع أكثر من 250 عميلاً، متخصصة في أتمتة العمليات والوكلاء الافتراضيين بالذكاء الاصطناعي. بدأت كمهندس واجهات أمامية، قدت إعادة تصميم المنتج وتوسيع بنية الواجهة باستخدام Angular وDocker وAzure. ثم تطورت إلى مطور Full Stack AI.",
+    "liberasoft_period": "ديسمبر 2018 - أبريل 2025",
+    "liberasoft_desc": "شركة أرجنتينية بخبرة تزيد عن 20 عاماً في تطوير نظام ERP سحابي معياري لإدارة الأعمال مع وحدات للمبيعات والمشتريات والمخزون والمحاسبة وWMS والأتمتة بالذكاء الاصطناعي. تعكس سنواتي السبع تطوراً مستمراً: من بناء الواجهات باستخدام Angular وPrimeNG، إلى قيادة بنية الواجهة الأمامية، والتوسع إلى Full Stack باستخدام Node.js وMySQL وMongoDB، وأخيراً دمج الذكاء الاصطناعي مع n8n وPython وRAG.",
+    "show_more": "عرض المزيد",
+    "show_less": "عرض أقل"
   },
   "projects": {
     "title": "المشاريع",
@@ -78,20 +70,92 @@
     "subtitle": "الخلفية الأكاديمية والشهادات",
     "items": {
       "uba": { "institution": "Universidad de Buenos Aires", "desc": "الإنجليزية" },
-      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "البرمجة بـ React.js و Node.js" },
-      "unr": { "institution": "Universidad Nacional de Rosario", "desc": "بكالوريوس علوم الحاسب" },
+      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "الروبوتيك. التطوير Full-Stack" },
       "eempi": { "institution": "EEMPI N°3060", "desc": "دبلوم الثانوية العلمية" },
-      "itmaster": { "institution": "IT Master (CESSI)", "desc": "البرمجة بـ Python" },
-      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "البرمجة بـ JavaScript و Ruby" },
-      "codoacodo": { "institution": "Codo a Codo (BA Ciudad)", "desc": "مطور Full-Stack JavaScript" },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "خوارزميات Python" },
+      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "برمجة أساسية بـ Ruby. تطوير Full-Stack" },
+      "codoacodo": { "institution": "Codo a Codo 4.0", "desc": "تطوير Full-Stack" },
       "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "الأمن السيبراني واتصالات 5G" },
-      "platzi": { "institution": "Platzi", "desc": "+10 شهادات تقنية" },
-      "freecodecamp": { "institution": "Freecodecamp", "desc": "شهادتان تقنيتان" }
+      "google": { "institution": "Google", "desc": "MLOps" },
+      "microsoft": { "institution": "Microsoft", "desc": "C#" },
+      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. هندسة البرمجيات" },
+      "freecodecamp": { "institution": "freeCodeCamp", "desc": "تصميم ويب متجاوب. خوارزميات JavaScript" }
     }
   },
   "contact": {
     "title": "مستعد للعمل معاً؟",
     "subtitle": "دعنا نتواصل ونحقق مشروعك القادم",
     "footer": "جميع الحقوق محفوظة."
+  },
+  "technology": {
+    "title": "التكنولوجيا",
+    "subtitle": "امتداد القدرة البشرية عبر الأدوات وتطبيق الإبداع لتصميم أنظمة تحل المستقبل.",
+    "back": "رجوع",
+    "back_to_list": "رجوع",
+    "watch_video": "مشاهدة الفيديو",
+    "no_video": "لا يوجد فيديو متاح بعد",
+    "not_found": "المقال غير موجود",
+    "filter_area": "المجال",
+    "filter_tech": "التقنية",
+    "clear_filters": "مسح الفلاتر",
+    "col_title": "العنوان",
+    "col_difficulty": "الصعوبة",
+    "no_results": "لا توجد مقالات تطابق هذه الفلاتر.",
+    "difficulty": {
+      "easy": "سهل",
+      "normal": "عادي",
+      "hard": "صعب"
+    },
+    "articles": {
+      "1-flashing-led": {
+        "title": "LED Flashes",
+        "desc": "'مرحبا بالعالم' في الإلكترونيات. LED على المنفذ 13 يومض كل ثانية."
+      },
+      "2-hoenix": {
+        "title": "روبوت ذكي",
+        "desc": "روبوت لعبة تفاعلي صوتياً يعمل بـ Raspberry Pi Zero 2 W يستمع ويفكر ويرد باستخدام واجهات Groq Whisper وllama3."
+      },
+      "3-ultrasonic-sensor": {
+        "title": "مستشعر الموجات فوق الصوتية",
+        "desc": "يقيس HC-SR04 المسافة بالسنتيمتر ويعرض النتيجة في المراقب التسلسلي."
+      }
+    }
+  },
+  "interculturality": {
+    "title": "التثاقف",
+    "subtitle": "فن العيش في العالم دون حدود ذهنية من خلال إتقان اللغات والسفر للتواصل مع جوهر الواقع الأخرى.",
+    "back": "رجوع",
+    "no_content": "لا يوجد محتوى بعد."
+  },
+  "kinesthetics": {
+    "title": "الحس الحركي",
+    "subtitle": "ذكاء الجسد في الحركة والوعي العميق الذي يسمح بإتقان الإيقاع والتوازن دون الحاجة للتفكير.",
+    "back": "رجوع",
+    "back_to_list": "رجوع",
+    "watch_video": "مشاهدة الفيديو",
+    "no_video": "لا يوجد فيديو متاح بعد",
+    "not_found": "العنصر غير موجود",
+    "filter_discipline": "التخصص",
+    "clear_filters": "مسح الفلاتر",
+    "col_title": "العنوان",
+    "col_discipline": "التخصص",
+    "col_difficulty": "الصعوبة",
+    "no_results": "لا توجد عناصر تطابق هذه الفلاتر.",
+    "disciplines": {
+      "freestyle": "Freestyle",
+      "swimming": "السباحة",
+      "drums": "الطبول"
+    },
+    "difficulty": {
+      "easy": "سهل",
+      "normal": "عادي",
+      "hard": "صعب"
+    },
+    "entries": {
+      "1-freestyle-session": {
+        "title": "دوران مزدوج حول العالم",
+        "desc": "أول جلسة فريستايل. حركة حرة وتعبير جسدي."
+      }
+    }
   }
 }

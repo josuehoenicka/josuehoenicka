@@ -1,22 +1,17 @@
 {
   "nav": {
-    "about": "关于我",
-    "skills": "技能",
-    "experience": "经验",
-    "projects": "项目",
-    "education": "教育",
-    "contact": "联系"
+    "about_me": "关于我",
+    "home": "首页",
+    "technology": "技术",
+    "interculturality": "跨文化",
+    "interculturality_mobile": "跨文化",
+    "kinesthetics": "动觉",
+    "language": "语言"
   },
   "hero": {
-    "badge": "Josue Hoenicka",
-    "title_pre": "让我们一起",
-    "title_highlight": "实现",
-    "title_post": "你的想法或创业项目",
+    "greeting": "你好，我是",
     "subtitle": "我将创意转化为高影响力的数字产品，结合研究、跨平台开发和人工智能。",
-    "cta": "开始吧"
-  },
-  "carousel": {
-    "label": "我曾贡献价值的公司"
+    "cta": "联系我"
   },
   "about": {
     "title": "关于我",
@@ -38,12 +33,9 @@
     "soft_skills": [
       "团队合作",
       "适应性思维",
-      "技术领导力",
-      "团队管理",
       "毅力",
       "注重细节",
       "快速学习",
-      "解决问题",
       "人际关系",
       "情商"
     ],
@@ -56,11 +48,11 @@
     "subtitle": "我在科技公司的职业历程",
     "present": "至今",
     "heynow_period": "2025年4月 - 至今",
-    "heynow_desc": "乌拉圭AI公司，是人工智能解决方案的领导者，在拉丁美洲、加勒比海、北美和欧洲拥有250多个客户。我以前端架构师身份加入，领导产品重新设计和前端架构扩展。随后晋升为全栈AI开发者，将工作范围扩展到平台的完整开发，包括代理间通信(A2A)基础设施。",
-    "revenue_period": "2025年4月 - 至今",
-    "revenue_desc": "专注于收入策略和商业增长的B2B公司。开发数字平台，用于管理和优化B2B商业流程。",
-    "liberasoft_period": "2019年4月 - 2025年4月",
-    "liberasoft_desc": "阿根廷公司，拥有20多年开发模块化云ERP的经验。我的7年反映了持续的演进：从使用Angular和PrimeNG构建界面，到领导前端架构，扩展到使用Node.js、MySQL和MongoDB的全栈开发，最终使用n8n、Python和RAG将AI集成到产品中，实现生成式AI功能。"
+    "heynow_desc": "乌拉圭领先的AI公司，专注于人工智能解决方案，拥有250多个客户，专注于流程自动化和AI虚拟代理。我以前端架构师身份加入，领导产品重新设计并在Angular、Docker和Azure上扩展前端架构。随后晋升为全栈AI开发者。",
+    "liberasoft_period": "2018年12月 - 2025年4月",
+    "liberasoft_desc": "阿根廷公司，拥有20多年开发模块化云ERP的经验，用于中小企业和大型企业的业务管理，包含销售、采购、库存、会计、WMS和AI自动化模块。我的七年反映了持续的演进：从使用Angular和PrimeNG构建界面，到领导前端架构，扩展到使用Node.js、MySQL和MongoDB的全栈开发，最终使用n8n、Python和RAG将AI集成到产品中。",
+    "show_more": "查看更多",
+    "show_less": "收起"
   },
   "projects": {
     "title": "项目",
@@ -78,20 +70,92 @@
     "subtitle": "学术背景与认证",
     "items": {
       "uba": { "institution": "布宜诺斯艾利斯大学", "desc": "英语" },
-      "utn": { "institution": "国立技术大学", "desc": "React.js和Node.js编程" },
-      "unr": { "institution": "罗萨里奥国立大学", "desc": "计算机科学学士" },
+      "utn": { "institution": "国立技术大学", "desc": "机器人技术. 全栈开发" },
       "eempi": { "institution": "EEMPI N°3060", "desc": "理科高中文凭" },
-      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Python编程" },
-      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "JavaScript和Ruby编程" },
-      "codoacodo": { "institution": "Codo a Codo (BA Ciudad)", "desc": "全栈JavaScript开发者" },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Python算法" },
+      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "Ruby基础编程. 全栈开发" },
+      "codoacodo": { "institution": "Codo a Codo 4.0", "desc": "全栈开发" },
       "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "网络安全与5G电信" },
-      "platzi": { "institution": "Platzi", "desc": "10+科技领域认证" },
-      "freecodecamp": { "institution": "Freecodecamp", "desc": "2项科技领域认证" }
+      "google": { "institution": "Google", "desc": "MLOps" },
+      "microsoft": { "institution": "Microsoft", "desc": "C#" },
+      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. 软件工程" },
+      "freecodecamp": { "institution": "freeCodeCamp", "desc": "响应式网页设计. JavaScript算法" }
     }
   },
   "contact": {
     "title": "准备一起合作吗？",
     "subtitle": "让我们联系，一起实现你的下一个项目",
     "footer": "版权所有。"
+  },
+  "technology": {
+    "title": "技术",
+    "subtitle": "通过工具延伸人类能力，运用巧思设计解决未来的系统。",
+    "back": "返回",
+    "back_to_list": "返回",
+    "watch_video": "观看视频",
+    "no_video": "暂无可用视频",
+    "not_found": "未找到文章",
+    "filter_area": "领域",
+    "filter_tech": "技术",
+    "clear_filters": "清除筛选",
+    "col_title": "标题",
+    "col_difficulty": "难度",
+    "no_results": "没有符合这些筛选条件的文章。",
+    "difficulty": {
+      "easy": "简单",
+      "normal": "中等",
+      "hard": "困难"
+    },
+    "articles": {
+      "1-flashing-led": {
+        "title": "LED Flashes",
+        "desc": "电子学的'Hello World'。引脚13上的LED每秒闪烁一次。"
+      },
+      "2-hoenix": {
+        "title": "智能机器人",
+        "desc": "基于Raspberry Pi Zero 2 W的语音交互玩具机器人，使用Groq的Whisper和llama3 API进行聆听、思考和回应。"
+      },
+      "3-ultrasonic-sensor": {
+        "title": "超声波传感器",
+        "desc": "HC-SR04 以厘米为单位测量距离，并将结果输出到串口监视器。"
+      }
+    }
+  },
+  "interculturality": {
+    "title": "跨文化",
+    "subtitle": "通过掌握语言和旅行，无思想边界地居住在这个世界，与其他现实的本质连接的艺术。",
+    "back": "返回",
+    "no_content": "暂无内容。"
+  },
+  "kinesthetics": {
+    "title": "动觉",
+    "subtitle": "身体运动的智慧和深层意识，使人无需思考即可掌握节奏和平衡。",
+    "back": "返回",
+    "back_to_list": "返回",
+    "watch_video": "观看视频",
+    "no_video": "暂无可用视频",
+    "not_found": "未找到条目",
+    "filter_discipline": "学科",
+    "clear_filters": "清除筛选",
+    "col_title": "标题",
+    "col_discipline": "学科",
+    "col_difficulty": "难度",
+    "no_results": "没有符合这些筛选条件的条目。",
+    "disciplines": {
+      "freestyle": "Freestyle",
+      "swimming": "游泳",
+      "drums": "鼓"
+    },
+    "difficulty": {
+      "easy": "简单",
+      "normal": "中等",
+      "hard": "困难"
+    },
+    "entries": {
+      "1-freestyle-session": {
+        "title": "双绕世界",
+        "desc": "第一次自由式练习。自由运动和身体表达。"
+      }
+    }
   }
 }

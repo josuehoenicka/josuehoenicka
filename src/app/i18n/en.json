@@ -1,22 +1,17 @@
 {
   "nav": {
-    "about": "About me",
-    "skills": "Skills",
-    "experience": "Experience",
-    "projects": "Projects",
-    "education": "Education",
-    "contact": "Contact"
+    "about_me": "About me",
+    "home": "Home",
+    "technology": "Technology",
+    "interculturality": "Interculturality",
+    "interculturality_mobile": "Intercultural",
+    "kinesthetics": "Kinesthetics",
+    "language": "Language"
   },
   "hero": {
-    "badge": "Josue Hoenicka",
-    "title_pre": "Let's",
-    "title_highlight": "materialize",
-    "title_post": "your idea or venture together",
+    "greeting": "Hi, I'm",
     "subtitle": "I transform ideas into high-impact digital products, combining research, cross-platform development and artificial intelligence.",
-    "cta": "Let's go"
-  },
-  "carousel": {
-    "label": "Companies where I've contributed value"
+    "cta": "Contact me"
   },
   "about": {
     "title": "About me",
@@ -38,12 +33,9 @@
     "soft_skills": [
       "Teamwork",
       "Adaptive thinking",
-      "Technical leadership",
-      "Team management",
       "Perseverance",
       "Attention to detail",
-      "Fast learner",
-      "Problem solving",
+      "Quick learning",
       "Interpersonal skills",
       "Emotional intelligence"
     ],
@@ -56,11 +48,11 @@
     "subtitle": "My professional journey in tech companies",
     "present": "Present",
     "heynow_period": "Apr. 2025 - Present",
-    "heynow_desc": "Uruguayan AI company leading in artificial intelligence solutions with over 250 clients in Latin America, the Caribbean, North America, and Europe. I joined as Front-End Architect, leading the product redesign and scaling the front-end architecture. Then I evolved to the Full Stack AI Developer role, expanding my scope to the complete development of the platforms, including agent to agent (A2A) communication infrastructure.",
-    "revenue_period": "Apr. 2025 - Present",
-    "revenue_desc": "B2B company specialized in revenue strategies and commercial growth. Development of digital platforms for managing and optimizing B2B commercial processes.",
-    "liberasoft_period": "Apr. 2019 - Apr. 2025",
-    "liberasoft_desc": "Argentine company with over 20 years of experience developing a modular cloud ERP. My 7 years reflect a continuous evolution: from building interfaces with Angular and PrimeNG, to leading the frontend architecture, expanding to Full Stack with Node.js, MySQL and MongoDB, and finally integrating AI into the product with n8n, Python and RAG for generative AI functionalities."
+    "heynow_desc": "Leading Uruguayan AI company specializing in artificial intelligence solutions with over 250 clients in Latin America, the Caribbean, North America, and Europe, focusing on process automation and AI-powered virtual agents. I started as a Front-End Architect, leading the product redesign and scaling the front-end architecture on Angular, Docker, and Microsoft Azure. I then evolved into a Full Stack AI Developer, expanding my scope to encompass the complete development of the various platforms that comprise the suite, including the agent-to-agent (A2A) communication infrastructure.",
+    "liberasoft_period": "Dec. 2018 - Apr. 2025",
+    "liberasoft_desc": "Argentinian company with over 20 years of experience developing a modular cloud ERP for business management in SMEs and large companies, with modules for sales, purchasing, inventory, accounting, WMS, and AI-powered automation. My seven years there reflect continuous evolution: I started as a Front-End Developer building interfaces with Angular and PrimeNG, progressed to Senior Front-End Developer leading the development and architecture of the ERP's frontend, then expanded to Full Stack Developer adding Node.js, MySQL, and MongoDB for developing the platform's various modules and integrated applications. Finally, as an AI Integration Developer, I incorporated artificial intelligence capabilities into the product, integrating n8n for process automation, Python for data collection, and RAG for generative AI functionalities applied to the business.",
+    "show_more": "Show more",
+    "show_less": "Show less"
   },
   "projects": {
     "title": "Projects",
@@ -80,32 +72,28 @@
       "uba": { "institution": "Universidad de Buenos Aires", "desc": "English" },
       "utn": {
         "institution": "Universidad Tecnológica Nacional",
-        "desc": "Programming with React.js and Node.js"
+        "desc": "Robotics. Full-Stack Development"
       },
-
-      "unr": {
-        "institution": "Universidad Nacional de Rosario",
-        "desc": "Bachelor's in Computer Science"
-      },
-
       "eempi": { "institution": "EEMPI N°3060", "desc": "Science High School Diploma" },
-      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Programming with Python" },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Python Algorithms" },
       "argprog": {
         "institution": "Argentina Programa (CESSI)",
-        "desc": "Programming with JavaScript and Ruby"
+        "desc": "Basics Programming with Ruby. Full-Stack Development"
       },
       "codoacodo": {
-        "institution": "Codo a Codo (BA Ciudad)",
-        "desc": "Full-Stack JavaScript Developer"
+        "institution": "Codo a Codo 4.0",
+        "desc": "Full-Stack Development"
       },
       "movistar": {
         "institution": "Fundación Telefónica Movistar",
         "desc": "Cybersecurity and 5G Telecommunications"
       },
-      "platzi": { "institution": "Platzi", "desc": "+10 certifications in the tech sector" },
+      "google": { "institution": "Google", "desc": "MLOps" },
+      "microsoft": { "institution": "Microsoft", "desc": "C#" },
+      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. Software Engineering" },
       "freecodecamp": {
-        "institution": "Freecodecamp",
-        "desc": "2 certifications in the tech sector"
+        "institution": "freeCodeCamp",
+        "desc": "Responsive Web Design. JavaScript Algorithms"
       }
     }
   },
@@ -113,5 +101,76 @@
     "title": "Ready to work together?",
     "subtitle": "Let's connect and make your next project a reality",
     "footer": "All rights reserved."
+  },
+  "technology": {
+    "title": "Technology",
+    "subtitle": "The extension of human capability through tools and the application of ingenuity to design systems that solve the future.",
+    "back": "Back",
+    "back_to_list": "Back",
+    "watch_video": "Watch video",
+    "no_video": "No video available yet",
+    "not_found": "Article not found",
+    "filter_area": "Area",
+    "filter_tech": "Technology",
+    "clear_filters": "Clear filters",
+    "col_title": "Title",
+    "col_difficulty": "Difficulty",
+    "no_results": "No articles match these filters.",
+    "difficulty": {
+      "easy": "Easy",
+      "normal": "Normal",
+      "hard": "Hard"
+    },
+    "articles": {
+      "1-flashing-led": {
+        "title": "LED Flashes",
+        "desc": "The 'Hello World' of electronics. A single LED on pin 13 blinks every second."
+      },
+      "2-hoenix": {
+        "title": "Intelligent Robot",
+        "desc": "A voice-interactive toy robot powered by a Raspberry Pi Zero 2 W that listens, thinks, and talks back using Groq's Whisper and llama3 APIs."
+      },
+      "3-ultrasonic-sensor": {
+        "title": "Ultrasonic Sensor",
+        "desc": "An HC-SR04 measures distance in centimeters and prints the result to the Serial Monitor."
+      }
+    }
+  },
+  "interculturality": {
+    "title": "Interculturality",
+    "subtitle": "The art of inhabiting the world without mental borders through the mastery of languages and travel to connect with the essence of other realities.",
+    "back": "Back",
+    "no_content": "No content yet."
+  },
+  "kinesthetics": {
+    "title": "Kinesthetics",
+    "subtitle": "The intelligence of the body in motion and the deep awareness that allows mastering rhythm and balance without the need to think.",
+    "back": "Back",
+    "back_to_list": "Back",
+    "watch_video": "Watch video",
+    "no_video": "No video available yet",
+    "not_found": "Entry not found",
+    "filter_discipline": "Discipline",
+    "clear_filters": "Clear filters",
+    "col_title": "Title",
+    "col_discipline": "Discipline",
+    "col_difficulty": "Difficulty",
+    "no_results": "No entries match these filters.",
+    "disciplines": {
+      "freestyle": "Freestyle",
+      "swimming": "Swimming",
+      "drums": "Drums"
+    },
+    "difficulty": {
+      "easy": "Easy",
+      "normal": "Normal",
+      "hard": "Hard"
+    },
+    "entries": {
+      "1-freestyle-session": {
+        "title": "Double around the world",
+        "desc": "First freestyle session. Free movement and body expression."
+      }
+    }
   }
 }

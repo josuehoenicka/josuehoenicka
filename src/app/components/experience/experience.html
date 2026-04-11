@@ -21,7 +21,10 @@
                 <span class="role-badge">{{ role }}</span>
               }
             </div>
-            <p class="timeline__description">{{ exp.description }}</p>
+            <p class="timeline__description" [class.clamped]="!isExpanded(i)">{{ exp.description }}</p>
+            <button class="timeline__toggle" (click)="toggleDesc(i)">
+              {{ isExpanded(i) ? i18n.t('experience.show_less') : i18n.t('experience.show_more') }}
+            </button>
             <div class="timeline__tags">
               @for (tag of exp.tags; track tag) {
                 <span class="tech-tag">{{ tag }}</span>

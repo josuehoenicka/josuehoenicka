@@ -8,13 +8,13 @@ import hi from '../i18n/hi.json';
 import ar from '../i18n/ar.json';
 import ru from '../i18n/ru.json';
 
-export type Lang = 'es' | 'en' | 'pt' | 'zh' | 'hi' | 'ar' | 'ru';
+export type Lang = 'en' | 'es' | 'pt' | 'zh' | 'hi' | 'ar' | 'ru';
 
-const translations: Record<Lang, Record<string, any>> = { es, en, pt, zh, hi, ar, ru };
+const translations: Record<Lang, Record<string, any>> = { en, es, pt, zh, hi, ar, ru };
 
 @Injectable({ providedIn: 'root' })
 export class I18nService {
-  readonly lang = signal<Lang>('es');
+  readonly lang = signal<Lang>('en');
 
   setLang(lang: Lang) {
     this.lang.set(lang);
