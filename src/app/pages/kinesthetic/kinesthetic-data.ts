@@ -3,7 +3,7 @@ import { Lang } from '../../services/i18n.service';
 export type Discipline = 'freestyle' | 'swimming' | 'drums';
 export type Difficulty = 'easy' | 'normal' | 'hard';
 
-export interface KinestheticsEntry {
+export interface KinestheticEntry {
   id: number;
   slug: string;
   discipline: Discipline;
@@ -12,7 +12,7 @@ export interface KinestheticsEntry {
   content: Partial<Record<Lang, string>>;
 }
 
-export const KINESTHETICS_ENTRIES: KinestheticsEntry[] = [
+export const KINESTHETIC_ENTRIES: KinestheticEntry[] = [
   {
     id: 1,
     slug: '1-freestyle-session',

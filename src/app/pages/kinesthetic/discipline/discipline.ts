@@ -3,7 +3,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { marked } from 'marked';
 import { I18nService } from '../../../services/i18n.service';
-import { KINESTHETICS_ENTRIES, KinestheticsEntry } from '../kinesthetics-data';
+import { KINESTHETIC_ENTRIES, KinestheticEntry } from '../kinesthetic-data';
 import { configureMarkedRenderer, handleCodeBlockClick } from '../../../utils/code-renderer';
 
 @Component({
@@ -17,7 +17,7 @@ export class DisciplinePage implements OnInit {
   private sanitizer = inject(DomSanitizer);
   readonly i18n = inject(I18nService);
 
-  readonly entry = signal<KinestheticsEntry | null>(null);
+  readonly entry = signal<KinestheticEntry | null>(null);
 
   constructor() {
     configureMarkedRenderer();
@@ -48,7 +48,7 @@ export class DisciplinePage implements OnInit {
 
   ngOnInit() {
     const slug = this.route.snapshot.paramMap.get('slug');
-    const found = KINESTHETICS_ENTRIES.find(e => e.slug === slug) || null;
+    const found = KINESTHETIC_ENTRIES.find(e => e.slug === slug) || null;
     this.entry.set(found);
   }
 }

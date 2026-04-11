@@ -17,14 +17,14 @@ export class Experience {
         period: this.i18n.t('experience.heynow_period'),
         roles: ['Front-End Architect', 'Full Stack AI Developer'],
         description: this.i18n.t('experience.heynow_desc'),
-        tags: ['Angular', 'Node.js', 'SQLServer', 'MongoDB', 'Docker', 'Kubernetes', 'Azure'],
+        tags: ['Angular', 'Azure', 'Docker', 'Kubernetes', 'MongoDB', 'Node.js', 'SQLServer'],
       },
       {
         company: 'LiberaSOFT',
         period: this.i18n.t('experience.liberasoft_period'),
-        roles: ['Front-End Developer', 'Sr. Front-End Developer', 'Full Stack Developer', 'AI Integration Developer'],
+        roles: ['AI Integration Developer', 'Front-End Developer', 'Full Stack Developer', 'Sr. Front-End Developer'],
         description: this.i18n.t('experience.liberasoft_desc'),
-        tags: ['Angular', 'Node.js', 'PostgreSQL', 'MongoDB', 'Docker', 'n8n'],
+        tags: ['Angular', 'Docker', 'MongoDB', 'n8n', 'Node.js', 'PostgreSQL'],
       },
     ];
   }

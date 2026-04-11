@@ -1,4 +1,4 @@
-﻿import { Component, inject, signal, effect } from '@angular/core';
+﻿import { Component, inject, signal } from '@angular/core';
 import { I18nService } from '../../services/i18n.service';
 
 @Component({
@@ -8,44 +8,91 @@ import { I18nService } from '../../services/i18n.service';
 })
 export class Education {
   readonly i18n = inject(I18nService);
-  readonly activeIndex = signal(0);
-  readonly expanded = signal(false);
+  readonly expandedDescs = signal<Set<number>>(new Set());
 
-  readonly items = [
-    { key: 'education.items.utn', icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5', accent: '#ffffff' },
-    { key: 'education.items.uba', icon: 'M12 3v18M3 12h18', accent: '#cccccc' },
-    { key: 'education.items.eempi', icon: 'M3 21h18M5 21V7l7-4 7 4v14', accent: '#ffffff' },
-    { key: 'education.items.itmaster', icon: 'M4 17l6-6-6-6M12 19h8', accent: '#cccccc' },
-    { key: 'education.items.argprog', icon: 'M16 18l6-6-6-6M8 6l-6 6 6 6', accent: '#ffffff' },
-    { key: 'education.items.codoacodo', icon: 'M20 7h-9M14 17H5M17 17a2 2 0 100-4 2 2 0 000 4zM7 7a2 2 0 100-4 2 2 0 000 4z', accent: '#cccccc' },
-    { key: 'education.items.movistar', icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', accent: '#ffffff' },
-    { key: 'education.items.google', icon: 'M21 12a9 9 0 11-6.219-8.56M21 3v6h-6', accent: '#cccccc' },
-    { key: 'education.items.microsoft', icon: 'M3 3h8v8H3zM13 3h8v8h-8zM3 13h8v8H3zM13 13h8v8h-8z', accent: '#ffffff' },
-    { key: 'education.items.platzi', icon: 'M9 12l2 2 4-4M7.835 4.697A3.42 3.42 0 009.78 3.89a3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z', accent: '#cccccc' },
-    { key: 'education.items.freecodecamp', icon: 'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z', accent: '#ffffff' },
-  ];
-
-  constructor() {
-    effect(() => {
-      this.activeIndex();
-      this.expanded.set(false);
-    });
+  private split(key: string): string[] {
+    return this.i18n.t(key).split('. ').map((s: string) => s.replace(/\.$/, '')).sort((a: string, b: string) => a.localeCompare(b));
   }
 
-  getDescItems(): string[] {
-    const desc = this.i18n.t(this.items[this.activeIndex()].key + '.desc');
-    return desc.split('. ').map((s: string) => s.replace(/\.$/, ''));
+  get items(): { institution: string; description: string; certs: string[]; tags: string[] }[] {
+    return [
+      {
+        institution: this.i18n.t('education.items.utn.institution'),
+        description: this.i18n.t('education.items.utn.description'),
+        certs: this.split('education.items.utn.desc'),
+        tags: ['Arduino', 'C++', 'CSS', 'HTML', 'JavaScript', 'MySQL', 'Node.js', 'React.js'],
+      },
+      {
+        institution: this.i18n.t('education.items.uba.institution'),
+        description: this.i18n.t('education.items.uba.description'),
+        certs: this.split('education.items.uba.desc'),
+        tags: [],
+      },
+      {
+        institution: this.i18n.t('education.items.eempi.institution'),
+        description: this.i18n.t('education.items.eempi.description'),
+        certs: this.split('education.items.eempi.desc'),
+        tags: [],
+      },
+      {
+        institution: this.i18n.t('education.items.platzi.institution'),
+        description: this.i18n.t('education.items.platzi.description'),
+        certs: this.split('education.items.platzi.desc'),
+        tags: ['Angular', 'Arduino', 'Docker', 'Flutter', 'n8n', 'Node.js', 'Python'],
+      },
+      {
+        institution: this.i18n.t('education.items.google.institution'),
+        description: this.i18n.t('education.items.google.description'),
+        certs: this.split('education.items.google.desc'),
+        tags: ['MLOps'],
+      },
+      {
+        institution: this.i18n.t('education.items.microsoft.institution'),
+        description: this.i18n.t('education.items.microsoft.description'),
+        certs: this.split('education.items.microsoft.desc'),
+        tags: ['C#'],
+      },
+      {
+        institution: this.i18n.t('education.items.itmaster.institution'),
+        description: this.i18n.t('education.items.itmaster.description'),
+        certs: this.split('education.items.itmaster.desc'),
+        tags: ['Python'],
+      },
+      {
+        institution: this.i18n.t('education.items.argprog.institution'),
+        description: this.i18n.t('education.items.argprog.description'),
+        certs: this.split('education.items.argprog.desc'),
+        tags: ['CSS', 'HTML', 'Java', 'JavaScript', 'Ruby', 'Spring Boot'],
+      },
+      {
+        institution: this.i18n.t('education.items.codoacodo.institution'),
+        description: this.i18n.t('education.items.codoacodo.description'),
+        certs: this.split('education.items.codoacodo.desc'),
+        tags: ['CSS', 'HTML', 'JavaScript', 'MySQL', 'PHP'],
+      },
+      {
+        institution: this.i18n.t('education.items.movistar.institution'),
+        description: this.i18n.t('education.items.movistar.description'),
+        certs: this.split('education.items.movistar.desc'),
+        tags: [],
+      },
+      {
+        institution: this.i18n.t('education.items.freecodecamp.institution'),
+        description: this.i18n.t('education.items.freecodecamp.description'),
+        certs: this.split('education.items.freecodecamp.desc'),
+        tags: ['CSS', 'HTML', 'JavaScript'],
+      },
+    ];
   }
 
-  prev() {
-    this.activeIndex.update(i => (i > 0 ? i - 1 : this.items.length - 1));
+  isExpanded(index: number): boolean {
+    return this.expandedDescs().has(index);
   }
 
-  next() {
-    this.activeIndex.update(i => (i < this.items.length - 1 ? i + 1 : 0));
-  }
-
-  toggleExpand() {
-    this.expanded.update(v => !v);
+  toggleDesc(index: number) {
+    const current = new Set(this.expandedDescs());
+    if (current.has(index)) current.delete(index);
+    else current.add(index);
+    this.expandedDescs.set(current);
   }
 }

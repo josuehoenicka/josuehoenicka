@@ -1,59 +1,48 @@
-﻿<section id="skills" class="section skills">
+﻿<section id="about" class="section summary">
   <div class="container">
-    <h2 class="section-title">{{ i18n.t('skills.title') }}</h2>
-    <br/>
-    <div class="skills__grid">
-      <!-- Technical Skills -->
-      <div class="skill-group">
-        <h3 class="skill-group__title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-          </svg>
-          {{ i18n.t('skills.technical') }}
-        </h3>
-        <div class="tech-list">
-          @for (skill of technicalSkills; track skill) {
-            <span class="tech-item">{{ skill }}</span>
-          }
-        </div>
-      </div>
+    <h2 class="section-title">{{ i18n.t('summary.title') }}</h2>
 
-      <!-- Soft Skills -->
-      <div class="skill-group">
-        <h3 class="skill-group__title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-          </svg>
-          {{ i18n.t('skills.soft') }}
-        </h3>
-        <div class="soft-list">
-          @for (skill of softSkills; track $index) {
-            <span class="soft-item">{{ skill }}</span>
-          }
-        </div>
-      </div>
+    <div class="summary__quote-area">
+      <div class="summary__line"></div>
+      <blockquote class="summary__quote">
+        "{{ i18n.t('summary.quote') }}"
+      </blockquote>
+    </div>
 
+    <div class="summary__grid">
       <!-- Languages -->
-      <div class="skill-group skill-group--full">
-        <h3 class="skill-group__title">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          {{ i18n.t('skills.languages') }}
-        </h3>
-        <div class="languages">
-          <div class="lang-item">
-            <img src="https://flagcdn.com/w80/es.png" alt="España" class="lang-flag" />
-            <span>{{ i18n.t('skills.lang_es') }}</span>
-          </div>
-          <div class="lang-item">
-            <img src="https://flagcdn.com/w80/us.png" alt="USA" class="lang-flag" />
-            <span>{{ i18n.t('skills.lang_en') }}</span>
-          </div>
-          <div class="lang-item">
-            <img src="https://flagcdn.com/w80/br.png" alt="Brasil" class="lang-flag" />
-            <span>{{ i18n.t('skills.lang_pt') }}</span>
-          </div>
+      <div class="summary__col">
+        <h3 class="summary__heading">{{ i18n.t('summary.languages') }}</h3>
+        <div class="summary__icons">
+          @for (lang of languages; track lang.key) {
+            <div class="icon-item" [attr.data-tooltip]="i18n.t(lang.key)">
+              <img [src]="lang.flag" [alt]="i18n.t(lang.key)" class="icon-item__flag" />
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Technologies -->
+      <div class="summary__col">
+        <h3 class="summary__heading">{{ i18n.t('summary.technologies') }}</h3>
+        <div class="summary__icons">
+          @for (tech of technologies; track tech.label) {
+            <div class="icon-item" [attr.data-tooltip]="tech.label">
+              <img [src]="tech.icon" [alt]="tech.label" class="icon-item__img" />
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Skills -->
+      <div class="summary__col">
+        <h3 class="summary__heading">{{ i18n.t('summary.skills') }}</h3>
+        <div class="summary__icons summary__icons--skills">
+          @for (skill of skills; track skill.key) {
+            <div class="icon-item" [attr.data-tooltip]="i18n.t(skill.key)">
+              <img [src]="skill.icon" [alt]="i18n.t(skill.key)" class="icon-item__skill" />
+            </div>
+          }
         </div>
       </div>
     </div>

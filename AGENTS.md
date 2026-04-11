@@ -6,7 +6,7 @@
 - **Deploy**: Firebase Hosting
 - **Styling**: SCSS, black/white/grey palette only (no colors except inline code `#d4d4d4`)
 - **i18n**: Custom signal-based `I18nService`, 7 languages (`es`, `en`, `pt`, `zh`, `hi`, `ar`, `ru`). Files at `src/app/i18n/*.json`. Languages `zh/hi/ar/ru` fall back to `en` automatically.
-- **Routing**: `/` (Home), `/technology` (list), `/technology/project/:slug` (article detail), `/interculturality`, `/kinesthetics` (list), `/kinesthetics/discipline/:slug` (discipline detail)
+- **Routing**: `/` (Home), `/technology` (list), `/technology/project/:slug` (article detail), `/interculturality`, `/kinesthetic` (list), `/kinesthetic/discipline/:slug` (discipline detail)
 - **Markdown rendering**: `marked` v17 with custom renderer (`src/app/utils/code-renderer.ts`)
 - **CSS encapsulation**: Use `::ng-deep` (Angular) for styling innerHTML. NEVER use `:deep()` (that's Vue).
 - **Filters**: Multi-select using `Set<T>` signals. No "clear filters" button — clicking a selected chip deselects it.
@@ -26,16 +26,16 @@
 - Detail page: `article.ts` with split view — left panel (markdown) and right panel (YouTube embed)
 - Data source: `src/app/pages/blog/blog-data.ts`
 
-### Kinesthetics (`/kinesthetics`)
+### Kinesthetic (`/kinesthetic`)
 
-- List page: `kinesthetics.ts` renders a table from `kinesthetics-data.ts`
+- List page: `kinesthetic.ts` renders a table from `kinesthetic-data.ts`
 - Filter chips for disciplines (multi-select)
 - Detail page: `discipline.ts` with split view — left panel (markdown) and right panel (YouTube embed)
-- Data source: `src/app/pages/kinesthetics/kinesthetics-data.ts`
+- Data source: `src/app/pages/kinesthetic/kinesthetic-data.ts`
 
 ### Interculturality (`/interculturality`)
 
-- Future section. Follow same patterns as Technology and Kinesthetics.
+- Future section. Follow same patterns as Technology and kinesthetic.
 
 ## Left Panel Markdown Rules
 
@@ -43,7 +43,7 @@ The left container in split-view pages (Technology articles & Kinesthetics disci
 
 ### Title
 
-**Do NOT use `# H1` headings in the markdown.** The component already renders the title from i18n (`technology.articles.<slug>.title` or `kinesthetics.entries.<slug>.title`). Using `# Title` would duplicate it.
+**Do NOT use `# H1` headings in the markdown.** The component already renders the title from i18n (`technology.articles.<slug>.title` or `kinesthetic.entries.<slug>.title`). Using `# Title` would duplicate it.
 
 ### Headings
 
@@ -174,13 +174,13 @@ Each entry must provide content for `es`, `en`, and `pt` at minimum. Other langu
 When adding a new article or discipline, also add entries to all 7 i18n files (`es.json`, `en.json`, `pt.json`, `zh.json`, `hi.json`, `ar.json`, `ru.json`):
 
 - **Technology**: `technology.articles.<slug>.title` and `technology.articles.<slug>.desc`
-- **Kinesthetics**: `kinesthetics.entries.<slug>.title` and `kinesthetics.entries.<slug>.desc`
+- **Kinesthetics**: `kinesthetic.entries.<slug>.title` and `kinesthetic.entries.<slug>.desc`
 
 The `title` appears in the table listing and as the detail page heading. Keep it short and consistent across all languages (or use the same name if it's a proper noun like "LED Flashes").
 
 ## Adding New Content — Checklist
 
-1. Add entry object to the data file (`blog-data.ts` or `kinesthetics-data.ts`) with `es`, `en`, `pt` content at minimum
+1. Add entry object to the data file (`blog-data.ts` or `kinesthetic-data.ts`) with `es`, `en`, `pt` content at minimum
 2. Add i18n entries (`title`, `desc`) to all 7 JSON files
 3. Include `youtube` URL for the right panel embed
 4. Set `areas`/`techs` or discipline tags for filter chips

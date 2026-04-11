@@ -20,9 +20,9 @@ export class Navbar {
     { code: 'es', label: 'Español', flag: 'https://flagcdn.com/w40/es.png' },
     { code: 'pt', label: 'Português', flag: 'https://flagcdn.com/w40/br.png' },
     { code: 'zh', label: '中文', flag: 'https://flagcdn.com/w40/cn.png' },
+    { code: 'ru', label: 'Русский', flag: 'https://flagcdn.com/w40/ru.png' },
     { code: 'hi', label: 'हिन्दी', flag: 'https://flagcdn.com/w40/in.png' },
     { code: 'ar', label: 'العربية', flag: 'https://flagcdn.com/w40/sa.png' },
-    { code: 'ru', label: 'Русский', flag: 'https://flagcdn.com/w40/ru.png' },
   ];
 
   get currentLangLabel(): string {

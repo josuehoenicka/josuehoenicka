@@ -1,121 +1,132 @@
-﻿/* Slider */
-.slider {
-  margin: 0 auto;
+﻿.timeline {
+  position: relative;
+}
 
-  &__card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    transition: border-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    height: 220px;
-    overflow: hidden;
+.timeline__item {
+  display: flex;
+  gap: 1.25rem;
+}
 
-    @media (min-width: 768px) {
-      padding: 2rem;
-    }
+.timeline__marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  padding-top: 0.25rem;
 
-    &:hover {
-      border-color: var(--border-light);
-    }
-  }
-
-  &__institution {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.75rem;
-  }
-
-  &__desc {
-    display: none;
-  }
-
-  &__certs {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-    width: 100%;
-    max-height: 5.5rem;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
-
-    &.expanded {
-      max-height: 10rem;
-      overflow-y: auto;
-    }
-  }
-
-  &__cert-item {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    padding: 0.35rem 0;
-    border-bottom: 1px solid var(--border);
-
-    &:last-child {
-      border-bottom: none;
-    }
-
-    &::before {
-      content: '•';
-      color: var(--text-muted);
-      margin-right: 0.5rem;
-    }
-  }
-
-  &__toggle {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-top: 0.5rem;
-    transition: color 0.2s;
-
-    &:hover {
-      color: var(--text-primary);
-    }
-  }
-
-  &__nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  &__arrow {
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .dot {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    border: 2px solid var(--border-light);
+    background: var(--bg-primary);
+    flex-shrink: 0;
 
-    &:hover {
-      background: var(--accent);
+    &.active {
       border-color: var(--accent);
-      color: #000;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
     }
   }
 
-  &__counter {
-    font-size: 0.875rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
+  .line {
+    width: 1px;
+    flex: 1;
+    background: var(--border);
+    min-height: 20px;
   }
 }
 
-@media (min-width: 768px) {
-  .slider__institution {
-    font-size: 1.25rem;
+.timeline__content {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+  flex: 1;
+  transition: border-color 0.3s ease;
+
+  &:hover { border-color: var(--border-light); }
+
+  @media (min-width: 768px) { padding: 2rem; }
+}
+
+.timeline__company {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem;
   }
+}
+
+.timeline__roles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.role-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  background: var(--accent-subtle);
+  color: var(--accent);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timeline__description {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+
+  @media (min-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 767px) {
+    &.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}
+
+.timeline__toggle {
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  transition: color 0.2s;
+
+  @media (max-width: 767px) {
+    display: inline-block;
+  }
+
+  &:hover {
+    color: var(--text-primary);
+  }
+}
+
+.timeline__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.tech-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  background: var(--bg-card-hover);
+  color: var(--text-muted);
+  border-radius: 100px;
+  border: 1px solid var(--border);
 }

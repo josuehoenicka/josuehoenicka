@@ -1,33 +1,37 @@
 ﻿<section id="education" class="section education">
   <div class="container">
     <h2 class="section-title">{{ i18n.t('education.title') }}</h2>
-    <br/>
-    <div class="slider">
-      <div class="slider__card">
-        <h3 class="slider__institution">{{ i18n.t(items[activeIndex()].key + '.institution') }}</h3>
-
-        <!-- List of certs -->
-        <ul class="slider__certs" [class.expanded]="expanded()">
-          @for (item of getDescItems(); track $index) {
-            <li class="slider__cert-item">{{ item }}</li>
-          }
-        </ul>
-        @if (getDescItems().length > 3) {
-          <button class="slider__toggle" (click)="toggleExpand()">
-            {{ expanded() ? i18n.t('experience.show_less') : i18n.t('experience.show_more') }}
-          </button>
-        }
-      </div>
-
-      <div class="slider__nav">
-        <button class="slider__arrow" (click)="prev()" aria-label="Previous">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-        <span class="slider__counter">{{ activeIndex() + 1 }} / {{ items.length }}</span>
-        <button class="slider__arrow" (click)="next()" aria-label="Next">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-      </div>
+    <br />
+    <div class="timeline">
+      @for (edu of items; track edu.institution; let i = $index) {
+        <div class="timeline__item">
+          <div class="timeline__marker">
+            <div class="dot" [class.active]="i === 0"></div>
+            @if (i < items.length - 1) {
+              <div class="line"></div>
+            }
+          </div>
+          <div class="timeline__content">
+            <h3 class="timeline__company">{{ edu.institution }}</h3>
+            <div class="timeline__roles">
+              @for (cert of edu.certs; track cert) {
+                <span class="role-badge">{{ cert }}</span>
+              }
+            </div>
+            <p class="timeline__description" [class.clamped]="!isExpanded(i)">{{ edu.description }}</p>
+            <button class="timeline__toggle" (click)="toggleDesc(i)">
+              {{ isExpanded(i) ? i18n.t('experience.show_less') : i18n.t('experience.show_more') }}
+            </button>
+            @if (edu.tags.length) {
+              <div class="timeline__tags">
+                @for (tag of edu.tags; track tag) {
+                  <span class="tech-tag">{{ tag }}</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      }
     </div>
   </div>
 </section>

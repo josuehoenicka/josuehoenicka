@@ -1,7 +1,7 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { I18nService } from '../../services/i18n.service';
-import { KINESTHETICS_ENTRIES, Discipline } from './kinesthetics-data';
+import { KINESTHETIC_ENTRIES, Discipline } from './kinesthetic-data';
 
 type SortCol = 'id' | 'title' | 'discipline' | 'difficulty';
 type SortDir = 'asc' | 'desc';
@@ -9,16 +9,16 @@ type SortDir = 'asc' | 'desc';
 const DIFF_ORDER: Record<string, number> = { easy: 0, normal: 1, hard: 2 };
 
 @Component({
-  selector: 'app-kinesthetics',
+  selector: 'app-kinesthetic',
   imports: [RouterLink],
-  templateUrl: './kinesthetics.html',
-  styleUrl: './kinesthetics.scss',
+  templateUrl: './kinesthetic.html',
+  styleUrl: './kinesthetic.scss',
 })
-export class Kinesthetics {
+export class Kinesthetic {
   readonly i18n = inject(I18nService);
 
   readonly disciplines: Discipline[] = ['freestyle', 'swimming', 'drums'];
-  readonly entries = KINESTHETICS_ENTRIES;
+  readonly entries = KINESTHETIC_ENTRIES;
 
   readonly selectedDisciplines = signal<Set<Discipline>>(new Set());
   readonly sortCol = signal<SortCol>('id');
@@ -36,8 +36,8 @@ export class Kinesthetics {
       switch (col) {
         case 'id': return (a.id - b.id) * mult;
         case 'title': {
-          const ta = this.i18n.t('kinesthetics.entries.' + a.slug + '.title');
-          const tb = this.i18n.t('kinesthetics.entries.' + b.slug + '.title');
+          const ta = this.i18n.t('kinesthetic.entries.' + a.slug + '.title');
+          const tb = this.i18n.t('kinesthetic.entries.' + b.slug + '.title');
           return ta.localeCompare(tb) * mult;
         }
         case 'discipline': {
@@ -73,10 +73,10 @@ export class Kinesthetics {
   }
 
   disciplineLabel(d: string): string {
-    return this.i18n.t('kinesthetics.disciplines.' + d);
+    return this.i18n.t('kinesthetic.disciplines.' + d);
   }
 
   difficultyLabel(d: string): string {
-    return this.i18n.t('kinesthetics.difficulty.' + d);
+    return this.i18n.t('kinesthetic.difficulty.' + d);
   }
 }

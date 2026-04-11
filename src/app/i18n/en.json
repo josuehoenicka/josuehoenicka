@@ -3,45 +3,34 @@
     "about_me": "About me",
     "home": "Home",
     "technology": "Technology",
-    "interculturality": "Interculturality",
-    "interculturality_mobile": "Intercultural",
-    "kinesthetics": "Kinesthetics",
+    "kinesthetic": "Kinesthetic",
+    "wanderlust": "Interculturality",
+    "wanderlust_mobile": "Interculturality",
     "language": "Language"
   },
   "hero": {
     "greeting": "Hi, I'm",
     "subtitle": "I transform ideas into high-impact digital products, combining research, cross-platform development and artificial intelligence.",
-    "cta": "Contact me"
+    "cta": "Start"
   },
   "about": {
     "title": "About me",
-    "subtitle": "My mission and value proposition",
-    "quote": "I deeply investigate topics to understand complex challenges and propose solutions that help people. I focus on bringing clarity to difficult situations and connecting ideas across diverse social and digital environments, communicating in multiple languages to ensure this collaboration knows no borders.",
-    "years": "+7",
-    "years_label": "Years of experience",
-    "languages_count": "3",
-    "languages_label": "Languages",
-    "products": "+15",
-    "products_label": "Products launched"
+    "quote": "I deeply investigate topics to understand complex challenges and propose solutions that help people. I focus on bringing clarity to difficult situations and connecting ideas across diverse social and digital environments, communicating in multiple languages to ensure this collaboration knows no borders."
   },
-  "skills": {
-    "title": "Skills",
-    "subtitle": "Technical stack, abilities and languages",
-    "technical": "Technical skills",
-    "soft": "Soft skills",
+  "summary": {
+    "title": "Summary",
+    "quote": "I deeply investigate topics to understand complex challenges and propose solutions that help people. I focus on bringing clarity to difficult situations and connecting ideas across diverse social and digital environments, communicating in multiple languages to ensure this collaboration knows no borders.",
     "languages": "Languages",
-    "soft_skills": [
-      "Teamwork",
-      "Adaptive thinking",
-      "Perseverance",
-      "Attention to detail",
-      "Quick learning",
-      "Interpersonal skills",
-      "Emotional intelligence"
-    ],
+    "technologies": "Technologies",
+    "skills": "Skills",
     "lang_es": "Spanish",
     "lang_en": "English",
-    "lang_pt": "Portuguese"
+    "lang_pt": "Portuguese",
+    "skill_comfort": "Leaving the comfort zone",
+    "skill_adaptive": "Adaptive thinking",
+    "skill_perseverance": "Perseverance",
+    "skill_detail": "Attention to detail",
+    "skill_teamwork": "Teamwork"
   },
   "experience": {
     "title": "Experience",
@@ -69,32 +58,17 @@
     "title": "Education",
     "subtitle": "Academic background and certifications",
     "items": {
-      "uba": { "institution": "Universidad de Buenos Aires", "desc": "English" },
-      "utn": {
-        "institution": "Universidad Tecnológica Nacional",
-        "desc": "Robotics. Full-Stack Development"
-      },
-      "eempi": { "institution": "EEMPI N°3060", "desc": "Science High School Diploma" },
-      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Python Algorithms" },
-      "argprog": {
-        "institution": "Argentina Programa (CESSI)",
-        "desc": "Basics Programming with Ruby. Full-Stack Development"
-      },
-      "codoacodo": {
-        "institution": "Codo a Codo 4.0",
-        "desc": "Full-Stack Development"
-      },
-      "movistar": {
-        "institution": "Fundación Telefónica Movistar",
-        "desc": "Cybersecurity and 5G Telecommunications"
-      },
-      "google": { "institution": "Google", "desc": "MLOps" },
-      "microsoft": { "institution": "Microsoft", "desc": "C#" },
-      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. Software Engineering" },
-      "freecodecamp": {
-        "institution": "freeCodeCamp",
-        "desc": "Responsive Web Design. JavaScript Algorithms"
-      }
+      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "Robotics. Full-Stack Development", "description": "The National Technological University (UTN) was founded in 1948 by President Juan Domingo Perón as the National Workers' University, created to address the shortage of technical specialists in the country. Officially renamed UTN in 1959, it is the only national university in Argentina exclusively focused on engineering, with 29 semi-independent regional faculties spread across the entire country, making it the most federally distributed university in Argentina. With over 85,000 students, its enrollment is comparable to Argentina's third-largest university. UTN graduates nearly 50% of all new engineers in the country and maintains cooperation agreements with over 75 international institutions. Its programs include Civil, Electronic, Mechanical, Chemical, Industrial, Aeronautical, and Information Systems Engineering, among other specialties. Research is conducted across 18 official centers specializing in areas such as Chemical Engineering, Information Technology, Robotics, and Energy Research." },
+      "uba": { "institution": "Universidad de Buenos Aires", "desc": "English", "description": "The University of Buenos Aires (UBA), founded on August 12, 1821 by decree of Governor Martín Rodríguez, is the largest university in Argentina and one of the most prestigious in Latin America. It enrolls over 350,000 students and is organized into 13 autonomous, self-governing faculties. UBA is responsible for approximately 40% of Argentina's research output and has educated 17 Argentine presidents and 4 of the country's 5 Nobel Prize laureates, including Bernardo Houssay, Luis Federico Leloir, and César Milstein. Since 1949, all undergraduate programs have been completely free of charge regardless of nationality. Beyond its faculties, UBA administers 6 hospitals, 16 museums, 13 scientific institutes, 5 high schools, and Eudeba, the country's largest university press. The QS World University Rankings placed UBA at position 95 globally, making it one of the top-ranked institutions in the Latin American region." },
+      "eempi": { "institution": "EEMPI N°3060", "desc": "Science High School Diploma", "description": "EEMPI N°3060 is a private incorporated secondary school (Escuela de Enseñanza Media Particular Incorporada) located in the province of Santa Fe, Argentina. It is part of the privately managed secondary education system supervised by the provincial Ministry of Education. These institutions offer a state-recognized official curriculum that combines general academic training with specific orientations. The school awards the Science High School Diploma (Bachiller en Ciencias), a modality that emphasizes scientific thinking, biology, chemistry, physics, and mathematics as fundamental pillars of student education, preparing graduates to continue university studies in careers related to exact sciences, natural sciences, and engineering." },
+      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. Software Engineering", "description": "Platzi is the largest professional online education platform in Latin America, founded in Colombia in 2014 by Freddy Vega and Christian Van Der Henst. It originated from a weekly livestream show called \"Mejorando.la\" before becoming Platzi in 2015. It was the first company targeting the Latin American market to be accepted by Y Combinator in Silicon Valley. The platform has over 5 million students distributed mainly across Mexico, Colombia, Spain, and the United States, offering more than 1,000 courses in technology, business, design, and English. Instructors are not traditional teachers but subject matter experts and industry professionals, including figures like YC's Sam Altman. Platzi has created corporate training programs for companies like Microsoft, IBM, Facebook, and Google, and has received funding from Omidyar Network and 500 Startups. The platform boasts a 70% completion rate, well above the online education industry average." },
+      "google": { "institution": "Google", "desc": "MLOps", "description": "Google LLC, founded on September 4, 1998 by Larry Page and Sergey Brin while they were Ph.D. students at Stanford University, is one of the most influential technology companies in the world. A subsidiary of Alphabet Inc., its search engine processes over 8.5 billion queries daily. Beyond search, Google develops products including Android (the world's most used mobile operating system), Google Cloud Platform, YouTube, Gmail, Google Maps, and artificial intelligence tools like TensorFlow and Vertex AI. Through Google Cloud Skills Boost and its certification programs, Google offers specialized training in Machine Learning, MLOps, data analytics, and cloud engineering, with industry-recognized certifications acknowledged globally by employers and technology organizations." },
+      "microsoft": { "institution": "Microsoft", "desc": "C#", "description": "Microsoft Corporation, founded on April 4, 1975 by Bill Gates and Paul Allen in Albuquerque, New Mexico, is one of the most valuable technology companies in the world. Its Windows operating system dominates the desktop market with over 70% global share. Microsoft develops products including the Office 365 suite, Azure (the world's second-largest cloud platform), Visual Studio, GitHub, LinkedIn, and the Bing search engine. The company also created the C# programming language and the .NET framework, widely used in enterprise software development. Through Microsoft Learn, the company offers free learning paths and professional certifications in software development, Azure administration, artificial intelligence, and cybersecurity, backed by one of the largest developer communities in the world." },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Python Algorithms", "description": "IT Master is a technology training institute backed by CESSI (the Argentine Software Industry Chamber), the entity that groups and represents software and IT services companies in Argentina. CESSI was founded in 1990 with the mission of strengthening the national software industry by promoting the training of qualified human resources. IT Master offers intensive training programs in programming languages, algorithms, web development, and data science, designed in collaboration with industry companies to ensure the content's relevance to the actual demands of the Argentine technology job market. Its courses are aimed at both beginners and professionals looking to update their skills in a constantly evolving sector." },
+      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "Basics Programming with Ruby. Full-Stack Development", "description": "Argentina Programa is an initiative launched by the Argentine National Government together with CESSI (the Argentine Software Industry Chamber) with the goal of massively training the population in digital skills and programming. The program was created in response to the growing demand for technology professionals in the Argentine job market and seeks to bridge the digital talent gap in the country. It offers a structured curriculum in stages ranging from an introduction to programming logic to full-stack development, covering languages like Ruby, JavaScript, and Java, and frameworks like Spring Boot. The program includes mentorships, practical integrative projects, and an active learning community. It has trained thousands of Argentines from all provinces, facilitating workforce reentry and access to employment in the technology industry." },
+      "codoacodo": { "institution": "Codo a Codo 4.0", "desc": "Full-Stack Development", "description": "Codo a Codo 4.0 is a free programming and digital skills training program driven by the Buenos Aires City Government through the city's Ministry of Education. Since its creation, it has trained tens of thousands of students in web development, programming, databases, and information technology. The program is specifically designed to facilitate workforce insertion in the technology sector and is aimed at people over 18 years old, with no prior programming knowledge required. The curriculum includes modules on HTML, CSS, JavaScript, PHP, MySQL, and full-stack development, combining theoretical classes with practical projects. Codo a Codo has become one of the most successful technology training initiatives in Argentina, recognized for its inclusive approach and its ability to transform the employment reality of its graduates." },
+      "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "Cybersecurity. 5G Telecommunications", "description": "Fundación Telefónica Movistar is the social and educational arm of the Telefónica Group, one of the world's largest telecommunications companies with operations in over 12 countries and more than 380 million customers. Founded as a nonprofit entity, the Foundation is dedicated to digital education, social innovation, and bridging the technology gap in the countries where it operates. It develops training programs in digital competencies, employability, cybersecurity, and advanced telecommunications, aimed especially at young people and vulnerable populations. Through platforms like Conecta Empleo, it offers free courses in 21st-century skills. The Foundation also drives educational innovation projects, corporate volunteering, and digital cultural heritage preservation across Latin America, Spain, and other markets where the Telefónica Group operates." },
+      "freecodecamp": { "institution": "freeCodeCamp", "desc": "Responsive Web Design. JavaScript Algorithms", "description": "freeCodeCamp is a 501(c)(3) nonprofit organization founded in October 2014 by Quincy Larson, a software developer who created the platform to streamline the process of learning to code after his own complex and non-linear journey into programming. It offers a completely free interactive curriculum of over 1,400 hours in web development and programming, complemented by 800 hours of contributing to open-source projects for nonprofit organizations. The curriculum covers Responsive Web Design, JavaScript Algorithms and Data Structures, Front-End Libraries, Data Visualization, APIs and Microservices, and Information Security. The platform is used by over 350,000 unique monthly visitors from more than 160 countries. Its YouTube channel has surpassed 11 million subscribers with over 700 complete free courses. In 2023, freeCodeCamp partnered with Microsoft to develop an official Foundational C# Certification." }
     }
   },
   "contact": {
@@ -133,6 +107,18 @@
       "3-oled-1-3": {
         "title": "1.3\" OLED Display",
         "desc": "A 1.3\" SH1106 OLED shows text and an uptime counter over I2C from an Arduino."
+      },
+      "4-traffic-light": {
+        "title": "Traffic Light",
+        "desc": "Simulates a real traffic light with three LEDs (red, yellow, green) turning on in sequence."
+      },
+      "5-servo-helicopter": {
+        "title": "Servo Helicopter",
+        "desc": "A servo motor sweeps from 0° to 180° simulating helicopter blade motion."
+      },
+      "6-dynamic-screen": {
+        "title": "Dynamic Screen",
+        "desc": "A 16x2 LCD over I2C displays text and a real-time seconds counter."
       }
     }
   },
@@ -142,8 +128,8 @@
     "back": "Back",
     "no_content": "No content yet."
   },
-  "kinesthetics": {
-    "title": "Kinesthetics",
+  "kinesthetic": {
+    "title": "Kinesthetic",
     "subtitle": "The intelligence of the body in motion and the deep awareness that allows mastering rhythm and balance without the need to think.",
     "back": "Back",
     "back_to_list": "Back",

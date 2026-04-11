@@ -1,15 +1,15 @@
-<section class="kinesthetics" id="kinesthetics">
-  <div class="kinesthetics__header">
-    <a routerLink="/" class="kinesthetics__back">
+<section class="kinesthetic" id="kinesthetic">
+  <div class="kinesthetic__header">
+    <a routerLink="/" class="kinesthetic__back">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-      {{ i18n.t('kinesthetics.back') }}
+      {{ i18n.t('kinesthetic.back') }}
     </a>
-    <h1 class="kinesthetics__title">{{ i18n.t('kinesthetics.title') }}</h1>
-    <p class="kinesthetics__subtitle">{{ i18n.t('kinesthetics.subtitle') }}</p>
+    <h1 class="kinesthetic__title">{{ i18n.t('kinesthetic.title') }}</h1>
+    <p class="kinesthetic__subtitle">{{ i18n.t('kinesthetic.subtitle') }}</p>
   </div>
 
   <!-- Discipline filters -->
-  <div class="kinesthetics__topics">
+  <div class="kinesthetic__topics">
     @for (d of disciplines; track d) {
       <button
         class="topic"
@@ -21,20 +21,20 @@
   </div>
 
   <!-- Table -->
-  <div class="kinesthetics__table">
+  <div class="kinesthetic__table">
     <div class="table__head">
       <span class="col-id col-sortable" (click)="toggleSort('id')"># <span class="sort-icon">{{ sortIcon('id') }}</span></span>
       <span class="col-diff-dot-head col-sortable" (click)="toggleSort('difficulty')"><span class="sort-icon">{{ sortIcon('difficulty') }}</span></span>
-      <span class="col-title col-sortable" (click)="toggleSort('title')">{{ i18n.t('kinesthetics.col_title') }} <span class="sort-icon">{{ sortIcon('title') }}</span></span>
-      <span class="col-discipline col-sortable" (click)="toggleSort('discipline')">{{ i18n.t('kinesthetics.col_discipline') }} <span class="sort-icon">{{ sortIcon('discipline') }}</span></span>
-      <span class="col-diff col-sortable" (click)="toggleSort('difficulty')">{{ i18n.t('kinesthetics.col_difficulty') }} <span class="sort-icon">{{ sortIcon('difficulty') }}</span></span>
+      <span class="col-title col-sortable" (click)="toggleSort('title')">{{ i18n.t('kinesthetic.col_title') }} <span class="sort-icon">{{ sortIcon('title') }}</span></span>
+      <span class="col-discipline col-sortable" (click)="toggleSort('discipline')">{{ i18n.t('kinesthetic.col_discipline') }} <span class="sort-icon">{{ sortIcon('discipline') }}</span></span>
+      <span class="col-diff col-sortable" (click)="toggleSort('difficulty')">{{ i18n.t('kinesthetic.col_difficulty') }} <span class="sort-icon">{{ sortIcon('difficulty') }}</span></span>
     </div>
 
     @for (entry of filtered(); track entry.id) {
-      <a class="table__row" [routerLink]="['/kinesthetics/discipline', entry.slug]">
+      <a class="table__row" [routerLink]="['/kinesthetic/discipline', entry.slug]">
         <span class="col-id">{{ entry.id }}.</span>
         <span class="col-diff-dot" [attr.data-diff]="entry.difficulty"></span>
-        <span class="col-title">{{ i18n.t('kinesthetics.entries.' + entry.slug + '.title') }}</span>
+        <span class="col-title">{{ i18n.t('kinesthetic.entries.' + entry.slug + '.title') }}</span>
         <span class="col-discipline col-discipline--tag">{{ disciplineLabel(entry.discipline) }}</span>
         <span class="col-diff" [attr.data-diff]="entry.difficulty">{{ difficultyLabel(entry.difficulty) }}</span>
       </a>
@@ -42,7 +42,7 @@
 
     @if (filtered().length === 0) {
       <div class="table__empty">
-        {{ i18n.t('kinesthetics.no_results') }}
+        {{ i18n.t('kinesthetic.no_results') }}
       </div>
     }
   </div>
