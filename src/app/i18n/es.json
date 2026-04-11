@@ -115,9 +115,9 @@
         "title": "Robot inteligente",
         "desc": "Un robot de juguete interactivo por voz con Raspberry Pi Zero 2 W que escucha, piensa y responde usando la API Whisper y llama3 de Groq."
       },
-      "3-ultrasonic-sensor": {
-        "title": "Sensor ultrasónico",
-        "desc": "Un HC-SR04 mide distancia en centímetros y muestra el resultado en el Monitor Serial."
+      "3-oled-1-3": {
+        "title": "Pantalla OLED 1.3\"",
+        "desc": "Una OLED SH1106 de 1.3\" muestra texto y un contador de uptime por I2C desde un Arduino."
       }
     }
   },

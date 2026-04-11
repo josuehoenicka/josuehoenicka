@@ -115,9 +115,9 @@
         "title": "智能机器人",
         "desc": "基于Raspberry Pi Zero 2 W的语音交互玩具机器人，使用Groq的Whisper和llama3 API进行聆听、思考和回应。"
       },
-      "3-ultrasonic-sensor": {
-        "title": "超声波传感器",
-        "desc": "HC-SR04 以厘米为单位测量距离，并将结果输出到串口监视器。"
+      "3-oled-1-3": {
+        "title": "1.3英寸 OLED 屏幕",
+        "desc": "通过 I2C 在 Arduino 上用 1.3 英寸 SH1106 OLED 显示文字和运行时间计数器。"
       }
     }
   },

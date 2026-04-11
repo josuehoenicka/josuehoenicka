@@ -130,9 +130,9 @@
         "title": "Intelligent Robot",
         "desc": "A voice-interactive toy robot powered by a Raspberry Pi Zero 2 W that listens, thinks, and talks back using Groq's Whisper and llama3 APIs."
       },
-      "3-ultrasonic-sensor": {
-        "title": "Ultrasonic Sensor",
-        "desc": "An HC-SR04 measures distance in centimeters and prints the result to the Serial Monitor."
+      "3-oled-1-3": {
+        "title": "1.3\" OLED Display",
+        "desc": "A 1.3\" SH1106 OLED shows text and an uptime counter over I2C from an Arduino."
       }
     }
   },

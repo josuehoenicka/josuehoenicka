@@ -554,316 +554,367 @@ print("Hoenix pronto")
   },
   {
     id: 3,
-    slug: '3-ultrasonic-sensor',
+    slug: '3-oled-1-3',
     area: 'Robotics',
-    techs: ['Arduino', 'C++', 'HC-SR04'],
+    techs: ['Arduino', 'C++', 'OLED', 'I2C'],
     difficulty: 'normal',
     content: {
       es: `## ¿Qué hace este proyecto?
 
-El sensor ultrasónico HC-SR04 mide la distancia hasta un objeto y muestra el valor en centímetros por el Monitor Serial. Es una base muy útil para robots que evitan obstáculos, alarmas de proximidad y sistemas simples de medición.
+Muestra texto y un contador de tiempo en una pantalla OLED de 1.3 pulgadas conectada por I2C a un Arduino. Es una base ideal para relojes, medidores, menús y mini interfaces para tus proyectos de robótica.
 
 ## Requerimientos
 
 1. Visual Studio Code con Arduino CLI
 2. Arduino Nano (o Uno/Mega)
-3. Sensor ultrasónico HC-SR04
+3. Pantalla OLED de 1.3" con driver **SH1106**, 128x64, interfaz I2C
 4. Cables jumper
-5. Protoboard (opcional, pero ayuda a fijar el sensor)
+5. Protoboard (opcional)
 6. Cable USB
 
 ## Conceptos clave
 
-- **Trig.** El pin \`Trig\` recibe un pulso corto de 10 microsegundos. Ese pulso le indica al sensor que emita la onda ultrasónica.
+- **SH1106 vs SSD1306.** La pantalla de 1.3" usa el driver **SH1106**, mientras que la de 0.96" usa **SSD1306**. Si elegís la biblioteca equivocada vas a ver la imagen corrida o con basura en pantalla.
 
-- **Echo.** El pin \`Echo\` permanece en \`HIGH\` mientras la onda viaja, rebota y regresa. Ese tiempo es la base del cálculo de distancia.
+- **I2C.** Protocolo de dos hilos (\`SDA\` y \`SCL\`) que permite comunicar varios dispositivos con muy pocos pines. En un Arduino Uno/Nano, \`SDA\` está en \`A4\` y \`SCL\` en \`A5\`.
 
-- **\`pulseIn(echo, HIGH)\`.** Esta función mide cuántos microsegundos el pin \`Echo\` estuvo en \`HIGH\`. Cuanto mayor es el tiempo, más lejos está el objeto.
+- **Dirección I2C.** Casi todas estas pantallas vienen con la dirección \`0x3C\`. Si no funciona, un escáner I2C te dice la dirección real.
 
-- **Velocidad del sonido.** La fórmula \`duracion * 0.034 / 2\` convierte el tiempo en centímetros. El \`0.034\` representa la velocidad del sonido en cm por microsegundo y el \`/ 2\` corrige el viaje de ida y vuelta.
+- **Biblioteca U8g2.** Es la biblioteca recomendada para estas pantallas. Soporta SH1106, fuentes, figuras, buffer completo y bajo consumo.
 
-- **Rango útil.** El HC-SR04 suele funcionar bien entre 2 cm y 400 cm. Objetos muy pequeños, blandos o inclinados pueden dar lecturas inestables.
+- **Buffer completo.** El modo \`_F_\` (full buffer) dibuja todo en memoria y envía de golpe con \`sendBuffer()\`. Es el más simple y fluido para Arduino Uno/Nano.
 
 ## Conexiones
 
-| Pin del sensor | Conexión Arduino |
+| Pin de la OLED | Conexión Arduino |
 |---|---|
-| VCC | 5V |
-| Trig | Pin digital 9 |
-| Echo | Pin digital 10 |
+| VCC | 5V (el módulo trae regulador, 3.3V también funciona) |
 | GND | GND |
+| SCL | A5 |
+| SDA | A4 |
 
-> **Importante:** En un Arduino Nano, Uno o Mega no necesitás resistencias adicionales. Si usás una placa de 3.3V, como ESP32, necesitás un divisor de tensión en \`Echo\` para bajar de 5V a 3.3V.
+> **Importante:** La pantalla de 1.3" usa el driver **SH1106**, no SSD1306. Si usás la biblioteca de SSD1306 la imagen va a aparecer corrida o cortada.
 
 ## Instalación
 
 \`\`\`terminal
 ---mac---
+# Instalar la biblioteca U8g2 una sola vez
+arduino-cli lib install "U8g2"
+
 # Compilar
-arduino-cli compile --fqbn arduino:avr:nano ./ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano ./oled-1.3
 
 # Subir
-arduino-cli upload --fqbn arduino:avr:nano --port /dev/cu.usbserial-110 ./ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port /dev/cu.usbserial-110 ./oled-1.3
 ---linux---
+# Instalar la biblioteca U8g2 una sola vez
+arduino-cli lib install "U8g2"
+
 # Compilar
-arduino-cli compile --fqbn arduino:avr:nano ./ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano ./oled-1.3
 
 # Subir
-arduino-cli upload --fqbn arduino:avr:nano --port /dev/ttyUSB0 ./ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port /dev/ttyUSB0 ./oled-1.3
 ---windows---
+# Instalar la biblioteca U8g2 una sola vez
+arduino-cli lib install "U8g2"
+
 # Compilar
-arduino-cli compile --fqbn arduino:avr:nano .\\ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano .\\oled-1.3
 
 # Subir
-arduino-cli upload --fqbn arduino:avr:nano --port COM3 .\\ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port COM3 .\\oled-1.3
 \`\`\`
 
-## ultrasonic-sensor.ino
+## oled-1.3.ino
 
 \`\`\`cpp
-const int trig = 9;
-const int echo = 10;
+#include <Arduino.h>
+#include <U8g2lib.h>
+#include <Wire.h>
+
+U8G2_SH1106_128X64_NONAME_F_HW_I2C display(U8G2_R0, U8X8_PIN_NONE);
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(trig, OUTPUT);
-  pinMode(echo, INPUT);
+  display.begin();
+  display.setContrast(200);
 }
 
 void loop() {
-  digitalWrite(trig, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trig, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trig, LOW);
+  unsigned long segundos = millis() / 1000;
 
-  long duracion = pulseIn(echo, HIGH);
-  float distancia = duracion * 0.034 / 2; // cm
+  display.clearBuffer();
 
-  Serial.print("Distancia: ");
-  Serial.print(distancia);
-  Serial.println(" cm");
-  delay(500);
+  display.setFont(u8g2_font_ncenB10_tr);
+  display.drawStr(0, 14, "OLED 1.3\\"");
+
+  display.setFont(u8g2_font_6x10_tf);
+  display.drawStr(0, 30, "SH1106 128x64 I2C");
+  display.drawStr(0, 44, "Hola, Josue!");
+
+  display.drawFrame(0, 50, 128, 14);
+  display.setCursor(4, 61);
+  display.print("uptime: ");
+  display.print(segundos);
+  display.print("s");
+
+  display.sendBuffer();
+  delay(200);
 }
 \`\`\`
 
 ## Experimenta
 
-- Acercá y alejā la mano frente al sensor y mirá cómo cambia la distancia en el Monitor Serial.
-- Reducí \`delay(500)\` a \`delay(100)\` para obtener lecturas más rápidas.
-- Encendé un LED o activá un buzzer cuando \`distancia < 20\` para convertirlo en una alarma de proximidad.
-- Promediá 5 mediciones seguidas para filtrar lecturas inestables.
+- Cambiá la fuente por otra de U8g2, por ejemplo \`u8g2_font_logisoso16_tf\`, para un contador grande.
+- Dibujá figuras con \`drawCircle\`, \`drawLine\` y \`drawBox\` para entender las coordenadas.
+- Mostrá la distancia de un HC-SR04 en vez del uptime y tenés un medidor de distancia listo.
+- Conectá un potenciómetro a \`A0\` y dibujá una barra que siga su valor.
 
 ## Notas
 
-- No se necesitan resistencias adicionales con un Arduino de 5V.
-- El rango útil típico es de 2 cm a 400 cm.
-- Si la lectura se queda siempre en 0 o en valores absurdos, revisá primero \`Trig\`, \`Echo\`, \`VCC\` y \`GND\`.
-- Si usás ESP32 u otra placa de 3.3V, protegé el pin \`Echo\` con un divisor de tensión.`,
+- Si ves la imagen corrida o con rayas, casi seguro estás usando SSD1306 en lugar de SH1106.
+- Si no se enciende nada, revisá \`SDA\`/\`SCL\`, \`VCC\` y \`GND\`, y probá un escáner I2C para confirmar la dirección.
+- El módulo de 1.3" suele soportar tanto 3.3V como 5V gracias al regulador integrado.
+- En ESP32, \`SDA\` está en \`GPIO21\` y \`SCL\` en \`GPIO22\` por defecto.`,
 
       en: `## What does this project do?
 
-The HC-SR04 ultrasonic sensor measures the distance to an object and prints the value in centimeters to the Serial Monitor. It is a strong starting point for obstacle-avoiding robots, proximity alarms, and simple distance-measurement projects.
+It shows text and an uptime counter on a 1.3-inch OLED display connected over I2C to an Arduino. It is a perfect base for clocks, gauges, menus, and tiny user interfaces for your robotics projects.
 
 ## Requirements
 
 1. Visual Studio Code with Arduino CLI
 2. Arduino Nano (or Uno/Mega)
-3. HC-SR04 ultrasonic sensor
+3. 1.3" OLED display with **SH1106** driver, 128x64, I2C interface
 4. Jumper wires
-5. Breadboard (optional, but useful to hold the sensor)
+5. Breadboard (optional)
 6. USB cable
 
 ## Key concepts
 
-- **Trig.** The \`Trig\` pin receives a short 10-microsecond pulse. That pulse tells the sensor to emit the ultrasonic wave.
+- **SH1106 vs SSD1306.** The 1.3" panel uses the **SH1106** driver, while the 0.96" panel uses **SSD1306**. Picking the wrong library gives you a shifted or garbled image.
 
-- **Echo.** The \`Echo\` pin stays \`HIGH\` while the wave travels, bounces, and returns. That duration is the base of the distance calculation.
+- **I2C.** A two-wire protocol (\`SDA\` and \`SCL\`) that lets several devices share only two pins. On Arduino Uno/Nano, \`SDA\` is \`A4\` and \`SCL\` is \`A5\`.
 
-- **\`pulseIn(echo, HIGH)\`.** This function measures how many microseconds the \`Echo\` pin stayed \`HIGH\`. The longer the time, the farther away the object is.
+- **I2C address.** These panels almost always use address \`0x3C\`. If that does not work, an I2C scanner sketch will report the correct one.
 
-- **Speed of sound.** The formula \`duration * 0.034 / 2\` converts the measured time into centimeters. The \`0.034\` represents the speed of sound in cm per microsecond and the \`/ 2\` corrects the round trip.
+- **U8g2 library.** The recommended library for these displays. It supports SH1106, rich fonts, shapes, full-buffer mode, and low power usage.
 
-- **Useful range.** The HC-SR04 usually works well between 2 cm and 400 cm. Very small, soft, or angled objects can produce unstable readings.
+- **Full buffer mode.** The \`_F_\` (full buffer) flavor draws everything in RAM and pushes it to the panel with \`sendBuffer()\`. It is the simplest and smoothest choice on Arduino Uno/Nano.
 
 ## Wiring
 
-| Sensor pin | Arduino connection |
+| OLED pin | Arduino connection |
 |---|---|
-| VCC | 5V |
-| Trig | Digital pin 9 |
-| Echo | Digital pin 10 |
+| VCC | 5V (the module has an onboard regulator, 3.3V also works) |
 | GND | GND |
+| SCL | A5 |
+| SDA | A4 |
 
-> **Important:** On an Arduino Nano, Uno, or Mega you do not need extra resistors. If you use a 3.3V board such as ESP32, you must use a voltage divider on \`Echo\` to step down from 5V to 3.3V.
+> **Important:** The 1.3" panel uses the **SH1106** driver, not SSD1306. If you use the SSD1306 library, the image will look shifted or cut off.
 
 ## Installation
 
 \`\`\`terminal
 ---mac---
+# Install the U8g2 library once
+arduino-cli lib install "U8g2"
+
 # Compile
-arduino-cli compile --fqbn arduino:avr:nano ./ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano ./oled-1.3
 
 # Upload
-arduino-cli upload --fqbn arduino:avr:nano --port /dev/cu.usbserial-110 ./ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port /dev/cu.usbserial-110 ./oled-1.3
 ---linux---
+# Install the U8g2 library once
+arduino-cli lib install "U8g2"
+
 # Compile
-arduino-cli compile --fqbn arduino:avr:nano ./ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano ./oled-1.3
 
 # Upload
-arduino-cli upload --fqbn arduino:avr:nano --port /dev/ttyUSB0 ./ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port /dev/ttyUSB0 ./oled-1.3
 ---windows---
+# Install the U8g2 library once
+arduino-cli lib install "U8g2"
+
 # Compile
-arduino-cli compile --fqbn arduino:avr:nano .\\ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano .\\oled-1.3
 
 # Upload
-arduino-cli upload --fqbn arduino:avr:nano --port COM3 .\\ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port COM3 .\\oled-1.3
 \`\`\`
 
-## ultrasonic-sensor.ino
+## oled-1.3.ino
 
 \`\`\`cpp
-const int trig = 9;
-const int echo = 10;
+#include <Arduino.h>
+#include <U8g2lib.h>
+#include <Wire.h>
+
+U8G2_SH1106_128X64_NONAME_F_HW_I2C display(U8G2_R0, U8X8_PIN_NONE);
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(trig, OUTPUT);
-  pinMode(echo, INPUT);
+  display.begin();
+  display.setContrast(200);
 }
 
 void loop() {
-  digitalWrite(trig, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trig, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trig, LOW);
+  unsigned long seconds = millis() / 1000;
 
-  long duration = pulseIn(echo, HIGH);
-  float distance = duration * 0.034 / 2; // cm
+  display.clearBuffer();
 
-  Serial.print("Distance: ");
-  Serial.print(distance);
-  Serial.println(" cm");
-  delay(500);
+  display.setFont(u8g2_font_ncenB10_tr);
+  display.drawStr(0, 14, "OLED 1.3\\"");
+
+  display.setFont(u8g2_font_6x10_tf);
+  display.drawStr(0, 30, "SH1106 128x64 I2C");
+  display.drawStr(0, 44, "Hello, Josue!");
+
+  display.drawFrame(0, 50, 128, 14);
+  display.setCursor(4, 61);
+  display.print("uptime: ");
+  display.print(seconds);
+  display.print("s");
+
+  display.sendBuffer();
+  delay(200);
 }
 \`\`\`
 
 ## Experiment
 
-- Move your hand closer and farther from the sensor and watch the reading change in the Serial Monitor.
-- Reduce \`delay(500)\` to \`delay(100)\` for faster updates.
-- Turn on an LED or buzzer when \`distance < 20\` to transform it into a proximity alarm.
-- Average 5 consecutive measurements to smooth unstable readings.
+- Switch to another U8g2 font such as \`u8g2_font_logisoso16_tf\` for a big-digit counter.
+- Draw shapes with \`drawCircle\`, \`drawLine\`, and \`drawBox\` to learn the coordinate system.
+- Show the distance from an HC-SR04 instead of the uptime and you have a ready-to-use distance meter.
+- Wire a potentiometer to \`A0\` and draw a bar that tracks its value.
 
 ## Notes
 
-- No extra resistors are needed with a 5V Arduino board.
-- The useful range is usually about 2 cm to 400 cm.
-- If the reading stays at 0 or obviously wrong values, check \`Trig\`, \`Echo\`, \`VCC\`, and \`GND\` first.
-- If you use ESP32 or another 3.3V board, protect the \`Echo\` pin with a voltage divider.`,
+- If the image looks shifted or striped, you are almost certainly using SSD1306 instead of SH1106.
+- If nothing lights up, check \`SDA\`/\`SCL\`, \`VCC\`, and \`GND\`, and run an I2C scanner to confirm the address.
+- The 1.3" module usually accepts both 3.3V and 5V thanks to the onboard regulator.
+- On ESP32, \`SDA\` is \`GPIO21\` and \`SCL\` is \`GPIO22\` by default.`,
 
       pt: `## O que este projeto faz?
 
-O sensor ultrassônico HC-SR04 mede a distância até um objeto e mostra o valor em centímetros no Monitor Serial. É uma ótima base para robôs que evitam obstáculos, alarmes de proximidade e projetos simples de medição.
+Mostra texto e um contador de tempo em uma tela OLED de 1.3 polegadas conectada por I2C a um Arduino. É uma base excelente para relógios, medidores, menus e pequenas interfaces para seus projetos de robótica.
 
 ## Requisitos
 
 1. Visual Studio Code com Arduino CLI
 2. Arduino Nano (ou Uno/Mega)
-3. Sensor ultrassônico HC-SR04
+3. Display OLED de 1.3" com driver **SH1106**, 128x64, interface I2C
 4. Cabos jumper
-5. Protoboard (opcional, mas ajuda a fixar o sensor)
+5. Protoboard (opcional)
 6. Cabo USB
 
 ## Conceitos-chave
 
-- **Trig.** O pino \`Trig\` recebe um pulso curto de 10 microssegundos. Esse pulso manda o sensor emitir a onda ultrassônica.
+- **SH1106 vs SSD1306.** O painel de 1.3" usa o driver **SH1106**, enquanto o de 0.96" usa **SSD1306**. Escolher a biblioteca errada faz a imagem aparecer deslocada ou distorcida.
 
-- **Echo.** O pino \`Echo\` fica em \`HIGH\` enquanto a onda viaja, rebate e retorna. Esse tempo é a base do cálculo da distância.
+- **I2C.** Protocolo de dois fios (\`SDA\` e \`SCL\`) que permite conectar vários dispositivos usando pouquíssimos pinos. No Arduino Uno/Nano, \`SDA\` fica em \`A4\` e \`SCL\` em \`A5\`.
 
-- **\`pulseIn(echo, HIGH)\`.** Essa função mede quantos microssegundos o pino \`Echo\` ficou em \`HIGH\`. Quanto maior o tempo, mais distante está o objeto.
+- **Endereço I2C.** Esses painéis quase sempre usam o endereço \`0x3C\`. Se não funcionar, um scanner I2C mostra o endereço real.
 
-- **Velocidade do som.** A fórmula \`duracao * 0.034 / 2\` converte o tempo em centímetros. O \`0.034\` representa a velocidade do som em cm por microssegundo e o \`/ 2\` corrige o percurso de ida e volta.
+- **Biblioteca U8g2.** É a biblioteca recomendada para esses displays. Suporta SH1106, fontes, figuras, modo de buffer completo e baixo consumo.
 
-- **Alcance útil.** O HC-SR04 normalmente funciona bem entre 2 cm e 400 cm. Objetos muito pequenos, macios ou inclinados podem gerar leituras instáveis.
+- **Modo buffer completo.** A variação \`_F_\` (full buffer) desenha tudo na memória e envia de uma vez com \`sendBuffer()\`. É a opção mais simples e fluida em Arduino Uno/Nano.
 
 ## Conexões
 
-| Pino do sensor | Conexão Arduino |
+| Pino da OLED | Conexão Arduino |
 |---|---|
-| VCC | 5V |
-| Trig | Pino digital 9 |
-| Echo | Pino digital 10 |
+| VCC | 5V (o módulo tem regulador, 3.3V também funciona) |
 | GND | GND |
+| SCL | A5 |
+| SDA | A4 |
 
-> **Importante:** Em um Arduino Nano, Uno ou Mega não são necessários resistores extras. Se você usar uma placa de 3.3V, como ESP32, precisa usar um divisor de tensão no \`Echo\` para baixar de 5V para 3.3V.
+> **Importante:** O painel de 1.3" usa o driver **SH1106**, não SSD1306. Se você usar a biblioteca do SSD1306 a imagem vai aparecer deslocada ou cortada.
 
 ## Instalação
 
 \`\`\`terminal
 ---mac---
+# Instalar a biblioteca U8g2 uma única vez
+arduino-cli lib install "U8g2"
+
 # Compilar
-arduino-cli compile --fqbn arduino:avr:nano ./ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano ./oled-1.3
 
 # Enviar
-arduino-cli upload --fqbn arduino:avr:nano --port /dev/cu.usbserial-110 ./ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port /dev/cu.usbserial-110 ./oled-1.3
 ---linux---
+# Instalar a biblioteca U8g2 uma única vez
+arduino-cli lib install "U8g2"
+
 # Compilar
-arduino-cli compile --fqbn arduino:avr:nano ./ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano ./oled-1.3
 
 # Enviar
-arduino-cli upload --fqbn arduino:avr:nano --port /dev/ttyUSB0 ./ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port /dev/ttyUSB0 ./oled-1.3
 ---windows---
+# Instalar a biblioteca U8g2 uma única vez
+arduino-cli lib install "U8g2"
+
 # Compilar
-arduino-cli compile --fqbn arduino:avr:nano .\\ultrasonic-sensor
+arduino-cli compile --fqbn arduino:avr:nano .\\oled-1.3
 
 # Enviar
-arduino-cli upload --fqbn arduino:avr:nano --port COM3 .\\ultrasonic-sensor
+arduino-cli upload --fqbn arduino:avr:nano --port COM3 .\\oled-1.3
 \`\`\`
 
-## ultrasonic-sensor.ino
+## oled-1.3.ino
 
 \`\`\`cpp
-const int trig = 9;
-const int echo = 10;
+#include <Arduino.h>
+#include <U8g2lib.h>
+#include <Wire.h>
+
+U8G2_SH1106_128X64_NONAME_F_HW_I2C display(U8G2_R0, U8X8_PIN_NONE);
 
 void setup() {
-  Serial.begin(9600);
-  pinMode(trig, OUTPUT);
-  pinMode(echo, INPUT);
+  display.begin();
+  display.setContrast(200);
 }
 
 void loop() {
-  digitalWrite(trig, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trig, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trig, LOW);
+  unsigned long segundos = millis() / 1000;
 
-  long duracao = pulseIn(echo, HIGH);
-  float distancia = duracao * 0.034 / 2; // cm
+  display.clearBuffer();
 
-  Serial.print("Distancia: ");
-  Serial.print(distancia);
-  Serial.println(" cm");
-  delay(500);
+  display.setFont(u8g2_font_ncenB10_tr);
+  display.drawStr(0, 14, "OLED 1.3\\"");
+
+  display.setFont(u8g2_font_6x10_tf);
+  display.drawStr(0, 30, "SH1106 128x64 I2C");
+  display.drawStr(0, 44, "Olá, Josue!");
+
+  display.drawFrame(0, 50, 128, 14);
+  display.setCursor(4, 61);
+  display.print("uptime: ");
+  display.print(segundos);
+  display.print("s");
+
+  display.sendBuffer();
+  delay(200);
 }
 \`\`\`
 
 ## Experimente
 
-- Aproxime e afaste a mão do sensor e observe a distância mudar no Monitor Serial.
-- Reduza \`delay(500)\` para \`delay(100)\` para obter leituras mais rápidas.
-- Acenda um LED ou ative um buzzer quando \`distancia < 20\` para transformar o projeto em um alarme de proximidade.
-- Faça a média de 5 medições seguidas para suavizar leituras instáveis.
+- Troque a fonte por outra do U8g2, como \`u8g2_font_logisoso16_tf\`, para um contador bem grande.
+- Desenhe figuras com \`drawCircle\`, \`drawLine\` e \`drawBox\` para entender o sistema de coordenadas.
+- Mostre a distância de um HC-SR04 em vez do uptime e você tem um medidor de distância pronto.
+- Ligue um potenciômetro em \`A0\` e desenhe uma barra que acompanhe o valor.
 
 ## Notas
 
-- Não são necessários resistores extras com uma placa Arduino de 5V.
-- O alcance útil típico fica entre 2 cm e 400 cm.
-- Se a leitura ficar sempre em 0 ou em valores absurdos, revise primeiro \`Trig\`, \`Echo\`, \`VCC\` e \`GND\`.
-- Se usar ESP32 ou outra placa de 3.3V, proteja o pino \`Echo\` com um divisor de tensão.`,
+- Se a imagem aparecer deslocada ou com listras, quase certamente você está usando SSD1306 no lugar de SH1106.
+- Se nada acender, confira \`SDA\`/\`SCL\`, \`VCC\` e \`GND\`, e rode um scanner I2C para confirmar o endereço.
+- O módulo de 1.3" normalmente aceita tanto 3.3V quanto 5V graças ao regulador integrado.
+- No ESP32, \`SDA\` fica em \`GPIO21\` e \`SCL\` em \`GPIO22\` por padrão.`,
     },
   },
 ];
