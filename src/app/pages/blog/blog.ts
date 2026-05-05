@@ -14,16 +14,26 @@ export class Blog {
   private readonly router = inject(Router);
 
   readonly areas = ['Telecommuting', 'Software', 'Hardware'];
+  private readonly areaOrder: Record<string, number> = { Telecommuting: 0, Software: 1, Hardware: 2 };
   readonly articles = ARTICLES;
   readonly pageSize = 5;
 
   readonly selectedAreas = signal<Set<string>>(new Set());
+  readonly searchQuery = signal('');
   readonly page = signal(1);
 
   readonly filtered = computed(() => {
     const selected = this.selectedAreas();
-    if (selected.size === 0) return [...this.articles];
-    return this.articles.filter(a => selected.has(a.area));
+    const query = this.searchQuery().toLowerCase().trim();
+    let list = selected.size === 0 ? [...this.articles] : this.articles.filter(a => selected.has(a.area));
+    if (query) {
+      list = list.filter(a => this.i18n.t('technology.articles.' + a.slug + '.title').toLowerCase().includes(query));
+    }
+    return list.sort((a, b) => {
+      const areaDiff = (this.areaOrder[a.area] ?? 99) - (this.areaOrder[b.area] ?? 99);
+      if (areaDiff !== 0) return areaDiff;
+      return b.updatedAt.localeCompare(a.updatedAt);
+    });
   });
 
   readonly paginated = computed(() => {
@@ -49,6 +59,11 @@ export class Blog {
     this.page.set(1);
   }
 
+  onSearch(event: Event) {
+    this.searchQuery.set((event.target as HTMLInputElement).value);
+    this.page.set(1);
+  }
+
   goToPage(p: number) {
     this.page.set(p);
   }
@@ -61,6 +76,11 @@ export class Blog {
 
   areaLabel(area: string): string {
     return this.i18n.t('technology.areas.' + area + '.name');
+  }
+
+  formatDate(iso: string): string {
+    const [y, m, d] = iso.split('-');
+    return `${d}/${m}/${y}`;
   }
 
   openArticle(event: MouseEvent, article: Article) {

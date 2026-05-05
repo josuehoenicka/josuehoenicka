@@ -98,12 +98,14 @@
     "watch_video": "Watch video",
     "video_download": "Download video",
     "no_video": "No video available yet",
+    "last_updated": "Last updated",
     "not_found": "Article not found",
     "filter_area": "Area",
     "filter_tech": "Technology",
     "clear_filters": "Clear filters",
     "col_title": "Title",
     "col_difficulty": "Difficulty",
+    "search": "Search...",
     "no_results": "No content yet.",
     "projects_label": "projects",
     "readings_label": "readings",
@@ -136,6 +138,94 @@
       "6-dynamic-screen": {
         "title": "Dynamic Screen",
         "desc": "A 16x2 LCD over I2C displays text and a real-time seconds counter."
+      },
+      "7-claude": {
+        "title": "Claude",
+        "desc": "Anthropic's AI assistant focused on safety, deep reasoning, and code generation."
+      },
+      "8-chatgpt": {
+        "title": "ChatGPT",
+        "desc": "OpenAI's AI assistant for conversation, analysis, content and code generation."
+      },
+      "9-gemini": {
+        "title": "Gemini",
+        "desc": "Google's AI assistant with multimodal capabilities and Google ecosystem integration."
+      },
+      "10-linkedin": {
+        "title": "LinkedIn",
+        "desc": "Professional network for networking, job searching, and personal branding."
+      },
+      "11-discord": {
+        "title": "Discord",
+        "desc": "Communication platform with text, voice, and video for communities and teams."
+      },
+      "12-duolingo": {
+        "title": "Duolingo",
+        "desc": "Free app for learning languages with short lessons and gamification."
+      },
+      "13-vscode": {
+        "title": "Visual Studio Code",
+        "desc": "Free Microsoft text editor ideal for writing and organizing any type of file."
+      },
+      "14-github-copilot": {
+        "title": "GitHub Copilot",
+        "desc": "GitHub's AI assistant that suggests and generates content as you write."
+      },
+      "15-claude-code": {
+        "title": "Claude Code",
+        "desc": "Anthropic's tool that lets you work with AI directly from the terminal."
+      },
+      "16-n8n": {
+        "title": "n8n",
+        "desc": "Visual automation platform to connect apps and create workflows without coding."
+      },
+      "17-meta": {
+        "title": "Meta",
+        "desc": "Meta's tool suite for managing Facebook, Instagram, and WhatsApp Business."
+      },
+      "18-firebase": {
+        "title": "Firebase",
+        "desc": "Google's platform for building and hosting web and mobile applications."
+      },
+      "19-cloudflare": {
+        "title": "Cloudflare",
+        "desc": "Security, performance, and web hosting service for sites and applications."
+      },
+      "20-canva": {
+        "title": "Canva",
+        "desc": "Online graphic design platform for creating visual content without design experience."
+      },
+      "21-clipchamp": {
+        "title": "Clipchamp",
+        "desc": "Microsoft's online video editor for creating professional videos simply."
+      },
+      "22-python": {
+        "title": "Python",
+        "desc": "Versatile programming language for web, data science, AI, and automation."
+      },
+      "23-javascript": {
+        "title": "JavaScript",
+        "desc": "The world's most used language for frontend, backend, and full-stack applications."
+      },
+      "24-csharp": {
+        "title": "C#",
+        "desc": "Microsoft's object-oriented language for web, games, and enterprise applications."
+      },
+      "25-golang": {
+        "title": "Go",
+        "desc": "Google's compiled language designed for concurrency, microservices, and cloud tools."
+      },
+      "26-ruby": {
+        "title": "Ruby",
+        "desc": "Elegant and productive language known for Ruby on Rails and agile web development."
+      },
+      "27-php": {
+        "title": "PHP",
+        "desc": "Server-side language powering 80% of the web, including WordPress and Laravel."
+      },
+      "28-rust": {
+        "title": "Rust",
+        "desc": "Systems language with guaranteed memory safety and C/C++ level performance."
       }
     }
   },
@@ -150,6 +240,7 @@
     "col_title": "Title",
     "col_genre": "Genre",
     "col_difficulty": "Difficulty",
+    "search": "Search...",
     "no_results": "No content yet.",
     "video_download": "Download video",
     "no_video": "No video available yet",
@@ -239,6 +330,7 @@
     "title": "Interculturality",
     "subtitle": "The art of inhabiting the world without mental borders through the mastery of languages and travel to connect with the essence of other realities.",
     "back": "Back",
+    "search": "Search...",
     "no_content": "No content yet.",
     "languages": {
       "english": "English",

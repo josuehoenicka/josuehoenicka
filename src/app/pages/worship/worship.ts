@@ -18,12 +18,17 @@ export class Worship {
   readonly pageSize = 5;
 
   readonly selectedInstruments = signal<Set<Instrument>>(new Set());
+  readonly searchQuery = signal('');
   readonly page = signal(1);
 
   readonly filtered = computed(() => {
     const selected = this.selectedInstruments();
-    if (selected.size === 0) return [...this.entries];
-    return this.entries.filter(e => e.instruments.some(i => selected.has(i)));
+    const query = this.searchQuery().toLowerCase().trim();
+    let list = selected.size === 0 ? [...this.entries] : this.entries.filter(e => e.instruments.some(i => selected.has(i)));
+    if (query) {
+      list = list.filter(e => this.i18n.t('worship.entries.' + e.slug + '.title').toLowerCase().includes(query));
+    }
+    return list;
   });
 
   readonly paginated = computed(() => {
@@ -46,6 +51,11 @@ export class Worship {
       current.add(inst);
     }
     this.selectedInstruments.set(current);
+    this.page.set(1);
+  }
+
+  onSearch(event: Event) {
+    this.searchQuery.set((event.target as HTMLInputElement).value);
     this.page.set(1);
   }
 

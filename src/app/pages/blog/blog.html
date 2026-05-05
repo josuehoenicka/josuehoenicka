@@ -7,6 +7,11 @@
     }
   </div>
 
+  <div class="search-bar">
+    <svg class="search-bar__icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="text" class="search-bar__input" [placeholder]="i18n.t('technology.search')" [value]="searchQuery()" (input)="onSearch($event)">
+  </div>
+
   <div class="media-list">
     @for (item of paginated(); track item.id) {
       <a class="media-row" [href]="'/technology/project/' + item.slug" (click)="openArticle($event, item)">
@@ -21,8 +26,9 @@
         </div>
         <div class="media-row__info">
           <span class="media-row__title">{{ i18n.t('technology.articles.' + item.slug + '.title') }}</span>
-          <span class="media-row__desc">{{ areaLabel(item.area) }} ({{ item.techs.join(', ') }})</span>
+          <span class="media-row__desc">{{ areaLabel(item.area) }}</span>
         </div>
+        <span class="media-row__date">{{ formatDate(item.updatedAt) }}</span>
       </a>
     }
 

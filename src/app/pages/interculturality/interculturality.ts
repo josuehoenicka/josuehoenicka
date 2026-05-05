@@ -12,6 +12,7 @@ export class Interculturality {
 
   readonly languages = ['english', 'spanish', 'portuguese'];
   readonly selectedLangs = signal<Set<string>>(new Set());
+  readonly searchQuery = signal('');
 
   isLangSelected(lang: string): boolean {
     return this.selectedLangs().has(lang);
@@ -25,5 +26,9 @@ export class Interculturality {
       current.add(lang);
     }
     this.selectedLangs.set(current);
+  }
+
+  onSearch(event: Event) {
+    this.searchQuery.set((event.target as HTMLInputElement).value);
   }
 }

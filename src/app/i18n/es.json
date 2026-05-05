@@ -98,12 +98,14 @@
     "watch_video": "Ver vídeo",
     "video_download": "Descargar video",
     "no_video": "No hay vídeo disponible aún",
+    "last_updated": "Últ. actualización",
     "not_found": "Artículo no encontrado",
     "filter_area": "Área",
     "filter_tech": "Tecnología",
     "clear_filters": "Limpiar filtros",
     "col_title": "Título",
     "col_difficulty": "Dificultad",
+    "search": "Buscar...",
     "no_results": "No hay contenido aún.",
     "projects_label": "proyectos",
     "readings_label": "lecturas",
@@ -113,7 +115,7 @@
     "areas": {
       "Software": { "name": "Software", "desc": "Desarrollo de aplicaciones, web, mobile y QA", "long_desc": "Es el conjunto de disciplinas dedicadas a diseñar, construir, probar y mantener aplicaciones y sistemas digitales. Abarca desde el desarrollo web y mobile con frameworks modernos hasta el aseguramiento de calidad con pruebas automatizadas, pasando por la ingeniería de datos, la inteligencia artificial y la ciberseguridad. El software transforma ideas en productos que resuelven problemas reales, conectando personas y automatizando procesos a escala global." },
       "Hardware": { "name": "Hardware", "desc": "Electrónica, robótica y sistemas embebidos", "long_desc": "Es la disciplina que combina ingeniería electrónica y programación para diseñar, construir y programar dispositivos físicos y sistemas autónomos. Abarca desde microcontroladores como Arduino y Raspberry Pi hasta robots, drones y dispositivos IoT, pasando por sensores, actuadores y protocolos de comunicación. El hardware integra conocimientos de control, visión artificial e inteligencia artificial para crear máquinas capaces de interactuar con el mundo físico de forma precisa y autónoma." },
-      "Telecommuting": { "name": "Computación", "desc": "Redes, conectividad y comunicaciones", "long_desc": "Es el campo que abarca las tecnologías y sistemas de comunicación a distancia. Incluye redes de datos, protocolos de comunicación, infraestructura de conectividad, sistemas de telecomunicaciones y soluciones de comunicación digital que permiten la transmisión de información entre personas y sistemas en diversos entornos." }
+      "Telecommuting": { "name": "Teletrabajo", "desc": "Redes, conectividad y comunicaciones", "long_desc": "Es el campo que abarca las tecnologías y sistemas de comunicación a distancia. Incluye redes de datos, protocolos de comunicación, infraestructura de conectividad, sistemas de telecomunicaciones y soluciones de comunicación digital que permiten la transmisión de información entre personas y sistemas en diversos entornos." }
     },
     "difficulty": {
       "easy": "Fácil",
@@ -136,6 +138,94 @@
       "6-dynamic-screen": {
         "title": "Pantalla dinámica",
         "desc": "Un LCD 16x2 por I2C muestra texto y un contador de segundos en tiempo real."
+      },
+      "7-claude": {
+        "title": "Claude",
+        "desc": "Asistente de IA de Anthropic enfocado en seguridad, razonamiento profundo y generación de código."
+      },
+      "8-chatgpt": {
+        "title": "ChatGPT",
+        "desc": "Asistente de IA de OpenAI para conversación, análisis, generación de contenido y código."
+      },
+      "9-gemini": {
+        "title": "Gemini",
+        "desc": "Asistente de IA de Google con capacidades multimodales e integración con el ecosistema Google."
+      },
+      "10-linkedin": {
+        "title": "LinkedIn",
+        "desc": "Red profesional para networking, búsqueda de empleo y marca personal."
+      },
+      "11-discord": {
+        "title": "Discord",
+        "desc": "Plataforma de comunicación por texto, voz y video para comunidades y equipos."
+      },
+      "12-duolingo": {
+        "title": "Duolingo",
+        "desc": "App gratuita para aprender idiomas con lecciones cortas y gamificación."
+      },
+      "13-vscode": {
+        "title": "Visual Studio Code",
+        "desc": "Editor de texto gratuito de Microsoft ideal para escribir y organizar cualquier tipo de archivo."
+      },
+      "14-github-copilot": {
+        "title": "GitHub Copilot",
+        "desc": "Asistente de IA de GitHub que sugiere y genera contenido mientras escribís."
+      },
+      "15-claude-code": {
+        "title": "Claude Code",
+        "desc": "Herramienta de Anthropic que permite trabajar con IA directamente desde la terminal."
+      },
+      "16-n8n": {
+        "title": "n8n",
+        "desc": "Plataforma de automatización visual para conectar apps y crear flujos de trabajo sin programar."
+      },
+      "17-meta": {
+        "title": "Meta",
+        "desc": "Suite de herramientas de Meta para gestionar Facebook, Instagram y WhatsApp Business."
+      },
+      "18-firebase": {
+        "title": "Firebase",
+        "desc": "Plataforma de Google para crear y alojar aplicaciones web y móviles."
+      },
+      "19-cloudflare": {
+        "title": "Cloudflare",
+        "desc": "Servicio de seguridad, rendimiento y alojamiento web para sitios y aplicaciones."
+      },
+      "20-canva": {
+        "title": "Canva",
+        "desc": "Plataforma de diseño gráfico online para crear contenido visual sin experiencia en diseño."
+      },
+      "21-clipchamp": {
+        "title": "Clipchamp",
+        "desc": "Editor de video online de Microsoft para crear videos profesionales de forma simple."
+      },
+      "22-python": {
+        "title": "Python",
+        "desc": "Lenguaje de programación versátil para web, ciencia de datos, IA y automatización."
+      },
+      "23-javascript": {
+        "title": "JavaScript",
+        "desc": "El lenguaje más usado del mundo para frontend, backend y aplicaciones full-stack."
+      },
+      "24-csharp": {
+        "title": "C#",
+        "desc": "Lenguaje orientado a objetos de Microsoft para web, videojuegos y aplicaciones empresariales."
+      },
+      "25-golang": {
+        "title": "Go",
+        "desc": "Lenguaje compilado de Google diseñado para concurrencia, microservicios y herramientas cloud."
+      },
+      "26-ruby": {
+        "title": "Ruby",
+        "desc": "Lenguaje elegante y productivo conocido por Ruby on Rails y el desarrollo web ágil."
+      },
+      "27-php": {
+        "title": "PHP",
+        "desc": "Lenguaje del lado del servidor que potencia el 80% de la web, incluyendo WordPress y Laravel."
+      },
+      "28-rust": {
+        "title": "Rust",
+        "desc": "Lenguaje de sistemas con seguridad de memoria garantizada y rendimiento de nivel C/C++."
       }
     }
   },
@@ -150,6 +240,7 @@
     "col_title": "Título",
     "col_genre": "Género",
     "col_difficulty": "Dificultad",
+    "search": "Buscar...",
     "no_results": "No hay contenido aún.",
     "video_download": "Descargar video",
     "no_video": "No hay vídeo disponible aún",
@@ -239,6 +330,7 @@
     "title": "Interculturalidad",
     "subtitle": "Es el arte de habitar el mundo sin fronteras mentales mediante el dominio de idiomas y viajes para conectar con la esencia de otras realidades.",
     "back": "Volver",
+    "search": "Buscar...",
     "no_content": "No hay contenido aún.",
     "languages": {
       "english": "Inglés",

@@ -17,10 +17,8 @@
       <div class="article-page__content">
         <div class="article-page__header">
           <div class="article-page__meta">
-            <span class="article-page__area">{{ a.area }}</span>
-            <span class="article-page__diff" [attr.data-diff]="a.difficulty">
-              {{ i18n.t('technology.difficulty.' + a.difficulty) }}
-            </span>
+            <span class="article-page__area">{{ areaLabel(a.area) }}</span>
+            <span class="article-page__date">{{ i18n.t('technology.last_updated') }}: {{ formatDate(a.updatedAt) }}</span>
           </div>
           <h1 class="article-page__title">{{ i18n.t('technology.articles.' + a.slug + '.title') }}</h1>
         </div>

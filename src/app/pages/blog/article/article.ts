@@ -61,6 +61,15 @@ export class ArticlePage implements OnInit {
     handleCodeBlockClick(event);
   }
 
+  formatDate(iso: string): string {
+    const [y, m, d] = iso.split('-');
+    return `${d}/${m}/${y}`;
+  }
+
+  areaLabel(area: string): string {
+    return this.i18n.t('technology.areas.' + area + '.name');
+  }
+
   scrollToVideo(): void {
     document.getElementById('article-video')?.scrollIntoView({ behavior: 'smooth' });
   }
