@@ -1,0 +1,176 @@
+@if (entry(); as song) {
+  <section class="worship-song">
+    <div class="worship-song__nav">
+      <a routerLink="/worship" class="worship-song__back" (click)="goBack($event)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        {{ i18n.t('worship.back_to_list') }}
+      </a>
+    </div>
+
+    <h2 class="worship-song__title">{{ i18n.t('worship.entries.' + song.slug + '.title') }}</h2>
+
+    <div class="worship-song__instruments">
+      @for (inst of allInstruments; track inst) {
+        <button
+          type="button"
+          class="instrument-tab"
+          [class.instrument-tab--active]="selectedInstrument() === inst"
+          [class.instrument-tab--disabled]="!isInstrumentAvailable(inst)"
+          [disabled]="!isInstrumentAvailable(inst)"
+          (click)="selectInstrument(inst)">
+          {{ i18n.t('worship.instruments.' + inst) }}
+        </button>
+      }
+    </div>
+
+    <div class="worship-song__layout worship-song__layout--single">
+      <section class="content-card">
+        @if (selectedInstrument() === 'piano') {
+          @if (entry()?.pianoSections; as sections) {
+            <div class="chord-chart">
+              @for (section of sections; track section.label) {
+                <div class="chord-section">
+                  @if (section.label) {
+                    <h3 class="chord-section__label">{{ section.label }}</h3>
+                  }
+                  @for (line of section.lines; track $index) {
+                    <div class="chord-line">
+                      @for (segment of line; track $index) {
+                        <span class="chord-segment">
+                          @if (segment.chord) {
+                            <span class="chord-name">{{ segment.chord }}</span>
+                          }{{ segment.text }}</span>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="content-card__placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+              </svg>
+              <p>{{ i18n.t('worship.no_score') }}</p>
+            </div>
+          }
+        }
+
+        @if (selectedInstrument() === 'guitar') {
+          @if (entry()?.guitarSections; as sections) {
+            <div class="chord-chart">
+              @for (section of sections; track section.label) {
+                <div class="chord-section">
+                  @if (section.label) {
+                    <h3 class="chord-section__label">{{ section.label }}</h3>
+                  }
+                  @for (line of section.lines; track $index) {
+                    <div class="chord-line">
+                      @for (segment of line; track $index) {
+                        <span class="chord-segment">
+                          @if (segment.chord) {
+                            <span class="chord-name">{{ segment.chord }}</span>
+                          }{{ segment.text }}</span>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          }
+        }
+
+        @if (selectedInstrument() === 'drums') {
+          <div class="drums-grid">
+            <div class="drums-grid__labels">
+              @for (row of drumGrid(); track row.instrument) {
+                <span class="drums-grid__label" [innerHTML]="drumIcon(row.instrument)"></span>
+              }
+            </div>
+            <div class="drums-grid__steps">
+              @for (row of drumGrid(); track row.instrument) {
+                <div class="drums-grid__row">
+                  @for (active of row.steps; track $index) {
+                    <div
+                      class="drums-grid__cell"
+                      [class.drums-grid__cell--active]="active"
+                      [class.drums-grid__cell--beat]="$index % 2 === 0"
+                      [class.drums-grid__cell--current]="drumStep() === $index">
+                    </div>
+                  }
+                </div>
+              }
+              <div class="drums-grid__beats">
+                @for (row of drumGrid()[0]?.steps ?? []; track $index) {
+                  @if ($index % 2 === 0) {
+                    <span class="drums-grid__beat-label">{{ ($index / 2) + 1 }}</span>
+                  } @else {
+                    <span class="drums-grid__beat-label">+</span>
+                  }
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="drums-controls">
+            <button type="button" class="sim-btn" [class.sim-btn--active]="drumsPlaying()" (click)="toggleDrums()">
+              @if (drumsPlaying()) {
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              } @else {
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>
+              }
+              <span>{{ i18n.t('worship.preview') }}</span>
+            </button>
+          </div>
+
+          <!-- Drum kit visualization -->
+          <div class="drum-kit">
+            <svg viewBox="0 0 400 320" class="drum-kit__svg">
+              <!-- Hi-hat (left) -->
+              <g class="drum-kit__hihat" [class.drum-kit__hihat--active]="activeDrums().hihat">
+                <ellipse cx="80" cy="140" rx="50" ry="12" class="drum-kit__cymbal"/>
+                <ellipse cx="80" cy="136" rx="50" ry="12" class="drum-kit__cymbal"/>
+                <line x1="80" y1="152" x2="80" y2="240" class="drum-kit__stand"/>
+                <circle cx="80" cy="240" r="8" class="drum-kit__foot-base"/>
+                <!-- Left hand + stick -->
+                <g class="drum-kit__hand drum-kit__hand--left">
+                  <line x1="40" y1="80" x2="80" y2="128" class="drum-kit__stick"/>
+                  <circle cx="38" cy="78" r="8" class="drum-kit__fist"/>
+                </g>
+              </g>
+
+              <!-- Snare (center) -->
+              <g class="drum-kit__snare" [class.drum-kit__snare--active]="activeDrums().snare">
+                <ellipse cx="200" cy="170" rx="55" ry="14" class="drum-kit__drum-body drum-kit__drum-bottom"/>
+                <rect x="145" y="155" width="110" height="15" class="drum-kit__drum-body drum-kit__drum-side"/>
+                <ellipse cx="200" cy="155" rx="55" ry="14" class="drum-kit__drum-top"/>
+                <!-- Right hand + stick -->
+                <g class="drum-kit__hand drum-kit__hand--right">
+                  <line x1="260" y1="95" x2="200" y2="147" class="drum-kit__stick"/>
+                  <circle cx="262" cy="93" r="8" class="drum-kit__fist"/>
+                </g>
+              </g>
+
+              <!-- Kick drum (center-right) -->
+              <g class="drum-kit__kick" [class.drum-kit__kick--active]="activeDrums().kick">
+                <ellipse cx="310" cy="210" rx="65" ry="55" class="drum-kit__kick-body"/>
+                <ellipse cx="310" cy="210" rx="40" ry="34" class="drum-kit__kick-hole"/>
+                <!-- Foot pedal -->
+                <g class="drum-kit__pedal">
+                  <rect x="290" y="265" width="40" height="6" rx="2" class="drum-kit__pedal-board"/>
+                  <line x1="310" y1="265" x2="310" y2="245" class="drum-kit__pedal-arm"/>
+                  <ellipse cx="310" cy="290" rx="14" ry="20" class="drum-kit__shoe"/>
+                </g>
+              </g>
+            </svg>
+          </div>
+        }
+      </section>
+    </div>
+  </section>
+} @else {
+  <section class="worship-song worship-song--404">
+    <h1>{{ i18n.t('worship.not_found') }}</h1>
+    <a routerLink="/worship" (click)="goBack($event)">{{ i18n.t('worship.back_to_list') }}</a>
+  </section>
+}

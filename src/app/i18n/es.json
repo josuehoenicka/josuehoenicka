@@ -1,12 +1,14 @@
 {
   "nav": {
     "about_me": "Sobre mí",
-    "home": "Inicio",
-    "technology": "Tecnología",
-    "kinesthetic": "Cinestesia",
-    "wanderlust": "Interculturalidad",
-    "wanderlust_mobile": "Interculturalidad",
-    "language": "Idioma"
+    "home": "Home",
+    "technology": "Tech",
+    "song": "Song",
+    "lang": "Lang",
+    "more": "More",
+    "settings": "Ajuste",
+    "language": "Idioma",
+    "select_language": "Selecciona tu idioma"
   },
   "hero": {
     "greeting": "Hola, soy",
@@ -15,31 +17,22 @@
   },
   "about": {
     "title": "Sobre mí",
-    "quote": "Investigo temas a profundidad con el objetivo de entender desafíos complejos y proponer soluciones que ayuden a las personas. Me enfoco en aportar claridad a situaciones difíciles y en conectar ideas en diversos entornos sociales o digitales, comunicándome en múltiples idiomas para asegurar que esta colaboración no tenga fronteras."
+    "quote": "Investigo temas a profundidad con el objetivo de entender desafíos complejos y proponer soluciones que ayuden a las personas. Me enfoco en aportar claridad a situaciones difíciles y en conectar ideas en diversos entornos sociales o digitales."
   },
   "summary": {
     "title": "Resumen",
-    "quote": "Investigo temas a profundidad con el objetivo de entender desafíos complejos y proponer soluciones que ayuden a las personas. Me enfoco en aportar claridad a situaciones difíciles y en conectar ideas en diversos entornos sociales o digitales, comunicándome en múltiples idiomas para asegurar que esta colaboración no tenga fronteras.",
-    "languages": "Idiomas",
-    "technologies": "Tecnologías",
-    "skills": "Habilidades",
-    "lang_es": "Español",
-    "lang_en": "Inglés",
-    "lang_pt": "Portugués",
-    "skill_comfort": "Salir de la zona de confort",
-    "skill_adaptive": "Pensamiento adaptivo",
-    "skill_perseverance": "Perseverancia",
-    "skill_detail": "Atención al detalle",
-    "skill_teamwork": "Trabajo en equipo"
+    "quote": "Cristiano. Emprendedor. Políglota"
   },
   "experience": {
-    "title": "Experiencia",
+    "title": "Workspace",
     "subtitle": "Mi trayectoria profesional en empresas de tecnología",
     "present": "Actualmente",
     "heynow_period": "abr. 2025 - Actualmente",
-    "heynow_desc": "Empresa uruguaya líder en soluciones de inteligencia artificial con más de 250 clientes en Latinoamérica, el Caribe, Norteamérica y Europa, especializada en automatización de procesos y agentes virtuales con IA. Ingresé como Front-End Architect, liderando el rediseño del producto y escalando la arquitectura front-end con Angular, Docker y Microsoft Azure. Luego evolucioné al rol de Full Stack AI Developer, expandiendo mi alcance al desarrollo completo de las diversas plataformas que componen la suite, incluyendo la infraestructura de comunicación agent-to-agent (A2A).",
+    "heynow_desc": "Empresa uruguaya líder en soluciones de inteligencia artificial con más de 250 clientes en Latinoamérica, el Caribe, Norteamérica y Europa, especializada en automatización de procesos y agentes virtuales con IA.",
     "liberasoft_period": "dic. 2018 - abr. 2025",
-    "liberasoft_desc": "Empresa argentina con más de 20 años de experiencia desarrollando un ERP cloud modular para la gestión empresarial en PyMEs y grandes empresas, con módulos de ventas, compras, inventario, contabilidad, WMS y automatización con IA. Mis siete años reflejan una evolución continua: comencé como Front-End Developer construyendo interfaces con Angular y PrimeNG, progresé a Senior Front-End Developer liderando el desarrollo y la arquitectura del frontend del ERP, luego expandí mis habilidades a Full Stack Developer incorporando Node.js, MySQL y MongoDB para el desarrollo de los diversos módulos y aplicaciones integradas. Finalmente, como AI Integration Developer, incorporé capacidades de inteligencia artificial al producto, integrando n8n para automatización de procesos, Python para recolección de datos, y RAG para funcionalidades de IA generativa aplicadas al negocio.",
+    "liberasoft_desc": "Empresa argentina con más de 20 años de experiencia desarrollando un ERP cloud modular para la gestión empresarial en PyMEs y grandes empresas, con módulos de ventas, compras, inventario, contabilidad, WMS y automatización con IA.",
+    "verifood_desc": "Asistente nutricional inteligente que analiza comidas con IA y entrega información nutricional instantánea.",
+    "revenueb2b_desc": "Consultora para SaaS B2B enfocada en internacionalización, expansión comercial y crecimiento global.",
     "show_more": "Ver más",
     "show_less": "Mostrar menos"
   },
@@ -47,6 +40,7 @@
     "title": "Proyectos",
     "subtitle": "Productos donde he aportado valor",
     "view_project": "Ver proyecto",
+    "view_site": "Ver sitio web",
     "heynow_desc": "Suite de agentes AI para automatización de procesos y agentes virtuales con inteligencia artificial.",
     "liberasoft_desc": "Sistema de gestión ERP y WMS cloud modular para PyMEs y grandes empresas.",
     "verifood_desc": "App multiplataforma con IA para nutricionistas, facilitando el seguimiento nutricional.",
@@ -54,34 +48,55 @@
     "mihwave_desc": "Plataforma cristiana digital de telecomunicaciones para conectar comunidades.",
     "revenue_desc": "Plataforma B2B de revenue y crecimiento comercial para empresas."
   },
+  "brands": {
+    "title": "Brands"
+  },
+  "biography": {
+    "title": "Biografía",
+    "quote": "Nací el 31 de agosto de 2001 en Caracas, Venezuela. Me apasiona aprender tecnología, música, idiomas y más. Constantemente busco salir de la zona de confort y vivir agradecido con Dios y todo lo que me rodea"
+  },
   "education": {
-    "title": "Educación",
+    "title": "Certificaciones",
     "subtitle": "Formación académica y certificaciones",
     "items": {
-      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "Robótica. Desarrollo Full-Stack", "description": "La Universidad Tecnológica Nacional (UTN) fue fundada en 1948 por el presidente Juan Domingo Perón como Universidad Obrera Nacional, con el objetivo de cubrir la falta de especialistas técnicos en el país. En 1959 fue renombrada oficialmente como UTN. Es la única universidad nacional argentina enfocada exclusivamente en ingeniería y cuenta con 29 facultades regionales distribuidas en todo el territorio argentino, lo que la convierte en la universidad con mayor alcance federal del país. Con más de 85.000 estudiantes, es la tercera universidad más grande de Argentina por matrícula. Forma casi el 50% de los nuevos ingenieros del país y mantiene convenios de cooperación con más de 75 instituciones internacionales. Sus programas de grado incluyen Ingeniería Civil, Electrónica, Mecánica, Química, Industrial, Aeronáutica y en Sistemas de Información, entre otras especialidades." },
-      "uba": { "institution": "Universidad de Buenos Aires", "desc": "Inglés", "description": "La Universidad de Buenos Aires (UBA), fundada el 12 de agosto de 1821 mediante un decreto del gobernador Martín Rodríguez, es la universidad más grande de Argentina y una de las más prestigiosas de América Latina. Cuenta con más de 350.000 estudiantes y está organizada en 13 facultades autónomas y autogobernadas. La UBA es responsable de aproximadamente el 40% de la producción científica del país y ha educado a 17 presidentes argentinos y 4 de los 5 premios Nobel de Argentina, entre ellos Bernardo Houssay, Luis Federico Leloir y César Milstein. Desde 1949, todos los programas de grado son completamente gratuitos sin importar la nacionalidad del estudiante. Además de sus facultades, administra 6 hospitales, 16 museos, 13 institutos científicos, 5 colegios secundarios y Eudeba, la editorial universitaria más grande del país. En rankings internacionales, la QS World University Rankings la posicionó en el puesto 95 a nivel mundial." },
-      "eempi": { "institution": "EEMPI N°3060", "desc": "Bachiller en Ciencias", "description": "La EEMPI N°3060 es una Escuela de Enseñanza Media Particular Incorporada ubicada en la provincia de Santa Fe, Argentina. Forma parte del sistema de educación secundaria de gestión privada supervisado por el Ministerio de Educación provincial. Este tipo de instituciones ofrecen un plan de estudios oficial reconocido por el Estado, combinando formación académica general con orientaciones específicas. La escuela brinda el título de Bachiller en Ciencias, una modalidad que enfatiza el pensamiento científico, la biología, la química, la física y la matemática como pilares fundamentales de la formación del estudiante, preparándolo para continuar estudios universitarios en carreras vinculadas a las ciencias exactas, naturales e ingenierías." },
-      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. Ingeniería de Software", "description": "Platzi es la plataforma de educación profesional en línea más grande de Latinoamérica, fundada en Colombia en 2014 por Freddy Vega y Christian Van Der Henst. Nació de un programa de streaming semanal llamado \"Mejorando.la\" antes de convertirse en Platzi en 2015. Fue la primera empresa orientada al mercado latinoamericano en ser aceptada por Y Combinator en Silicon Valley. Cuenta con más de 5 millones de estudiantes distribuidos principalmente en México, Colombia, España y Estados Unidos, y ofrece más de 1.000 cursos en tecnología, negocios, diseño e inglés. Sus instructores no son profesores tradicionales sino profesionales expertos en sus campos, incluyendo figuras como Sam Altman de YC. La plataforma ha creado programas de capacitación corporativa para empresas como Microsoft, IBM, Facebook y Google, y ha recibido financiamiento de fondos como Omidyar Network y 500 Startups. Platzi tiene una tasa de finalización del 70%, muy superior al promedio de la industria de educación en línea." },
-      "google": { "institution": "Google", "desc": "MLOps", "description": "Google LLC, fundada el 4 de septiembre de 1998 por Larry Page y Sergey Brin mientras eran estudiantes de doctorado en la Universidad de Stanford, es una de las empresas tecnológicas más influyentes del mundo. Es subsidiaria de Alphabet Inc. y su motor de búsqueda procesa más de 8.500 millones de consultas diarias. Además de la búsqueda, Google desarrolla productos como Android (el sistema operativo móvil más usado del mundo), Google Cloud Platform, YouTube, Gmail, Google Maps y herramientas de inteligencia artificial como TensorFlow y Vertex AI. A través de Google Cloud Skills Boost y sus programas de certificación, Google ofrece formación especializada en áreas como Machine Learning, MLOps, análisis de datos e ingeniería de nube, con certificaciones reconocidas por la industria a nivel global." },
-      "microsoft": { "institution": "Microsoft", "desc": "C#", "description": "Microsoft Corporation, fundada el 4 de abril de 1975 por Bill Gates y Paul Allen en Albuquerque, Nuevo México, es una de las empresas tecnológicas más valiosas del mundo. Su sistema operativo Windows domina el mercado de computadoras de escritorio con más del 70% de participación global. Microsoft desarrolla productos como la suite Office 365, Azure (la segunda plataforma de nube más grande del mundo), Visual Studio, GitHub, LinkedIn y el motor de búsqueda Bing. También es creadora del lenguaje de programación C# y el framework .NET, ampliamente utilizados en desarrollo empresarial. A través de Microsoft Learn, la empresa ofrece rutas de aprendizaje gratuitas y certificaciones profesionales en desarrollo de software, administración de Azure, inteligencia artificial y ciberseguridad, respaldadas por una de las comunidades de desarrolladores más grandes del mundo." },
-      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Algoritmos con Python", "description": "IT Master es un instituto de capacitación tecnológica respaldado por la CESSI (Cámara de la Industria Argentina del Software), la entidad que agrupa y representa a las empresas de software y servicios informáticos de Argentina. La CESSI fue fundada en 1990 y tiene como misión fortalecer la industria del software nacional, promoviendo la formación de recursos humanos calificados. IT Master ofrece programas intensivos de capacitación en lenguajes de programación, algoritmos, desarrollo web y ciencia de datos, diseñados en colaboración con empresas del sector para garantizar la relevancia de los contenidos con las demandas reales del mercado laboral tecnológico argentino. Sus cursos están orientados tanto a principiantes como a profesionales que buscan actualizar sus habilidades en un sector en constante evolución." },
-      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "Programación básica con Ruby. Desarrollo Full-Stack", "description": "Argentina Programa es una iniciativa lanzada por el Gobierno Nacional de Argentina en conjunto con la CESSI (Cámara de la Industria Argentina del Software) con el objetivo de capacitar masivamente a la población en habilidades digitales y programación. El programa surge como respuesta a la creciente demanda de profesionales en tecnología en el mercado laboral argentino y busca reducir la brecha de talento digital en el país. Ofrece un currículo estructurado en etapas que van desde la introducción a la lógica de programación hasta el desarrollo full-stack, cubriendo lenguajes como Ruby, JavaScript, Java y frameworks como Spring Boot. El programa incluye mentorías, proyectos prácticos integradores y una comunidad de aprendizaje activa. Ha capacitado a miles de argentinos de todas las provincias, facilitando la reinserción laboral y el acceso a empleos en la industria tecnológica." },
-      "codoacodo": { "institution": "Codo a Codo 4.0", "desc": "Desarrollo Full-Stack", "description": "Codo a Codo 4.0 es un programa gratuito de formación en programación y habilidades digitales impulsado por el Gobierno de la Ciudad de Buenos Aires a través del Ministerio de Educación porteño. Desde su creación, ha formado a decenas de miles de estudiantes en desarrollo web, programación, bases de datos y tecnologías de la información. El programa está diseñado específicamente para facilitar la inserción laboral en el sector tecnológico y está dirigido a personas mayores de 18 años, sin requerir conocimientos previos en programación. El currículo incluye módulos de HTML, CSS, JavaScript, PHP, MySQL y desarrollo full-stack, combinando clases teóricas con proyectos prácticos. Codo a Codo se ha convertido en una de las iniciativas de formación tecnológica más exitosas de Argentina, reconocida por su enfoque inclusivo y su capacidad de transformar la realidad laboral de sus egresados." },
-      "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "Ciberseguridad. Telecomunicaciones 5G", "description": "La Fundación Telefónica Movistar es la rama de acción social y educativa del Grupo Telefónica, una de las empresas de telecomunicaciones más grandes del mundo con presencia en más de 12 países y más de 380 millones de clientes. Fundada como entidad sin fines de lucro, la Fundación se dedica a la educación digital, la innovación social y la reducción de la brecha tecnológica en los países donde opera. Desarrolla programas de formación en competencias digitales, empleabilidad, ciberseguridad y telecomunicaciones avanzadas, dirigidos especialmente a jóvenes y poblaciones vulnerables. A través de plataformas como Conecta Empleo, ofrece cursos gratuitos en habilidades del siglo XXI. La Fundación también impulsa proyectos de innovación educativa, voluntariado corporativo y preservación del patrimonio cultural digital en América Latina, España y otros mercados donde el Grupo Telefónica tiene operaciones." },
-      "freecodecamp": { "institution": "freeCodeCamp", "desc": "Diseño Web Responsive. Algoritmos JavaScript", "description": "freeCodeCamp es una organización sin fines de lucro 501(c)(3) fundada en octubre de 2014 por Quincy Larson, un desarrollador de software que creó la plataforma para simplificar el proceso de aprender a programar tras su propia experiencia compleja y no lineal en el camino. Ofrece un currículo interactivo y completamente gratuito de más de 1.400 horas en desarrollo web y programación, complementado con 800 horas de contribución a proyectos de código abierto para organizaciones sin fines de lucro. El currículo cubre Diseño Web Responsive, Algoritmos y Estructuras de Datos con JavaScript, Bibliotecas Front-End, Visualización de Datos, APIs y Microservicios, y Seguridad Informática. La plataforma es utilizada por más de 350.000 visitantes únicos mensuales de más de 160 países. Su canal de YouTube supera los 11 millones de suscriptores con más de 700 cursos completos gratuitos. En 2023, freeCodeCamp se asoció con Microsoft para desarrollar una certificación oficial en C#." }
+      "utn": { "institution": "Universidad Tecnológica Nacional", "desc": "Robótica. Desarrollo Full-Stack", "description": "Única universidad nacional argentina enfocada exclusivamente en ingeniería, con 29 facultades regionales y más de 85.000 estudiantes. Forma casi el 50% de los nuevos ingenieros del país." },
+      "uba": { "institution": "Universidad de Buenos Aires", "desc": "Inglés", "description": "La universidad más grande y prestigiosa de Argentina, posicionada #95 mundial por QS. Más de 350.000 estudiantes en 13 facultades autónomas, con educación gratuita desde 1949." },
+      "eempi": { "institution": "EEMPI N°3060", "desc": "Bachiller en Ciencias", "description": "Escuela secundaria privada en Santa Fe, Argentina. Título de Bachiller en Ciencias con énfasis en biología, química, física y matemática." },
+      "platzi": { "institution": "Platzi", "desc": "Arduino. n8n. Docker. Flutter. Angular. Node.js. Python. Ingeniería de Software", "description": "La plataforma de educación en línea más grande de Latinoamérica con 5M+ estudiantes y 1.000+ cursos. Primera empresa LatAm aceptada por Y Combinator." },
+      "google": { "institution": "Google", "desc": "MLOps", "description": "Certificación profesional a través de Google Cloud Skills Boost en Machine Learning y MLOps con credenciales reconocidas por la industria." },
+      "microsoft": { "institution": "Microsoft", "desc": "C#", "description": "Certificación profesional vía Microsoft Learn en desarrollo C# y .NET, respaldada por una de las comunidades de desarrolladores más grandes del mundo." },
+      "itmaster": { "institution": "IT Master (CESSI)", "desc": "Algoritmos con Python", "description": "Instituto de capacitación tecnológica respaldado por CESSI (Cámara de la Industria Argentina del Software). Programas intensivos en algoritmos y programación." },
+      "argprog": { "institution": "Argentina Programa (CESSI)", "desc": "Programación básica con Ruby. Desarrollo Full-Stack", "description": "Iniciativa gubernamental con CESSI para formación en habilidades digitales. Currículo estructurado desde lógica de programación hasta desarrollo full-stack." },
+      "codoacodo": { "institution": "Codo a Codo 4.0", "desc": "Desarrollo Full-Stack", "description": "Programa gratuito del Gobierno de Buenos Aires. Currículo full-stack cubriendo HTML, CSS, JavaScript, PHP y MySQL." },
+      "movistar": { "institution": "Fundación Telefónica Movistar", "desc": "Ciberseguridad. Telecomunicaciones 5G", "description": "Programas de formación de la fundación educativa del Grupo Telefónica, enfocados en ciberseguridad y telecomunicaciones avanzadas." },
+      "freecodecamp": { "institution": "freeCodeCamp", "desc": "Diseño Web Responsive. Algoritmos JavaScript", "description": "Plataforma sin fines de lucro con 1.400+ horas de currículo gratuito en desarrollo web. Usada por 350.000+ visitantes mensuales de 160+ países." }
     }
+  },
+  "travels": {
+    "title": "Viajes",
+    "view_photos": "Ver fotos"
   },
   "contact": {
     "title": "¿Listo para trabajar juntos?",
     "subtitle": "Conectemos y hagamos realidad tu próximo proyecto",
     "footer": "Todos los derechos reservados."
   },
+  "content_type": {
+    "projects": "Projects",
+    "practice": "Simulator",
+    "reading": "Lectura"
+  },
+  "status": {
+    "offline_video": "Este video está alojado externamente y no está disponible sin conexión."
+  },
   "technology": {
     "title": "Tecnología",
     "subtitle": "Es la extensión de la capacidad humana a través de herramientas y la aplicación del ingenio para diseñar sistemas que resuelven el futuro.",
     "back": "Volver",
     "back_to_list": "Volver",
+    "resources": "recursos",
     "watch_video": "Ver vídeo",
+    "video_download": "Descargar video",
     "no_video": "No hay vídeo disponible aún",
     "not_found": "Artículo no encontrado",
     "filter_area": "Área",
@@ -89,7 +104,17 @@
     "clear_filters": "Limpiar filtros",
     "col_title": "Título",
     "col_difficulty": "Dificultad",
-    "no_results": "No hay artículos con estos filtros.",
+    "no_results": "No hay contenido aún.",
+    "projects_label": "proyectos",
+    "readings_label": "lecturas",
+    "type_projects": "Proyectos",
+    "type_video": "Videos",
+    "type_readings": "Lecturas",
+    "areas": {
+      "Software": { "name": "Software", "desc": "Desarrollo de aplicaciones, web, mobile y QA", "long_desc": "Es el conjunto de disciplinas dedicadas a diseñar, construir, probar y mantener aplicaciones y sistemas digitales. Abarca desde el desarrollo web y mobile con frameworks modernos hasta el aseguramiento de calidad con pruebas automatizadas, pasando por la ingeniería de datos, la inteligencia artificial y la ciberseguridad. El software transforma ideas en productos que resuelven problemas reales, conectando personas y automatizando procesos a escala global." },
+      "Hardware": { "name": "Hardware", "desc": "Electrónica, robótica y sistemas embebidos", "long_desc": "Es la disciplina que combina ingeniería electrónica y programación para diseñar, construir y programar dispositivos físicos y sistemas autónomos. Abarca desde microcontroladores como Arduino y Raspberry Pi hasta robots, drones y dispositivos IoT, pasando por sensores, actuadores y protocolos de comunicación. El hardware integra conocimientos de control, visión artificial e inteligencia artificial para crear máquinas capaces de interactuar con el mundo físico de forma precisa y autónoma." },
+      "Telecommuting": { "name": "Computación", "desc": "Redes, conectividad y comunicaciones", "long_desc": "Es el campo que abarca las tecnologías y sistemas de comunicación a distancia. Incluye redes de datos, protocolos de comunicación, infraestructura de conectividad, sistemas de telecomunicaciones y soluciones de comunicación digital que permiten la transmisión de información entre personas y sistemas en diversos entornos." }
+    },
     "difficulty": {
       "easy": "Fácil",
       "normal": "Normal",
@@ -99,14 +124,6 @@
       "1-flashing-led": {
         "title": "LED Flashes",
         "desc": "El 'Hola Mundo' de la electrónica. Un LED en el pin 13 parpadea cada segundo."
-      },
-      "2-hoenix": {
-        "title": "Robot inteligente",
-        "desc": "Un robot de juguete interactivo por voz con Raspberry Pi Zero 2 W que escucha, piensa y responde usando la API Whisper y llama3 de Groq."
-      },
-      "3-oled-1-3": {
-        "title": "Pantalla OLED 1.3\"",
-        "desc": "Una OLED SH1106 de 1.3\" muestra texto y un contador de uptime por I2C desde un Arduino."
       },
       "4-traffic-light": {
         "title": "Semáforo",
@@ -122,17 +139,119 @@
       }
     }
   },
+  "worship": {
+    "title": "Música",
+    "subtitle": "El lenguaje del alma expresado a través de la melodía y el ritmo para conectar con lo divino y edificar comunidad.",
+    "back": "Volver",
+    "back_to_list": "Volver",
+    "resources": "recursos",
+    "filter_genre": "Género",
+    "clear_filters": "Limpiar filtros",
+    "col_title": "Título",
+    "col_genre": "Género",
+    "col_difficulty": "Dificultad",
+    "no_results": "No hay contenido aún.",
+    "video_download": "Descargar video",
+    "no_video": "No hay vídeo disponible aún",
+    "no_score": "No hay partitura disponible aún",
+    "preview": "Vista previa",
+    "not_found": "Canción no encontrada",
+    "songs_label": "canciones",
+    "type_songs": "Canciones",
+    "type_video": "Videos",
+    "type_reading": "Lecturas",
+    "instruments": {
+      "piano": "Piano",
+      "guitar": "Guitarra",
+      "drums": "Batería"
+    },
+    "instruments_detail": {
+      "piano": { "name": "Piano", "desc": "Melodías, acordes y acompañamiento", "long_desc": "Es el instrumento armónico por excelencia en la adoración. Permite tocar melodías, acordes y líneas de bajo simultáneamente, sosteniendo la estructura armónica completa de una canción. Desde acompañamientos suaves hasta arreglos complejos, el piano ofrece un rango dinámico amplio que se adapta a cada momento del servicio. Aprender piano para la adoración desarrolla el oído armónico, la lectura musical y la sensibilidad para acompañar a la congregación." },
+      "guitar": { "name": "Guitarra", "desc": "Acordes, rasgueos y fingerpicking", "long_desc": "Es uno de los instrumentos más versátiles y accesibles en la adoración. Con seis cuerdas y un universo de acordes, la guitarra puede crear desde atmosferas íntimas con arpegios suaves hasta momentos de energía con rasgueos potentes. Es el instrumento ideal para liderar la adoración por su portabilidad y capacidad de acompañar el canto. Dominarla implica conocer progresiones de acordes, ritmos y técnicas de fingerpicking que enriquecen cada canción." },
+      "drums": { "name": "Batería", "desc": "Ritmos y patrones para adoración", "long_desc": "Es el corazón rítmico del equipo de adoración. La batería marca el tempo, define la dinámica y guía las transiciones entre secciones de cada canción. En el contexto de la adoración, tocar batería requiere sensibilidad para saber cuándo impulsar la energía y cuándo crear espacio con patrones sutiles. Desde baladas contemplativas hasta momentos de celebración, la batería sostiene la base sobre la cual toda la banda construye." }
+    },
+    "drum_parts": {
+      "hihat": "Hi-Hat",
+      "snare": "Redoblante",
+      "kick": "Bombo"
+    },
+    "difficulty": {
+      "easy": "Fácil",
+      "normal": "Normal",
+      "hard": "Difícil"
+    },
+    "simulator": {
+      "piano_title": "Simulador de piano",
+      "guitar_title": "Acordes de guitarra",
+      "drums_title": "Patrón de batería",
+      "play": "Reproducir",
+      "pause": "Pausar",
+      "restart": "Reiniciar",
+      "loop": "Loop",
+      "key": "Tonalidad",
+      "tempo": "Tempo",
+      "guide": "Figura",
+      "video": "Vídeo de referencia",
+      "help": "Sigue las notas que caen hasta tocar la línea del teclado y usa el vídeo como referencia visual.",
+      "guitar_help": "Acordes sobre la letra. Cambia de acorde cuando aparece un nuevo nombre.",
+      "drums_help": "Patrón rítmico de un compás en 4/4. Las celdas activas indican golpes."
+    },
+    "entries": {
+      "quiero-conocer-a-jesus": {
+        "title": "Quiero Conocer A Jesús",
+        "desc": "Adoración guiada con piano, guitarra y batería para practicar esta canción de entrega."
+      },
+      "vine-a-adorarte": {
+        "title": "Vine A Adorarte",
+        "desc": "Adoración guiada con piano, guitarra y batería para practicar esta canción de alabanza."
+      },
+      "no-hay-lugar-mas-alto": {
+        "title": "No Hay Lugar Más Alto",
+        "desc": "Adoración guiada con piano, guitarra y batería para practicar esta canción de exaltación."
+      },
+      "como-la-brisa": {
+        "title": "Como La Brisa",
+        "desc": "Adoración guiada con piano, guitarra y batería para practicar esta canción contemplativa."
+      },
+      "es-por-tu-gracia": {
+        "title": "Es Por Tu Gracia",
+        "desc": "Adoración guiada con piano, guitarra y batería para practicar esta canción de gratitud."
+      },
+      "lo-haras-otra-vez": {
+        "title": "Lo Harás Otra Vez",
+        "desc": "Adoración guiada con piano, guitarra y batería para practicar esta canción de fe."
+      },
+      "gracias": {
+        "title": "Gracias",
+        "desc": "Adoración guiada con piano, guitarra y batería para practicar esta canción de agradecimiento."
+      },
+      "al-taller-del-maestro": {
+        "title": "Al Taller Del Maestro",
+        "desc": "Adoración guiada con piano, guitarra y batería para practicar esta canción de restauración."
+      },
+      "yo-navegare": {
+        "title": "Yo Navegaré",
+        "desc": "Simulador guiado de piano para practicar la figura de introducción con mano derecha y bajo."
+      }
+    }
+  },
   "interculturality": {
     "title": "Interculturalidad",
     "subtitle": "Es el arte de habitar el mundo sin fronteras mentales mediante el dominio de idiomas y viajes para conectar con la esencia de otras realidades.",
     "back": "Volver",
-    "no_content": "No hay contenido aún."
+    "no_content": "No hay contenido aún.",
+    "languages": {
+      "english": "Inglés",
+      "spanish": "Español",
+      "portuguese": "Portugués"
+    }
   },
   "kinesthetic": {
-    "title": "Cinestesia",
-    "subtitle": "Es la inteligencia del cuerpo en movimiento y la conciencia profunda que permite dominar el ritmo y el equilibrio sin necesidad de pensar.",
+    "title": "Deporte",
+    "subtitle": "Es la expresión del cuerpo en movimiento, donde la disciplina y el entrenamiento se combinan para superar límites físicos y mentales.",
     "back": "Volver",
     "back_to_list": "Volver",
+    "resources": "recursos",
     "watch_video": "Ver vídeo",
     "no_video": "No hay vídeo disponible aún",
     "not_found": "Entrada no encontrada",
@@ -141,11 +260,21 @@
     "col_title": "Título",
     "col_discipline": "Disciplina",
     "col_difficulty": "Dificultad",
-    "no_results": "No hay entradas con estos filtros.",
+    "no_results": "No hay contenido aún.",
+    "practices_label": "prácticas",
+    "readings_label": "lecturas",
+    "type_practice": "Prácticas",
+    "type_video": "Videos",
+    "type_reading": "Lecturas",
     "disciplines": {
-      "freestyle": "Freestyle",
+      "workout": "Calistenia",
       "swimming": "Natación",
-      "drums": "Batería"
+      "football": "Fútbol"
+    },
+    "disciplines_detail": {
+      "workout": { "name": "Calistenia", "desc": "Fuerza, acondicionamiento y fitness", "long_desc": "Entrenamiento físico enfocado en desarrollar fuerza, resistencia y condición física general a través de rutinas de ejercicio estructuradas. Desde calistenia con peso corporal hasta ejercicios con pesas, las disciplinas de entrenamiento desarrollan músculo, capacidad cardiovascular y resiliencia mental. Es la base del rendimiento atlético y un camino para superar los límites físicos y mentales." },
+      "swimming": { "name": "Natación", "desc": "Técnicas y estilos de natación", "long_desc": "Es la disciplina acuática que combina técnica, resistencia y eficiencia en el medio líquido. Abarca los cuatro estilos competitivos: crol, espalda, mariposa y pecho, cada uno con su mecánica específica de brazada, patada y respiración. La natación desarrolla la capacidad cardiovascular, fortalece el cuerpo de forma integral y enseña a moverse con fluidez en el agua. Es uno de los deportes más completos que existen." },
+      "football": { "name": "Fútbol", "desc": "Trucos y técnicas con balón", "long_desc": "Es el arte de manipular un balón con creatividad y destreza usando cualquier parte del cuerpo excepto las manos. Combina control, equilibrio y expresión corporal en secuencias de trucos que desafían la gravedad. Desde malabares básicos con el pie hasta combinaciones aéreas complejas, el fútbol freestyle desarrolla coordinación, paciencia y estilo personal. Es una disciplina que se practica en cualquier espacio y que transforma un simple balón en un instrumento de expresión." }
     },
     "difficulty": {
       "easy": "Fácil",

@@ -57,7 +57,8 @@
                 "output": "assets"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": ["src/styles.scss"],
+            "allowedCommonJsDependencies": []
           },
           "configurations": {
             "production": {
@@ -73,6 +74,7 @@
                   "maximumError": "16kB"
                 }
               ],
+              "serviceWorker": "ngsw-config.json",
               "outputHashing": "all"
             },
             "development": {
@@ -85,6 +87,11 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "prebundle": {
+              "exclude": ["marked"]
+            }
+          },
           "configurations": {
             "production": {
               "buildTarget": "portfolio:build:production"

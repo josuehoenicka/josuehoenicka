@@ -1,14 +1,14 @@
 .discipline-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 5.5rem 1.5rem 0;
+  padding: 5rem 1.25rem 0;
 
   &--404 {
     text-align: center;
     padding-top: 10rem;
 
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       color: var(--text-primary);
       margin-bottom: 1rem;
     }
@@ -23,15 +23,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
   }
 
   &__back {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.2rem;
     color: var(--text-secondary);
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     transition: color 0.2s;
 
     &:hover {
@@ -45,9 +45,9 @@
     @media (max-width: 768px) {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.25rem;
       color: var(--text-secondary);
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       cursor: pointer;
       transition: color 0.2s;
 
@@ -58,30 +58,30 @@
   }
 
   &__header {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   &__meta {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.75rem;
+    gap: 0.35rem;
+    margin-bottom: 0.5rem;
   }
 
   &__discipline {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--text-secondary);
     background: rgba(255, 255, 255, 0.05);
-    padding: 0.2rem 0.5rem;
+    padding: 0.15rem 0.4rem;
     border-radius: 4px;
   }
 
   &__title {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 800;
     color: var(--text-primary);
   }
@@ -102,8 +102,8 @@
 
   &__content {
     color: var(--text-primary);
-    line-height: 1.7;
-    font-size: 0.9rem;
+    line-height: 1.6;
+    font-size: 0.78rem;
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 70vh;
@@ -121,11 +121,11 @@
     }
 
     ::ng-deep h2 {
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin: 2rem 0 0.75rem;
+      margin: 1.5rem 0 0.5rem;
       color: var(--text-secondary);
       padding-bottom: 0.4rem;
       border-bottom: 1px solid var(--border);
@@ -137,17 +137,17 @@
 
     ::ng-deep p {
       color: var(--text-secondary);
-      margin-bottom: 0.85rem;
+      margin-bottom: 0.65rem;
     }
 
     ::ng-deep ul, ::ng-deep ol {
-      padding-left: 1.5rem;
-      margin-bottom: 0.85rem;
+      padding-left: 1.25rem;
+      margin-bottom: 0.65rem;
 
       li {
         color: var(--text-secondary);
-        margin-bottom: 0.5rem;
-        line-height: 1.6;
+        margin-bottom: 0.35rem;
+        line-height: 1.5;
 
         &::marker {
           color: var(--text-secondary);
@@ -162,7 +162,7 @@
     ::ng-deep hr {
       border: none;
       border-top: 1px solid var(--border);
-      margin: 1.5rem 0;
+      margin: 1.25rem 0;
     }
 
     ::ng-deep .code-block {
@@ -182,7 +182,7 @@
       }
 
       .code-block__lang {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         color: var(--text-secondary);
         font-weight: 500;
         text-transform: uppercase;
@@ -211,7 +211,7 @@
         background: none;
         border: none;
         color: var(--text-secondary);
-        font-size: 0.65rem;
+        font-size: 0.6rem;
         font-family: inherit;
         padding: 0.25rem 0.6rem;
         cursor: pointer;
@@ -251,7 +251,7 @@
 
         code {
           font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-          font-size: 0.8rem;
+          font-size: 0.72rem;
           color: #e6e6e6;
           line-height: 1.7;
           background: none;
@@ -264,7 +264,7 @@
 
     ::ng-deep :not(pre) > code {
       font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       background: #1e1e22;
       color: #d4d4d4;
       padding: 0.2rem 0.45rem;
@@ -317,6 +317,13 @@
     height: 100%;
   }
 
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+  }
+
   .video-placeholder {
     width: 100%;
     height: 100%;
@@ -332,7 +339,7 @@
     }
 
     p {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       text-align: center;
       margin: 0;
       opacity: 0.6;

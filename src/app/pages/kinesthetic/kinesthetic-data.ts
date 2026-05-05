@@ -1,6 +1,6 @@
 import { Lang } from '../../services/i18n.service';
 
-export type Discipline = 'freestyle' | 'swimming' | 'drums';
+export type Discipline = 'workout' | 'swimming' | 'football';
 export type Difficulty = 'easy' | 'normal' | 'hard';
 
 export interface KinestheticEntry {
@@ -16,7 +16,7 @@ export const KINESTHETIC_ENTRIES: KinestheticEntry[] = [
   {
     id: 1,
     slug: '1-freestyle-session',
-    discipline: 'freestyle',
+    discipline: 'football',
     difficulty: 'normal',
     youtube: 'https://www.youtube.com/embed/8449F5VzXy0',
     content: {

@@ -1,0 +1,29 @@
+.biography {
+  &__quote-area {
+    display: flex;
+    gap: 1rem;
+
+    @media (min-width: 768px) {
+      gap: 1.25rem;
+    }
+  }
+
+  &__line {
+    width: 2px;
+    flex-shrink: 0;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    border-radius: 2px;
+  }
+
+  &__quote {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-style: italic;
+
+    @media (min-width: 768px) {
+      font-size: 1.1rem;
+      line-height: 1.9;
+    }
+  }
+}

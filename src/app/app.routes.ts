@@ -7,5 +7,7 @@ export const routes: Routes = [
   { path: 'interculturality', loadComponent: () => import('./pages/interculturality/interculturality').then(m => m.Interculturality) },
   { path: 'kinesthetic', loadComponent: () => import('./pages/kinesthetic/kinesthetic').then(m => m.Kinesthetic) },
   { path: 'kinesthetic/discipline/:slug', loadComponent: () => import('./pages/kinesthetic/discipline/discipline').then(m => m.DisciplinePage) },
+  { path: 'worship', loadComponent: () => import('./pages/worship/worship').then(m => m.Worship) },
+  { path: 'worship/song/:slug', loadComponent: () => import('./pages/worship/song/song').then(m => m.WorshipSongPage) },
   { path: '**', redirectTo: '' },
 ];

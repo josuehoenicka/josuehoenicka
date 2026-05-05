@@ -1,5 +1,11 @@
-﻿import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { I18nService } from '../../services/i18n.service';
+
+interface Project {
+  company: string;
+  websiteUrl: string;
+  image: string;
+}
 
 @Component({
   selector: 'app-experience',
@@ -8,35 +14,31 @@ import { I18nService } from '../../services/i18n.service';
 })
 export class Experience {
   readonly i18n = inject(I18nService);
-  readonly expandedDescs = signal<Set<number>>(new Set());
+  readonly lightbox = signal<Project | null>(null);
 
-  get experiences(): { company: string; period: any; roles: string[]; description: any; tags: string[] }[] {
-    return [
-      {
-        company: 'Heynow',
-        period: this.i18n.t('experience.heynow_period'),
-        roles: ['Front-End Architect', 'Full Stack AI Developer'],
-        description: this.i18n.t('experience.heynow_desc'),
-        tags: ['Angular', 'Azure', 'Docker', 'Kubernetes', 'MongoDB', 'Node.js', 'SQLServer'],
-      },
-      {
-        company: 'LiberaSOFT',
-        period: this.i18n.t('experience.liberasoft_period'),
-        roles: ['AI Integration Developer', 'Front-End Developer', 'Full Stack Developer', 'Sr. Front-End Developer'],
-        description: this.i18n.t('experience.liberasoft_desc'),
-        tags: ['Angular', 'Docker', 'MongoDB', 'n8n', 'Node.js', 'PostgreSQL'],
-      },
-    ];
+  readonly experiences: Project[] = [
+    { company: 'Heynow', websiteUrl: 'https://heynowagents.ai/', image: 'assets/projects/heynow.png' },
+    { company: 'Verifood', websiteUrl: 'https://verifood.io/', image: 'assets/projects/verifood.png' },
+    { company: 'LiberaSOFT', websiteUrl: 'https://liberasoft.cloud', image: 'assets/projects/liberasoft.png' },
+    { company: 'Revenue B2B', websiteUrl: 'https://revenueb2b.com/', image: 'assets/projects/revenue.png' },
+    { company: 'L.E.R', websiteUrl: 'https://ecom.laestamosrompiendo.com/', image: 'assets/projects/laestamosrompiendo.png' },
+  ];
+
+  get looped(): Project[] {
+    return [...this.experiences, ...this.experiences];
   }
 
-  isExpanded(index: number): boolean {
-    return this.expandedDescs().has(index);
+  openLightbox(project: Project) {
+    this.lightbox.set(project);
   }
 
-  toggleDesc(index: number) {
-    const current = new Set(this.expandedDescs());
-    if (current.has(index)) current.delete(index);
-    else current.add(index);
-    this.expandedDescs.set(current);
+  closeLightbox() {
+    this.lightbox.set(null);
+  }
+
+  onBackdropClick(event: MouseEvent) {
+    if ((event.target as HTMLElement).classList.contains('lightbox')) {
+      this.closeLightbox();
+    }
   }
 }

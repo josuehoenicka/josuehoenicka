@@ -1,0 +1,68 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/index.html",
+          "/*.css",
+          "/*.js",
+          "/manifest.webmanifest",
+          "/favicon.ico",
+          "/favicon.svg"
+        ]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/logos/**",
+          "/**/*.(svg|ico|png|jpg|jpeg|webp|gif|mp4|webm|ogg|m4v)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "google-fonts-styles",
+      "urls": [
+        "https://fonts.googleapis.com/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 10,
+        "maxAge": "7d",
+        "timeout": "3s"
+      }
+    },
+    {
+      "name": "google-fonts-files",
+      "urls": [
+        "https://fonts.gstatic.com/**"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 20,
+        "maxAge": "30d"
+      }
+    },
+    {
+      "name": "flag-icons",
+      "urls": [
+        "https://flagcdn.com/**"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 20,
+        "maxAge": "30d"
+      }
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-﻿<section id="about" class="section summary">
+<section id="about" class="section summary">
   <div class="container">
     <h2 class="section-title">{{ i18n.t('summary.title') }}</h2>
 
@@ -7,44 +7,6 @@
       <blockquote class="summary__quote">
         "{{ i18n.t('summary.quote') }}"
       </blockquote>
-    </div>
-
-    <div class="summary__grid">
-      <!-- Languages -->
-      <div class="summary__col">
-        <h3 class="summary__heading">{{ i18n.t('summary.languages') }}</h3>
-        <div class="summary__icons">
-          @for (lang of languages; track lang.key) {
-            <div class="icon-item" [attr.data-tooltip]="i18n.t(lang.key)">
-              <img [src]="lang.flag" [alt]="i18n.t(lang.key)" class="icon-item__flag" />
-            </div>
-          }
-        </div>
-      </div>
-
-      <!-- Technologies -->
-      <div class="summary__col">
-        <h3 class="summary__heading">{{ i18n.t('summary.technologies') }}</h3>
-        <div class="summary__icons">
-          @for (tech of technologies; track tech.label) {
-            <div class="icon-item" [attr.data-tooltip]="tech.label">
-              <img [src]="tech.icon" [alt]="tech.label" class="icon-item__img" />
-            </div>
-          }
-        </div>
-      </div>
-
-      <!-- Skills -->
-      <div class="summary__col">
-        <h3 class="summary__heading">{{ i18n.t('summary.skills') }}</h3>
-        <div class="summary__icons summary__icons--skills">
-          @for (skill of skills; track skill.key) {
-            <div class="icon-item" [attr.data-tooltip]="i18n.t(skill.key)">
-              <img [src]="skill.icon" [alt]="i18n.t(skill.key)" class="icon-item__skill" />
-            </div>
-          }
-        </div>
-      </div>
     </div>
   </div>
 </section>

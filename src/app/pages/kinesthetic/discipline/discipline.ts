@@ -1,10 +1,12 @@
 import { Component, inject, computed, signal, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { marked } from 'marked';
 import { I18nService } from '../../../services/i18n.service';
 import { KINESTHETIC_ENTRIES, KinestheticEntry } from '../kinesthetic-data';
 import { configureMarkedRenderer, handleCodeBlockClick } from '../../../utils/code-renderer';
+import { resolveVideoSource } from '../../../utils/video-source';
+import { NetworkStatusService } from '../../../services/network-status.service';
 
 @Component({
   selector: 'app-discipline',
@@ -14,8 +16,10 @@ import { configureMarkedRenderer, handleCodeBlockClick } from '../../../utils/co
 })
 export class DisciplinePage implements OnInit {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private sanitizer = inject(DomSanitizer);
   readonly i18n = inject(I18nService);
+  readonly network = inject(NetworkStatusService);
 
   readonly entry = signal<KinestheticEntry | null>(null);
 
@@ -32,11 +36,21 @@ export class DisciplinePage implements OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(html);
   });
 
-  readonly youtubeUrl = computed<SafeResourceUrl | null>(() => {
+  readonly videoSource = computed(() => {
     const e = this.entry();
-    if (!e || !e.youtube) return null;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(e.youtube);
+    return resolveVideoSource(e?.youtube, this.sanitizer);
   });
+
+  readonly youtubeUrl = computed<SafeResourceUrl | null>(() => {
+    const video = this.videoSource();
+    return video?.kind === 'youtube' ? video.safeUrl : null;
+  });
+
+  goBack(event: MouseEvent): void {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    this.router.navigateByUrl('/kinesthetic');
+  }
 
   onContentClick(event: Event): void {
     handleCodeBlockClick(event);

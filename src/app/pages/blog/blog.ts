@@ -1,88 +1,71 @@
 import { Component, inject, signal, computed } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { I18nService } from '../../services/i18n.service';
 import { ARTICLES, type Article } from './blog-data';
 
-type SortCol = 'id' | 'title' | 'area' | 'difficulty';
-type SortDir = 'asc' | 'desc';
-
-const DIFF_ORDER: Record<string, number> = { easy: 0, normal: 1, hard: 2 };
-
 @Component({
   selector: 'app-blog',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './blog.html',
   styleUrl: './blog.scss',
 })
 export class Blog {
   readonly i18n = inject(I18nService);
+  private readonly router = inject(Router);
 
-  readonly areas = [
-    'AI',
-    'Blockchain',
-    'Cloud',
-    'Cybersecurity',
-    'Data',
-    'ER',
-    'IoT',
-    'Maths',
-    'Mobile',
-    'Robotics',
-    'Science',
-    'Web',
-  ];
-
+  readonly areas = ['Telecommuting', 'Software', 'Hardware'];
   readonly articles = ARTICLES;
+  readonly pageSize = 5;
 
   readonly selectedAreas = signal<Set<string>>(new Set());
-  readonly sortCol = signal<SortCol>('id');
-  readonly sortDir = signal<SortDir>('asc');
+  readonly page = signal(1);
 
   readonly filtered = computed(() => {
-    let list = [...this.articles];
-    const areas = this.selectedAreas();
-    if (areas.size > 0) list = list.filter(a => areas.has(a.area));
-
-    const col = this.sortCol();
-    const dir = this.sortDir();
-    const mult = dir === 'asc' ? 1 : -1;
-    list.sort((a, b) => {
-      switch (col) {
-        case 'id': return (a.id - b.id) * mult;
-        case 'title': {
-          const ta = this.i18n.t('technology.articles.' + a.slug + '.title');
-          const tb = this.i18n.t('technology.articles.' + b.slug + '.title');
-          return ta.localeCompare(tb) * mult;
-        }
-        case 'area': return a.area.localeCompare(b.area) * mult;
-        case 'difficulty': return (DIFF_ORDER[a.difficulty] - DIFF_ORDER[b.difficulty]) * mult;
-      }
-    });
-    return list;
+    const selected = this.selectedAreas();
+    if (selected.size === 0) return [...this.articles];
+    return this.articles.filter(a => selected.has(a.area));
   });
 
-  toggleArea(area: string) {
+  readonly paginated = computed(() => {
+    const list = this.filtered();
+    const start = (this.page() - 1) * this.pageSize;
+    return list.slice(start, start + this.pageSize);
+  });
+
+  readonly totalPages = computed(() => Math.max(1, Math.ceil(this.filtered().length / this.pageSize)));
+
+  isAreaSelected(area: string): boolean {
+    return this.selectedAreas().has(area);
+  }
+
+  selectArea(area: string) {
     const current = new Set(this.selectedAreas());
-    if (current.has(area)) current.delete(area);
-    else current.add(area);
-    this.selectedAreas.set(current);
-  }
-
-  toggleSort(col: SortCol) {
-    if (this.sortCol() === col) {
-      this.sortDir.set(this.sortDir() === 'asc' ? 'desc' : 'asc');
+    if (current.has(area)) {
+      current.delete(area);
     } else {
-      this.sortCol.set(col);
-      this.sortDir.set('asc');
+      current.add(area);
     }
+    this.selectedAreas.set(current);
+    this.page.set(1);
   }
 
-  sortIcon(col: SortCol): string {
-    if (this.sortCol() !== col) return '';
-    return this.sortDir() === 'asc' ? '▲' : '▼';
+  goToPage(p: number) {
+    this.page.set(p);
   }
 
-  difficultyLabel(d: string): string {
-    return this.i18n.t('technology.difficulty.' + d);
+  thumbnailUrl(youtube?: string): string {
+    if (!youtube) return '';
+    const match = youtube.match(/(?:embed\/|youtu\.be\/|v=)([^?&/]+)/);
+    return match ? `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg` : '';
+  }
+
+  areaLabel(area: string): string {
+    return this.i18n.t('technology.areas.' + area + '.name');
+  }
+
+  openArticle(event: MouseEvent, article: Article) {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    this.router.navigateByUrl(`/technology/project/${article.slug}`);
   }
 }

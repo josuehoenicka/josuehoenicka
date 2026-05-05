@@ -1,10 +1,10 @@
-﻿.navbar {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1rem 1.25rem;
+  padding: 0.5rem 1.25rem;
   transition: all 0.3s ease;
 
   background: rgba(10, 10, 10, 0.95);
@@ -12,7 +12,7 @@
 
   &.scrolled {
     border-bottom: 1px solid var(--border);
-    padding: 0.75rem 1.25rem;
+    padding: 0.5rem 1.25rem;
   }
 
   &__inner {
@@ -20,30 +20,32 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   &__logo {
     display: none;
 
     @media (min-width: 768px) {
-      display: block;
-    }
-
-    .logo-text {
-      font-size: 1.5rem;
-      font-weight: 800;
+      display: flex;
+      align-items: center;
       color: #ffffff;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--text-secondary);
+      }
     }
   }
 
   &__links {
     display: none;
-    gap: 0.25rem;
+    gap: 0.15rem;
 
     @media (min-width: 768px) {
       display: flex;
       align-items: center;
+      justify-content: center;
     }
   }
 
@@ -53,6 +55,9 @@
     justify-content: center;
     gap: 0.25rem;
     width: 100%;
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
 
     @media (min-width: 768px) {
       display: none;
@@ -74,8 +79,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.15rem;
-  padding: 0.35rem 0.25rem;
+  gap: 0.1rem;
+  padding: 0.25rem 0.2rem;
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
   font-size: 0.5rem;
@@ -86,9 +91,21 @@
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
+  position: relative;
+  z-index: 1;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 
   svg {
     flex-shrink: 0;
+    pointer-events: none;
+    width: 18px;
+    height: 18px;
+  }
+
+  span {
+    pointer-events: none;
   }
 
   &:hover {
@@ -103,13 +120,22 @@
 }
 
 .nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  padding: 0.5rem 0.875rem;
+  padding: 0.32rem 0.48rem;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
   white-space: nowrap;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
 
   &:hover {
     color: var(--text-primary);
@@ -117,91 +143,15 @@
   }
 
   &.active {
-    color: #0a0a0a;
-    background: #ffffff;
-    font-weight: 600;
-  }
-
-  &--home {
-    font-weight: 700;
     color: #ffffff;
-    margin-right: 0.25rem;
-
-    &:hover {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    &.active {
-      color: #0a0a0a;
-      background: #ffffff;
-      font-weight: 700;
-    }
-  }
-}
-
-.lang-switcher {
-  position: relative;
-
-  &--desktop {
-    display: none;
-    @media (min-width: 768px) { display: block; }
-  }
-
-  &--mobile {
-    display: flex;
-    flex: 1;
-    min-width: 0;
-    @media (min-width: 768px) { display: none; }
-
-    .mobile-nav-btn {
-      width: 100%;
-    }
-  }
-
-  &__btn {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    color: var(--text-secondary);
-    font-size: 0.8rem;
+    background: rgba(255, 255, 255, 0.1);
     font-weight: 600;
-    padding: 0.375rem 0.625rem;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    transition: all 0.2s ease;
-
-    &:hover {
-      border-color: var(--accent);
-      color: var(--text-primary);
-    }
   }
 
-  &__menu {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    overflow: hidden;
-    min-width: 140px;
-    z-index: 1010;
-    animation: fadeIn 0.15s ease;
-  }
-
-  &__option {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.5rem 0.75rem;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    transition: all 0.2s ease;
-
-    &:hover { background: var(--accent-subtle); color: var(--text-primary); }
-    &.active { color: var(--accent); }
+  &--button {
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
   }
 }
 
@@ -210,6 +160,93 @@
   height: 14px;
   object-fit: cover;
   border-radius: 2px;
+}
+
+.lang-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.lang-modal {
+  background: var(--bg-card, #1a1a1a);
+  border: 1px solid var(--border, #333);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 320px;
+  overflow: hidden;
+  animation: modalSlideIn 0.25s ease;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border, #333);
+  }
+
+  &__title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary, #fff);
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    color: var(--text-secondary, #999);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: var(--text-primary, #fff);
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  &__options {
+    padding: 0.5rem;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary, #999);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-primary, #fff);
+    }
+
+    &.active {
+      color: var(--accent, #4ade80);
+    }
+
+    .lang-flag-img {
+      width: 24px;
+      height: 16px;
+    }
+  }
+
+  &__check {
+    margin-left: auto;
+    color: var(--accent, #4ade80);
+  }
 }
 
 .overlay {
@@ -224,4 +261,15 @@
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }

@@ -1,0 +1,552 @@
+.worship-song {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 5rem 1.25rem 3rem;
+
+  &--404 {
+    text-align: center;
+
+    h1 {
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+    }
+
+    a {
+      color: var(--text-secondary);
+      text-decoration: underline;
+    }
+  }
+
+  &__nav {
+    margin-bottom: 1rem;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    span {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  &__title {
+    font-size: 0.95rem;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  &__summary {
+    max-width: 60ch;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  &__instruments {
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.7fr);
+    gap: 1.5rem;
+    align-items: start;
+
+    &--single {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    @media (max-width: 980px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.instrument-tab {
+  min-height: 32px;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+  }
+
+  &--active {
+    background: #ffffff;
+    color: #0a0a0a;
+    border-color: #ffffff;
+
+    &:hover {
+      color: #0a0a0a;
+    }
+  }
+
+  &--disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: var(--border-light);
+      color: var(--text-secondary);
+    }
+  }
+}
+
+.content-card {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01)),
+    rgba(8, 8, 8, 0.92);
+}
+
+.content-card {
+  padding: 1.1rem;
+
+  h2 {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  &__help {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  &__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+    text-align: center;
+
+    svg { opacity: 0.3; }
+    p { margin: 0; font-size: 0.85rem; opacity: 0.7; }
+  }
+
+  &--video {
+    padding: 0.9rem;
+  }
+
+  &__video-frame {
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: #000000;
+    margin-bottom: 0.85rem;
+
+    iframe,
+    video {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    video {
+      object-fit: contain;
+    }
+  }
+
+  &__video-placeholder {
+    aspect-ratio: 9 / 16;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: #000000;
+    color: var(--text-secondary);
+    margin-bottom: 0.85rem;
+    text-align: center;
+    padding: 1.25rem;
+
+    svg {
+      opacity: 0.3;
+    }
+
+    p {
+      margin: 0;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+  }
+
+  &__download {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0.65rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    font-size: 0.82rem;
+    font-weight: 600;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+}
+
+.chord-chart {
+  padding-top: 0.25rem;
+}
+
+.chord-section {
+  margin-bottom: 1.25rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.65rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.chord-line {
+  position: relative;
+  padding-top: 1.1rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.chord-segment {
+  position: relative;
+  white-space: pre-wrap;
+}
+
+.chord-name {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  color: #e8915a;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.drums-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.sim-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 32px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+  }
+
+  &--active {
+    background: #ffffff;
+    color: #0a0a0a;
+    border-color: #ffffff;
+
+    &:hover {
+      color: #0a0a0a;
+    }
+  }
+}
+
+.drums-grid {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0 0.35rem;
+
+  @media (min-width: 641px) {
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0 0.5rem;
+  }
+
+  &__labels {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    color: var(--text-secondary);
+
+    svg { width: 18px; height: 18px; }
+  }
+
+  &__steps {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.2rem;
+  }
+
+  &__cell {
+    height: 30px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.02);
+    transition: box-shadow 0.1s;
+
+    &--beat {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    &--active {
+      background: rgba(255, 255, 255, 0.75);
+      border-color: rgba(255, 255, 255, 0.9);
+    }
+
+    &--current {
+      box-shadow: 0 0 0 2px #e05555;
+    }
+  }
+
+  &__beats {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.2rem;
+    margin-top: 0.25rem;
+  }
+
+  &__beat-label {
+    text-align: center;
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  }
+}
+
+.drum-kit {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+
+  &__svg {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+
+  &__cymbal {
+    fill: rgba(255, 255, 255, 0.08);
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 1.5;
+    transition: all 0.08s;
+  }
+
+  &__stand {
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2;
+  }
+
+  &__foot-base {
+    fill: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1.5;
+  }
+
+  &__drum-body {
+    fill: rgba(255, 255, 255, 0.06);
+    stroke: rgba(255, 255, 255, 0.25);
+    stroke-width: 1.5;
+  }
+
+  &__drum-side {
+    stroke: none;
+  }
+
+  &__drum-top {
+    fill: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 1.5;
+    transition: all 0.08s;
+  }
+
+  &__kick-body {
+    fill: rgba(255, 255, 255, 0.06);
+    stroke: rgba(255, 255, 255, 0.25);
+    stroke-width: 1.5;
+    transition: all 0.08s;
+  }
+
+  &__kick-hole {
+    fill: rgba(255, 255, 255, 0.03);
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 1;
+  }
+
+  &__stick {
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: all 0.08s;
+  }
+
+  &__fist {
+    fill: rgba(255, 255, 255, 0.15);
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 1.5;
+    transition: all 0.08s;
+  }
+
+  &__pedal-board {
+    fill: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 1;
+    transition: all 0.08s;
+  }
+
+  &__pedal-arm {
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2;
+  }
+
+  &__shoe {
+    fill: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255, 255, 255, 0.25);
+    stroke-width: 1.5;
+    transition: all 0.08s;
+  }
+
+  // Hi-hat active: red cymbal + stick hits down
+  &__hihat--active {
+    .drum-kit__cymbal {
+      fill: rgba(220, 50, 50, 0.5);
+      stroke: #e05555;
+    }
+
+    .drum-kit__stick {
+      stroke: #e05555;
+      stroke-width: 4;
+    }
+
+    .drum-kit__fist {
+      fill: rgba(220, 50, 50, 0.4);
+      stroke: #e05555;
+    }
+  }
+
+  // Snare active: red drum top + stick hits down
+  &__snare--active {
+    .drum-kit__drum-top {
+      fill: rgba(220, 50, 50, 0.5);
+      stroke: #e05555;
+    }
+
+    .drum-kit__stick {
+      stroke: #e05555;
+      stroke-width: 4;
+    }
+
+    .drum-kit__fist {
+      fill: rgba(220, 50, 50, 0.4);
+      stroke: #e05555;
+    }
+  }
+
+  // Kick active: red drum body + foot presses pedal
+  &__kick--active {
+    .drum-kit__kick-body {
+      fill: rgba(220, 50, 50, 0.4);
+      stroke: #e05555;
+    }
+
+    .drum-kit__kick-hole {
+      fill: rgba(220, 50, 50, 0.2);
+      stroke: rgba(220, 50, 50, 0.5);
+    }
+
+    .drum-kit__shoe {
+      fill: rgba(220, 50, 50, 0.5);
+      stroke: #e05555;
+      transform: translateY(-8px);
+    }
+
+    .drum-kit__pedal-board {
+      fill: rgba(220, 50, 50, 0.3);
+      stroke: #e05555;
+      transform: translateY(-4px);
+    }
+  }
+}

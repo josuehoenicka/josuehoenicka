@@ -1,49 +1,45 @@
 <section class="blog" id="blog">
-  <div class="blog__header">
-    <a routerLink="/" class="blog__back">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-      {{ i18n.t('technology.back') }}
-    </a>
-    <h1 class="blog__title">{{ i18n.t('technology.title') }}</h1>
-    <p class="blog__subtitle">{{ i18n.t('technology.subtitle') }}</p>
-  </div>
-
-  <!-- Area filters -->
-  <div class="blog__topics">
+  <div class="chip-row">
     @for (area of areas; track area) {
-      <button
-        class="topic"
-        [class.active]="selectedAreas().has(area)"
-        (click)="toggleArea(area)">
-        {{ area }}
+      <button class="chip" [class.chip--active]="isAreaSelected(area)" (click)="selectArea(area)">
+        {{ i18n.t('technology.areas.' + area + '.name') }}
       </button>
     }
   </div>
 
-  <!-- Table -->
-  <div class="blog__table">
-    <div class="table__head">
-      <span class="col-id col-sortable" (click)="toggleSort('id')">ID <span class="sort-icon">{{ sortIcon('id') }}</span></span>
-      <span class="col-diff-dot-head col-sortable" (click)="toggleSort('difficulty')"><span class="sort-icon">{{ sortIcon('difficulty') }}</span></span>
-      <span class="col-title col-sortable" (click)="toggleSort('title')">{{ i18n.t('technology.col_title') }} <span class="sort-icon">{{ sortIcon('title') }}</span></span>
-      <span class="col-area col-sortable" (click)="toggleSort('area')">{{ i18n.t('technology.filter_area') }} <span class="sort-icon">{{ sortIcon('area') }}</span></span>
-      <span class="col-diff col-sortable" (click)="toggleSort('difficulty')">{{ i18n.t('technology.col_difficulty') }} <span class="sort-icon">{{ sortIcon('difficulty') }}</span></span>
-    </div>
-
-    @for (article of filtered(); track article.id) {
-      <a class="table__row" [routerLink]="['/technology/project', article.slug]">
-        <span class="col-id">{{ article.id }}</span>
-        <span class="col-diff-dot" [attr.data-diff]="article.difficulty"></span>
-        <span class="col-title">{{ i18n.t('technology.articles.' + article.slug + '.title') }}</span>
-        <span class="col-area col-area--tag">{{ article.area }}</span>
-        <span class="col-diff" [attr.data-diff]="article.difficulty">{{ difficultyLabel(article.difficulty) }}</span>
+  <div class="media-list">
+    @for (item of paginated(); track item.id) {
+      <a class="media-row" [href]="'/technology/project/' + item.slug" (click)="openArticle($event, item)">
+        <div class="media-row__thumb">
+          @if (thumbnailUrl(item.youtube)) {
+            <img [src]="thumbnailUrl(item.youtube)" [alt]="i18n.t('technology.articles.' + item.slug + '.title')" class="media-row__img" />
+          } @else {
+            <div class="media-row__placeholder">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            </div>
+          }
+        </div>
+        <div class="media-row__info">
+          <span class="media-row__title">{{ i18n.t('technology.articles.' + item.slug + '.title') }}</span>
+          <span class="media-row__desc">{{ areaLabel(item.area) }} ({{ item.techs.join(', ') }})</span>
+        </div>
       </a>
     }
 
-    @if (filtered().length === 0) {
-      <div class="table__empty">
+    @if (paginated().length === 0) {
+      <div class="media-list__empty">
         {{ i18n.t('technology.no_results') }}
       </div>
     }
   </div>
+
+  @if (totalPages() > 1) {
+    <div class="pagination">
+      <button class="pagination__btn" [disabled]="page() === 1" (click)="goToPage(page() - 1)">‹</button>
+      @for (p of [].constructor(totalPages()); track $index) {
+        <button class="pagination__btn" [class.pagination__btn--active]="page() === $index + 1" (click)="goToPage($index + 1)">{{ $index + 1 }}</button>
+      }
+      <button class="pagination__btn" [disabled]="page() === totalPages()" (click)="goToPage(page() + 1)">›</button>
+    </div>
+  }
 </section>

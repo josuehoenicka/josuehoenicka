@@ -1,0 +1,432 @@
+{
+  "name": "🫀 Core",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## 🫀 Core — Sistema de Recordatorios WhatsApp\n\n**Persona1** envía mensaje (texto/audio) → IA extrae datos → Agenda recordatorio → Envía a **Persona2** en la fecha/hora indicada",
+        "height": 100,
+        "width": 2800,
+        "color": 5
+      },
+      "id": "d0a0a0a0-0000-0000-0000-000000000001",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-100, -80]
+    },
+    {
+      "parameters": {
+        "content": "### 📥 Input esperado del workflow padre\n```json\n{\n  \"senderPhone\": \"584121234567\",\n  \"messageType\": \"text | audio\",\n  \"messageText\": \"Recuérdame...\",\n  \"mediaId\": \"wamid:abc123\",\n  \"senderName\": \"Juan\",\n  \"phoneNumberId\": \"YOUR_WABA_PHONE_ID\",\n  \"wabaToken\": \"YOUR_WABA_TOKEN\"\n}\n```",
+        "height": 360,
+        "width": 520,
+        "color": 3
+      },
+      "id": "d0a0a0a0-0000-0000-0000-000000000002",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-100, 660]
+    },
+    {
+      "parameters": {
+        "content": "### ⚙️ APIs usadas\n- **Google Speech-to-Text** → transcripción de audio\n- **Google Gemini 2.0 Flash** → extracción de intención\n- **WhatsApp Cloud API (v21.0)** → envío de mensajes\n\n⚠️ Mover API key a variable de entorno en producción",
+        "height": 220,
+        "width": 520,
+        "color": 6
+      },
+      "id": "d0a0a0a0-0000-0000-0000-000000000003",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [480, 660]
+    },
+    {
+      "parameters": {},
+      "id": "a1b1c1d1-0001-0000-0000-000000000001",
+      "name": "Trigger",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [60, 340]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "cond-audio",
+                    "leftValue": "={{ $json.messageType }}",
+                    "rightValue": "audio",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Audio"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "cond-text",
+                    "leftValue": "={{ $json.messageType }}",
+                    "rightValue": "text",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Texto"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b1c1d1-0002-0000-0000-000000000002",
+      "name": "Tipo de Mensaje",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3,
+      "position": [300, 340]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://graph.facebook.com/v21.0/{{ $json.mediaId }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.wabaToken }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b1c1d1-0003-0000-0000-000000000003",
+      "name": "Obtener URL Media",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [560, 120]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Trigger').first().json.wabaToken }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "id": "a1b1c1d1-0004-0000-0000-000000000004",
+      "name": "Descargar Audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [820, 120]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Convertir audio binario a base64 y transcribir con Google STT\nconst buffer = await this.helpers.getBinaryDataBuffer(0, 'data');\nconst base64Audio = buffer.toString('base64');\n\nconst sttResponse = await this.helpers.httpRequest({\n  method: 'POST',\n  url: 'https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyD2bX9W2QthYERE1VNX0HRUJsa9iNwQ_kk',\n  body: {\n    config: {\n      encoding: 'OGG_OPUS',\n      sampleRateHertz: 16000,\n      languageCode: 'es-419',\n      enableAutomaticPunctuation: true,\n      model: 'latest_long'\n    },\n    audio: {\n      content: base64Audio\n    }\n  },\n  json: true,\n  headers: { 'Content-Type': 'application/json' }\n});\n\nconst transcript = (sttResponse.results || [])\n  .map(r => r.alternatives?.[0]?.transcript)\n  .filter(Boolean)\n  .join(' ');\n\nif (!transcript) {\n  throw new Error('No se pudo transcribir el audio. Intenta enviando un mensaje de texto.');\n}\n\nreturn [{ json: { text: transcript } }];"
+      },
+      "id": "a1b1c1d1-0005-0000-0000-000000000005",
+      "name": "Transcribir Audio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1080, 120]
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "set-text-field",
+              "name": "text",
+              "value": "={{ $json.messageText }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b1c1d1-0006-0000-0000-000000000006",
+      "name": "Texto Directo",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [560, 520]
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $input.first().json.text;\nconst trigger = $('Trigger').first().json;\n\n// Fecha/hora actual en zona horaria de Venezuela\nconst now = new Date();\nconst formatter = new Intl.DateTimeFormat('es-VE', {\n  timeZone: 'America/Caracas',\n  year: 'numeric', month: '2-digit', day: '2-digit',\n  hour: '2-digit', minute: '2-digit', hour12: false\n});\nconst caracasTime = formatter.format(now);\n\n// Obtener fecha ISO en Caracas para cálculos relativos\nconst caracasISO = now.toLocaleString('sv-SE', { timeZone: 'America/Caracas' });\n\nconst systemPrompt = `Eres un asistente de recordatorios por WhatsApp. Extraes información estructurada de mensajes donde una persona pide recordarle algo a otra persona.\n\nFecha y hora actual: ${caracasTime}\nFecha ISO actual: ${caracasISO}\nZona horaria: America/Caracas (UTC-4)\n\nExtrae del mensaje:\n1. targetPhone: Número de teléfono destino con código de país, sin '+' ni espacios (ej: 584121234567). Si dan número local venezolano (0412...), reemplaza el 0 inicial por 58. Si dan solo el número sin código, asume 58 (Venezuela).\n2. date: Fecha del recordatorio en formato YYYY-MM-DD. Interpreta expresiones relativas como \"mañana\", \"el lunes\", \"en 3 días\", \"pasado mañana\", etc. relativo a la fecha actual.\n3. time: Hora del recordatorio en formato HH:mm (24h). Si no especifican hora, usa \"09:00\".\n4. message: El asunto/mensaje del recordatorio, redactado claro y conciso para quien lo va a recibir.\n5. targetName: Nombre del destinatario si se menciona, sino null.\n6. understood: true si pudiste extraer al menos targetPhone y message, false si falta información crítica.\n\nSOLO responde con JSON válido:\n{\"targetPhone\":\"...\",\"date\":\"YYYY-MM-DD\",\"time\":\"HH:mm\",\"message\":\"...\",\"targetName\":null,\"understood\":true}`;\n\n// Llamar a Gemini API\nconst geminiResponse = await this.helpers.httpRequest({\n  method: 'POST',\n  url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyD2bX9W2QthYERE1VNX0HRUJsa9iNwQ_kk',\n  body: {\n    system_instruction: { parts: [{ text: systemPrompt }] },\n    contents: [{ parts: [{ text: text }] }],\n    generationConfig: {\n      temperature: 0.1,\n      responseMimeType: 'application/json'\n    }\n  },\n  json: true,\n  headers: { 'Content-Type': 'application/json' }\n});\n\nconst aiText = geminiResponse.candidates?.[0]?.content?.parts?.[0]?.text || '';\n\nlet parsed;\ntry {\n  parsed = JSON.parse(aiText);\n} catch (e) {\n  return [{\n    json: {\n      understood: false,\n      error: 'No se pudo interpretar la respuesta de IA: ' + aiText.substring(0, 200),\n      senderPhone: trigger.senderPhone,\n      phoneNumberId: trigger.phoneNumberId,\n      wabaToken: trigger.wabaToken\n    }\n  }];\n}\n\nif (!parsed.understood || !parsed.targetPhone || !parsed.message) {\n  return [{\n    json: {\n      understood: false,\n      error: !parsed.targetPhone\n        ? 'No encontré un número de teléfono destino en tu mensaje.'\n        : 'No pude entender completamente el recordatorio.',\n      senderPhone: trigger.senderPhone,\n      phoneNumberId: trigger.phoneNumberId,\n      wabaToken: trigger.wabaToken\n    }\n  }];\n}\n\n// Construir datetime ISO para el Wait node (UTC-4 Venezuela)\nconst reminderDateTime = `${parsed.date}T${parsed.time}:00-04:00`;\n\n// Formatear mensajes\nconst targetDisplay = parsed.targetName\n  ? `${parsed.targetName} (${parsed.targetPhone})`\n  : parsed.targetPhone;\n\nconst senderDisplay = trigger.senderName || trigger.senderPhone;\n\nconst confirmMessage = `✅ *Recordatorio agendado*\\n\\n📅 Fecha: ${parsed.date}\\n⏰ Hora: ${parsed.time}\\n📱 Para: ${targetDisplay}\\n💬 _\"${parsed.message}\"_\\n\\nTe avisaré cuando lo envíe.`;\n\nconst reminderMessage = `👋 Hola${parsed.targetName ? ' ' + parsed.targetName : ''}!\\n\\n${senderDisplay} te envía este recordatorio:\\n\\n💬 *${parsed.message}*`;\n\nconst notifyMessage = `✅ Listo, le envié el recordatorio a ${targetDisplay}.`;\n\nreturn [{\n  json: {\n    understood: true,\n    targetPhone: parsed.targetPhone,\n    date: parsed.date,\n    time: parsed.time,\n    message: parsed.message,\n    targetName: parsed.targetName,\n    reminderDateTime,\n    confirmMessage,\n    reminderMessage,\n    notifyMessage,\n    senderPhone: trigger.senderPhone,\n    senderName: trigger.senderName,\n    phoneNumberId: trigger.phoneNumberId,\n    wabaToken: trigger.wabaToken\n  }\n}];"
+      },
+      "id": "a1b1c1d1-0007-0000-0000-000000000007",
+      "name": "Procesar con IA",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1340, 340]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "cond-understood",
+              "leftValue": "={{ $json.understood }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1b1c1d1-0008-0000-0000-000000000008",
+      "name": "¿Datos Válidos?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1620, 340]
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json;\n\n// Enviar confirmación a Persona1 vía WABA\nawait this.helpers.httpRequest({\n  method: 'POST',\n  url: `https://graph.facebook.com/v21.0/${data.phoneNumberId}/messages`,\n  body: {\n    messaging_product: 'whatsapp',\n    to: data.senderPhone,\n    type: 'text',\n    text: { body: data.confirmMessage }\n  },\n  json: true,\n  headers: {\n    'Authorization': `Bearer ${data.wabaToken}`,\n    'Content-Type': 'application/json'\n  }\n});\n\n// Pasar TODOS los datos para nodos siguientes (Wait necesita el contexto)\nreturn [{ json: data }];"
+      },
+      "id": "a1b1c1d1-0009-0000-0000-000000000009",
+      "name": "Confirmar a Persona1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1880, 220]
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json;\n\nconst errorMsg = `❌ No pude crear el recordatorio.\\n\\n${data.error || 'No logré extraer la información necesaria.'}\\n\\nPor favor intenta de nuevo incluyendo:\\n📱 Número de teléfono\\n📅 Fecha y hora\\n💬 Mensaje del recordatorio\\n\\nEjemplo: \\\"Recuérdale al 0412-1234567 mañana a las 3pm que tiene cita con el doctor\\\"`;\n\nawait this.helpers.httpRequest({\n  method: 'POST',\n  url: `https://graph.facebook.com/v21.0/${data.phoneNumberId}/messages`,\n  body: {\n    messaging_product: 'whatsapp',\n    to: data.senderPhone,\n    type: 'text',\n    text: { body: errorMsg }\n  },\n  json: true,\n  headers: {\n    'Authorization': `Bearer ${data.wabaToken}`,\n    'Content-Type': 'application/json'\n  }\n});\n\nreturn [{ json: { success: false, error: data.error } }];"
+      },
+      "id": "a1b1c1d1-0010-0000-0000-000000000010",
+      "name": "Error a Persona1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1880, 520]
+    },
+    {
+      "parameters": {
+        "resume": "specificTime",
+        "dateTime": "={{ $json.reminderDateTime }}"
+      },
+      "id": "a1b1c1d1-0011-0000-0000-000000000011",
+      "name": "Esperar hasta Fecha",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [2140, 220]
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json;\n\n// Enviar recordatorio a Persona2 vía WABA\nawait this.helpers.httpRequest({\n  method: 'POST',\n  url: `https://graph.facebook.com/v21.0/${data.phoneNumberId}/messages`,\n  body: {\n    messaging_product: 'whatsapp',\n    to: data.targetPhone,\n    type: 'text',\n    text: { body: data.reminderMessage }\n  },\n  json: true,\n  headers: {\n    'Authorization': `Bearer ${data.wabaToken}`,\n    'Content-Type': 'application/json'\n  }\n});\n\nreturn [{ json: data }];"
+      },
+      "id": "a1b1c1d1-0012-0000-0000-000000000012",
+      "name": "Enviar Recordatorio",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2400, 220]
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json;\n\n// Notificar a Persona1 que el recordatorio fue enviado\nawait this.helpers.httpRequest({\n  method: 'POST',\n  url: `https://graph.facebook.com/v21.0/${data.phoneNumberId}/messages`,\n  body: {\n    messaging_product: 'whatsapp',\n    to: data.senderPhone,\n    type: 'text',\n    text: { body: data.notifyMessage }\n  },\n  json: true,\n  headers: {\n    'Authorization': `Bearer ${data.wabaToken}`,\n    'Content-Type': 'application/json'\n  }\n});\n\nreturn [{\n  json: {\n    success: true,\n    targetPhone: data.targetPhone,\n    date: data.date,\n    time: data.time,\n    message: data.message\n  }\n}];"
+      },
+      "id": "a1b1c1d1-0013-0000-0000-000000000013",
+      "name": "Notificar Envío",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2660, 220]
+    }
+  ],
+  "connections": {
+    "Trigger": {
+      "main": [
+        [
+          {
+            "node": "Tipo de Mensaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tipo de Mensaje": {
+      "main": [
+        [
+          {
+            "node": "Obtener URL Media",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Texto Directo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Obtener URL Media": {
+      "main": [
+        [
+          {
+            "node": "Descargar Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Descargar Audio": {
+      "main": [
+        [
+          {
+            "node": "Transcribir Audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribir Audio": {
+      "main": [
+        [
+          {
+            "node": "Procesar con IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Texto Directo": {
+      "main": [
+        [
+          {
+            "node": "Procesar con IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Procesar con IA": {
+      "main": [
+        [
+          {
+            "node": "¿Datos Válidos?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Datos Válidos?": {
+      "main": [
+        [
+          {
+            "node": "Confirmar a Persona1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error a Persona1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Confirmar a Persona1": {
+      "main": [
+        [
+          {
+            "node": "Esperar hasta Fecha",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Esperar hasta Fecha": {
+      "main": [
+        [
+          {
+            "node": "Enviar Recordatorio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar Recordatorio": {
+      "main": [
+        [
+          {
+            "node": "Notificar Envío",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Caracas",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "staticData": null,
+  "tags": [],
+  "pinData": {},
+  "versionId": "",
+  "triggerCount": 0
+}

@@ -1,10 +1,12 @@
 import { Component, inject, computed, signal, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { DomSanitizer, SafeHtml, SafeResourceUrl } from '@angular/platform-browser';
 import { marked } from 'marked';
 import { I18nService, Lang } from '../../../services/i18n.service';
 import { ARTICLES, Article } from '../blog-data';
 import { configureMarkedRenderer, handleCodeBlockClick } from '../../../utils/code-renderer';
+import { resolveVideoSource } from '../../../utils/video-source';
+import { NetworkStatusService } from '../../../services/network-status.service';
 
 @Component({
   selector: 'app-article',
@@ -14,8 +16,10 @@ import { configureMarkedRenderer, handleCodeBlockClick } from '../../../utils/co
 })
 export class ArticlePage implements OnInit {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private sanitizer = inject(DomSanitizer);
   readonly i18n = inject(I18nService);
+  readonly network = inject(NetworkStatusService);
 
   readonly article = signal<Article | null>(null);
 
@@ -32,11 +36,26 @@ export class ArticlePage implements OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(html);
   });
 
-  readonly youtubeUrl = computed<SafeResourceUrl | null>(() => {
+  readonly videoSource = computed(() => {
     const a = this.article();
-    if (!a || !a.youtube) return null;
-    return this.sanitizer.bypassSecurityTrustResourceUrl(a.youtube);
+    return resolveVideoSource(a?.youtube, this.sanitizer);
   });
+
+  readonly youtubeUrl = computed<SafeResourceUrl | null>(() => {
+    const video = this.videoSource();
+    return video?.kind === 'youtube' ? video.safeUrl : null;
+  });
+
+  readonly downloadableVideoUrl = computed<string | null>(() => {
+    const video = this.videoSource();
+    return video?.kind === 'file' ? video.rawUrl : null;
+  });
+
+  goBack(event: MouseEvent): void {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    this.router.navigateByUrl('/technology');
+  }
 
   onContentClick(event: Event): void {
     handleCodeBlockClick(event);

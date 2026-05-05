@@ -1,37 +1,23 @@
-﻿<section id="education" class="section education">
-  <div class="container">
-    <h2 class="section-title">{{ i18n.t('education.title') }}</h2>
-    <br />
-    <div class="timeline">
-      @for (edu of items; track edu.institution; let i = $index) {
-        <div class="timeline__item">
-          <div class="timeline__marker">
-            <div class="dot" [class.active]="i === 0"></div>
-            @if (i < items.length - 1) {
-              <div class="line"></div>
-            }
-          </div>
-          <div class="timeline__content">
-            <h3 class="timeline__company">{{ edu.institution }}</h3>
-            <div class="timeline__roles">
-              @for (cert of edu.certs; track cert) {
-                <span class="role-badge">{{ cert }}</span>
-              }
-            </div>
-            <p class="timeline__description" [class.clamped]="!isExpanded(i)">{{ edu.description }}</p>
-            <button class="timeline__toggle" (click)="toggleDesc(i)">
-              {{ isExpanded(i) ? i18n.t('experience.show_less') : i18n.t('experience.show_more') }}
-            </button>
-            @if (edu.tags.length) {
-              <div class="timeline__tags">
-                @for (tag of edu.tags; track tag) {
-                  <span class="tech-tag">{{ tag }}</span>
-                }
-              </div>
-            }
-          </div>
-        </div>
+<section class="education">
+  <h3 class="section-title">Certifications</h3>
+  <div class="carousel-wrapper">
+    <div class="carousel-track">
+      @for (cert of looped; track $index) {
+        <button class="carousel-card" (click)="openLightbox(cert)">
+          <img [src]="cert.image" [alt]="cert.institution" />
+        </button>
       }
     </div>
   </div>
 </section>
+
+@if (lightbox(); as cert) {
+  <div class="lightbox" (click)="onBackdropClick($event)">
+    <button class="lightbox__close" (click)="closeLightbox()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <img class="lightbox__img" [src]="cert.image" [alt]="cert.institution" />
+  </div>
+}

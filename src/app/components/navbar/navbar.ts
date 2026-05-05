@@ -19,14 +19,14 @@ export class Navbar {
     { code: 'en', label: 'English', flag: 'https://flagcdn.com/w40/us.png' },
     { code: 'es', label: 'Español', flag: 'https://flagcdn.com/w40/es.png' },
     { code: 'pt', label: 'Português', flag: 'https://flagcdn.com/w40/br.png' },
-    { code: 'zh', label: '中文', flag: 'https://flagcdn.com/w40/cn.png' },
-    { code: 'ru', label: 'Русский', flag: 'https://flagcdn.com/w40/ru.png' },
-    { code: 'hi', label: 'हिन्दी', flag: 'https://flagcdn.com/w40/in.png' },
-    { code: 'ar', label: 'العربية', flag: 'https://flagcdn.com/w40/sa.png' },
   ];
 
   get currentLangLabel(): string {
     return this.langs.find(l => l.code === this.i18n.lang())?.label ?? this.i18n.lang();
+  }
+
+  get currentLangFlag(): string {
+    return this.langs.find(l => l.code === this.i18n.lang())?.flag ?? '';
   }
 
   @HostListener('window:scroll')
@@ -34,8 +34,8 @@ export class Navbar {
     this.isScrolled.set(window.scrollY > 50);
   }
 
-  @HostListener('document:click', ['$event'])
-  onDocClick(e: Event) {
+  @HostListener('document:keydown.escape')
+  onEscape() {
     this.langMenuOpen.set(false);
   }
 
@@ -52,25 +52,31 @@ export class Navbar {
     return this.router.url === path || this.router.url.startsWith(path + '/');
   }
 
-  navigateWithWarp(path: string) {
-    const overlay = document.createElement('div');
-    overlay.className = 'galaxy-warp';
-    document.body.appendChild(overlay);
-    setTimeout(() => {
-      this.router.navigate([path]).then(() => {
-        window.scrollTo({ top: 0, behavior: 'auto' });
-        overlay.classList.add('fade-out');
-        setTimeout(() => overlay.remove(), 500);
-      });
-    }, 600);
+  navigateMobile(event: Event, path: string) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (this.router.url === path || (path === '/' && this.router.url === '/')) {
+      if (path === '/') window.scrollTo({ top: 0, behavior: 'auto' });
+      this.closeMenu();
+      return;
+    }
+
+    this.closeMenu();
+    this.router.navigateByUrl(path);
   }
 
   scrollTo(id: string) {
     this.closeMenu();
+    document.querySelectorAll('.galaxy-warp').forEach(el => el.remove());
     const doScroll = () => {
       const overlay = document.createElement('div');
       overlay.className = 'galaxy-warp';
       document.body.appendChild(overlay);
+      const cleanup = () => {
+        overlay.classList.add('fade-out');
+        setTimeout(() => overlay.remove(), 500);
+      };
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
@@ -84,13 +90,12 @@ export class Navbar {
               : window.scrollY + rect.top - navH - (available - rect.height) / 2;
           window.scrollTo({ top: Math.max(0, top), behavior: 'auto' });
         }
-        overlay.classList.add('fade-out');
-        setTimeout(() => overlay.remove(), 500);
+        cleanup();
       }, 600);
     };
 
     if (this.router.url !== '/') {
-      this.router.navigate(['/']).then(() => setTimeout(doScroll, 100));
+      this.router.navigate(['/']).then(() => setTimeout(doScroll, 100)).catch(() => {});
     } else {
       doScroll();
     }
@@ -101,9 +106,9 @@ export class Navbar {
     this.langMenuOpen.update(v => !v);
   }
 
-  switchLang(lang: Lang, e: Event) {
+  async switchLang(lang: Lang, e: Event) {
     e.stopPropagation();
-    this.i18n.setLang(lang);
+    await this.i18n.setLang(lang);
     this.langMenuOpen.set(false);
   }
 }

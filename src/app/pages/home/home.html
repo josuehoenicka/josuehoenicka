@@ -1,0 +1,65 @@
+<div class="home">
+  <div class="hero">
+    <h1 class="hero__greeting"><span class="hero__greeting-light">{{ i18n.t('hero.greeting') }}</span> Josue Hoenicka</h1>
+  </div>
+
+  <div class="content" [class.fading]="fading()">
+    <div class="section-label">
+      <h2 class="title">{{ sections[activeIndex()].title }}</h2>
+      <div class="dots">
+        @for (section of sections; track section.title) {
+          <button class="dot" [class.active]="activeIndex() === $index" (click)="goTo($index)"></button>
+        }
+      </div>
+    </div>
+
+    <div class="carousel-area"
+         (touchstart)="onPointerDown()" (touchend)="onPointerUp()"
+         (mousedown)="onPointerDown()" (mouseup)="onPointerUp()" (mouseleave)="onPointerUp()">
+      @for (section of sections; track section.title) {
+        <div class="carousel-wrapper" [class.visible]="activeIndex() === $index" [class.manual]="mode() === 'manual'">
+          <div class="carousel-track" [class.paused]="paused()" [class.manual]="mode() === 'manual'" [style.animation-duration]="section.scrollDuration + 's'">
+            @for (item of (mode() === 'manual' ? section.items : section.looped); track $index) {
+              <button class="carousel-card" (click)="openLightbox(item)">
+                <img [src]="item.image" [alt]="item.name" />
+              </button>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+
+  <div class="mode-toggle">
+    <button class="mode-toggle__option" [class.active]="mode() === 'auto'" (click)="mode() !== 'auto' && toggleMode()">ON</button>
+    <button class="mode-toggle__option" [class.active]="mode() === 'manual'" (click)="mode() !== 'manual' && toggleMode()">OFF</button>
+  </div>
+
+  <footer class="footer">
+    @for (link of socialLinks; track link.name) {
+      <a [href]="link.url" target="_blank" rel="noopener noreferrer">{{ link.name }}</a>
+    }
+  </footer>
+</div>
+
+@if (lightbox(); as item) {
+  <div class="lightbox" (click)="onBackdropClick($event)">
+    <button class="lightbox__close" (click)="closeLightbox()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="lightbox__content">
+      <img class="lightbox__img" [src]="item.image" [alt]="item.name" />
+      @if (item.url) {
+        <a class="lightbox__link" [href]="item.url" target="_blank" rel="noopener noreferrer">
+          {{ i18n.t('projects.view_site') }}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 17l9.2-9.2M7 7h10v10"/>
+          </svg>
+        </a>
+      }
+    </div>
+  </div>
+}

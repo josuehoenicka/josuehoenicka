@@ -1,38 +1,31 @@
-﻿<section id="experience" class="section experience">
-  <div class="container">
-    <h2 class="section-title">{{ i18n.t('experience.title') }}</h2>
-    <br />
-    <div class="timeline">
-      @for (exp of experiences; track exp.company; let i = $index) {
-        <div class="timeline__item">
-          <div class="timeline__marker">
-            <div class="dot" [class.active]="i === 0"></div>
-            @if (i < experiences.length - 1) {
-              <div class="line"></div>
-            }
-          </div>
-          <div class="timeline__content">
-            <div class="timeline__header">
-              <h3 class="timeline__company">{{ exp.company }}</h3>
-              <span class="timeline__period">{{ exp.period }}</span>
-            </div>
-            <div class="timeline__roles">
-              @for (role of exp.roles; track role) {
-                <span class="role-badge">{{ role }}</span>
-              }
-            </div>
-            <p class="timeline__description" [class.clamped]="!isExpanded(i)">{{ exp.description }}</p>
-            <button class="timeline__toggle" (click)="toggleDesc(i)">
-              {{ isExpanded(i) ? i18n.t('experience.show_less') : i18n.t('experience.show_more') }}
-            </button>
-            <div class="timeline__tags">
-              @for (tag of exp.tags; track tag) {
-                <span class="tech-tag">{{ tag }}</span>
-              }
-            </div>
-          </div>
-        </div>
+<section class="experience">
+  <h3 class="section-title">Workspaces</h3>
+  <div class="carousel-wrapper">
+    <div class="carousel-track">
+      @for (exp of looped; track $index) {
+        <button class="carousel-card" (click)="openLightbox(exp)">
+          <img [src]="exp.image" [alt]="exp.company" />
+        </button>
       }
     </div>
   </div>
 </section>
+
+@if (lightbox(); as project) {
+  <div class="lightbox" (click)="onBackdropClick($event)">
+    <button class="lightbox__close" (click)="closeLightbox()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="lightbox__content">
+      <img class="lightbox__img" [src]="project.image" [alt]="project.company" />
+      <a class="lightbox__link" [href]="project.websiteUrl" target="_blank" rel="noopener noreferrer">
+        {{ i18n.t('projects.view_site') }}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 17l9.2-9.2M7 7h10v10"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+}
