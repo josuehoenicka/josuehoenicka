@@ -85,3 +85,7 @@
   - **Split dataset structure**: partir el dataset y cachear por trozos/claves en lugar de un blob gigante, para leer e invalidar solo lo que toca.
   - **Cache de computo**: no solo cachear datos crudos, tambien resultados de calculos/consultas caras (agregaciones, reportes) para no recalcular cada vez.
   - **Pruebas de rendimiento y escalabilidad**: medir (hit ratio, latencia, throughput) y probar carga para confirmar que el cache de verdad ayuda y escala.
+- **Datos altamente cambiantes** (como cachear lo que cambia todo el rato): es un escenario delicado pero posible. La clave que aprendi es que **no todos los datos requieren alta consistencia** — algunos ni siquiera necesitan consistencia fuerte, basta con que esten "suficientemente frescos". Estrategias:
+  - **Escribir primero en el cache** (write-through / cache-first): la escritura va a Redis y desde ahi se propaga a la DB; las lecturas siempre pegan al cache ya actualizado.
+  - **Cola de mensajes + escritura en paralelo** (write-behind): mando la escritura a una cola y, en paralelo, actualizo el cache mientras un consumidor va persistiendo en la DB. El usuario ve el dato rapido (ya esta en cache) y la DB se actualiza de forma asincrona.
+  - Modelo mental: acepto **consistencia eventual** a cambio de velocidad; la cola desacopla el "lo escribo ya en cache" del "lo guardo seguro en la DB". Encaja con las colas que ya vi arriba (Redis como broker).
