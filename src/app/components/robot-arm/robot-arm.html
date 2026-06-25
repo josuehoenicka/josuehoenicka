@@ -1,0 +1,84 @@
+<svg viewBox="0 0 600 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="armLimb" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4a4a4a" />
+      <stop offset="0.45" stop-color="#262626" />
+      <stop offset="1" stop-color="#0d0d0d" />
+    </linearGradient>
+    <linearGradient id="armPlate" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3d3d3d" />
+      <stop offset="0.5" stop-color="#202020" />
+      <stop offset="1" stop-color="#101010" />
+    </linearGradient>
+    <radialGradient id="armBoss" cx="0.35" cy="0.3" r="0.95">
+      <stop offset="0" stop-color="#585858" />
+      <stop offset="0.55" stop-color="#232323" />
+      <stop offset="1" stop-color="#0a0a0a" />
+    </radialGradient>
+    <linearGradient id="armCone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#424242" />
+      <stop offset="0.55" stop-color="#1b1b1b" />
+      <stop offset="1" stop-color="#040404" />
+    </linearGradient>
+    <radialGradient id="armGroundGlow">
+      <stop offset="0" stop-color="rgba(255,255,255,0.12)" />
+      <stop offset="1" stop-color="rgba(255,255,255,0)" />
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="300" cy="497" rx="235" ry="38" fill="url(#armGroundGlow)" />
+  <ellipse cx="300" cy="502" rx="205" ry="9" fill="rgba(255,255,255,0.05)" />
+
+  <!-- Base cone -->
+  <path d="M158 502 C175 458 235 416 252 396 L348 396 C365 416 425 458 442 502 Z" fill="url(#armCone)" stroke="#2c2c2c" stroke-width="1" />
+  <path d="M230 480 Q258 430 278 402" stroke="rgba(255,255,255,0.22)" stroke-width="10" fill="none" stroke-linecap="round" />
+  <path d="M372 474 Q352 434 334 404" stroke="rgba(255,255,255,0.08)" stroke-width="7" fill="none" stroke-linecap="round" />
+
+  <!-- Collar ring stack -->
+  <ellipse cx="300" cy="396" rx="66" ry="16" fill="#1b1b1b" stroke="#4a4a4a" stroke-width="1.5" />
+  <ellipse cx="300" cy="387" rx="55" ry="13" fill="#0f0f0f" stroke="#383838" stroke-width="1" />
+  <ellipse cx="300" cy="379" rx="45" ry="10" fill="#242424" stroke="#484848" stroke-width="1" />
+
+  <!-- Turret mount -->
+  <rect x="272" y="336" width="56" height="52" rx="14" fill="url(#armLimb)" stroke="#0a0a0a" stroke-width="2" />
+
+  <!-- Upper arm: pivots at the shoulder (300,370) -->
+  <g data-arm="upper" transform="rotate(-7 300 370)">
+    <rect x="272" y="202" width="56" height="198" rx="28" fill="url(#armLimb)" stroke="#0b0b0b" stroke-width="2" />
+    <rect x="281" y="212" width="38" height="178" rx="19" fill="url(#armPlate)" />
+    <path d="M277 378 L277 224" stroke="rgba(255,255,255,0.10)" stroke-width="2.5" stroke-linecap="round" />
+
+    <circle cx="300" cy="370" r="31" fill="url(#armBoss)" stroke="#080808" stroke-width="2" />
+    <circle cx="300" cy="370" r="19" fill="#161616" stroke="#3c3c3c" stroke-width="1.5" />
+    <ellipse cx="292" cy="361" rx="7" ry="5" fill="rgba(255,255,255,0.10)" />
+
+    <!-- Forearm: pivots at the elbow (300,232) -->
+    <g data-arm="fore" transform="rotate(17 300 232)">
+      <rect x="279" y="100" width="42" height="152" rx="21" fill="url(#armLimb)" stroke="#0b0b0b" stroke-width="2" />
+      <rect x="287" y="108" width="26" height="136" rx="13" fill="url(#armPlate)" />
+      <path d="M283 240 L283 116" stroke="rgba(255,255,255,0.10)" stroke-width="2" stroke-linecap="round" />
+
+      <circle cx="300" cy="232" r="26" fill="url(#armBoss)" stroke="#080808" stroke-width="2" />
+      <circle cx="300" cy="232" r="15" fill="#161616" stroke="#3c3c3c" stroke-width="1.5" />
+      <ellipse cx="293" cy="224" rx="6" ry="4" fill="rgba(255,255,255,0.10)" />
+
+      <!-- Claw head: pivots at the wrist (300,124) -->
+      <g data-arm="head" transform="rotate(-4 300 124)">
+        <rect x="284" y="112" width="32" height="14" rx="7" fill="#1d1d1d" stroke="#3a3a3a" stroke-width="1" />
+        <rect x="288" y="84" width="24" height="34" rx="9" fill="url(#armLimb)" stroke="#0b0b0b" stroke-width="1.5" />
+        <rect x="283" y="96" width="34" height="11" rx="5.5" fill="#262626" stroke="#404040" stroke-width="1" />
+
+        <!-- Jaws -->
+        <path d="M291 88 L267 69 L267 41 L287 25" fill="none" stroke="#0c0c0c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M291 88 L267 69 L267 41 L287 25" fill="none" stroke="url(#armPlate)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M309 88 L333 69 L333 41 L313 25" fill="none" stroke="#0c0c0c" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M309 88 L333 69 L333 41 L313 25" fill="none" stroke="url(#armPlate)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M267 67 L267 43" stroke="rgba(255,255,255,0.14)" stroke-width="3" stroke-linecap="round" />
+        <path d="M333 67 L333 43" stroke="rgba(255,255,255,0.14)" stroke-width="3" stroke-linecap="round" />
+
+        <circle cx="300" cy="124" r="13" fill="url(#armBoss)" stroke="#080808" stroke-width="2" />
+        <circle cx="300" cy="124" r="6" fill="#101010" stroke="#3c3c3c" stroke-width="1" />
+      </g>
+    </g>
+  </g>
+</svg>

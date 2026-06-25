@@ -1,5 +1,6 @@
-import { Component, signal, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { I18nService } from '../../services/i18n.service';
+import { RobotArm } from '../../components/robot-arm/robot-arm';
 
 interface CarouselItem {
   name: string;
@@ -8,45 +9,111 @@ interface CarouselItem {
 }
 
 interface CarouselSection {
-  title: string;
+  id: string;
+  titleKey: string;
   items: CarouselItem[];
   looped: CarouselItem[];
   scrollDuration: number;
 }
 
-function makeSection(title: string, items: CarouselItem[], scrollDuration: number): CarouselSection {
+interface TechIcon {
+  name: string;
+  src: string;
+  x: number;
+  y: number;
+  size: number;
+  floatDuration: number;
+  floatDelay: number;
+}
+
+const TECH_ICONS = [
+  { name: 'JavaScript', file: 'javascript.svg' },
+  { name: 'Python', file: 'python.svg' },
+  { name: 'C++', file: 'cplusplus.svg' },
+  { name: 'React.js', file: 'react.svg' },
+  { name: 'Angular', file: 'angular.svg' },
+  { name: 'Flutter', file: 'flutter.svg' },
+  { name: 'Node.js', file: 'nodedotjs.svg' },
+  { name: 'Docker', file: 'docker.svg' },
+  { name: 'Redis', file: 'redis.svg' },
+  { name: 'MySQL', file: 'mysql.svg' },
+  { name: 'PostgreSQL', file: 'postgresql.svg' },
+  { name: 'MongoDB', file: 'mongodb.svg' },
+  { name: 'Azure', file: 'azure.svg' },
+  { name: 'Google Cloud', file: 'googlecloud.svg' },
+  { name: 'Firebase', file: 'firebase.svg' },
+  { name: 'Linux', file: 'linux.svg' },
+  { name: 'Arduino', file: 'arduino.svg' },
+  { name: 'Raspberry Pi', file: 'raspberrypi.svg' },
+];
+
+const TECH_COLS = 6;
+const TECH_ROWS = 3;
+
+/**
+ * Even, gap-free spread over the full hero width but only its upper band (above the title):
+ * a jittered grid — exactly one icon per cell — so there are no empty stretches and no clumps.
+ * Icons sit behind the arm (z-index), filling the negative space its silhouette leaves.
+ */
+function scatterTechIcons(): TechIcon[] {
+  const cells: { r: number; c: number }[] = [];
+  for (let r = 0; r < TECH_ROWS; r++) {
+    for (let c = 0; c < TECH_COLS; c++) cells.push({ r, c });
+  }
+  cells.sort(() => Math.random() - 0.5);
+
+  // Field as a fraction of the hero box: full width, top portion only.
+  const x0 = 0.04, x1 = 0.96, y0 = 0.05, y1 = 0.55;
+  const cellW = (x1 - x0) / TECH_COLS;
+  const cellH = (y1 - y0) / TECH_ROWS;
+
+  return TECH_ICONS.map((icon, i) => {
+    const { r, c } = cells[i];
+    const x = x0 + (c + 0.15 + Math.random() * 0.7) * cellW;
+    const y = y0 + (r + 0.15 + Math.random() * 0.7) * cellH;
+    return {
+      name: icon.name,
+      src: 'assets/tech/' + icon.file,
+      x: x * 100,
+      y: y * 100,
+      size: 1.4 + Math.random() * 0.7,
+      floatDuration: 4 + Math.random() * 4,
+      floatDelay: -Math.random() * 8,
+    };
+  });
+}
+
+function makeSection(id: string, titleKey: string, items: CarouselItem[], scrollDuration: number): CarouselSection {
   let base = items;
   while (base.length < 6) {
     base = [...base, ...items];
   }
-  return { title, items, looped: [...base, ...base], scrollDuration };
+  return { id, titleKey, items, looped: [...base, ...base], scrollDuration };
 }
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.html',
   styleUrl: './home.scss',
+  imports: [RobotArm],
 })
-export class Home implements OnInit, OnDestroy {
-  private sectionIntervalId: ReturnType<typeof setInterval> | null = null;
-  private fadeTimeoutId: ReturnType<typeof setTimeout> | null = null;
+export class Home {
+  private isTouching = false;
 
   readonly i18n = inject(I18nService);
-  readonly activeIndex = signal(0);
-  readonly fading = signal(false);
-  readonly paused = signal(false);
-  readonly mode = signal<'auto' | 'manual'>('auto');
   readonly lightbox = signal<CarouselItem | null>(null);
+  readonly year = new Date().getFullYear();
+  readonly techIcons = scatterTechIcons();
 
   readonly sections: CarouselSection[] = [
-    makeSection('WORKSPACE', [
+    makeSection('experience', 'sections.experience', [
       { name: 'Heynow', image: 'assets/projects/heynow.png', url: 'https://heynowagents.ai/' },
       { name: 'Verifood', image: 'assets/projects/verifood.png', url: 'https://verifood.io/' },
       { name: 'LiberaSOFT', image: 'assets/projects/liberasoft.png', url: 'https://liberasoft.cloud' },
       { name: 'Revenue B2B', image: 'assets/projects/revenue.png', url: 'https://revenueb2b.com/' },
       { name: 'L.E.R', image: 'assets/projects/laestamosrompiendo.png', url: 'https://ecom.laestamosrompiendo.com/' },
     ], 50),
-    makeSection('EDUCATION', [
+    makeSection('education', 'sections.education', [
       { name: 'UTN', image: 'assets/education/utn-react.jpeg' },
       { name: 'UBA', image: 'assets/education/uba-english.jpeg' },
       { name: 'EEMPI', image: 'assets/education/degree.jpeg' },
@@ -64,56 +131,47 @@ export class Home implements OnInit, OnDestroy {
       { name: 'IT Master', image: 'assets/education/masterit-python.jpeg' },
       { name: 'Movistar', image: 'assets/education/movistar-cyberseguridad.jpeg' },
     ], 80),
-    makeSection('BRAND', [
+    makeSection('brand', 'sections.brand', [
       { name: 'Matgigi', image: 'assets/brands/matgigi.png', url: 'https://matgigi.web.app/' },
-      { name: 'Mihwave', image: 'assets/brands/mihwave.png', url: 'https://mihwave.web.app/' },
     ], 30),
   ];
 
-  readonly socialLinks = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/josuehoenicka' },
-    { name: 'Instagram', url: 'https://www.instagram.com/josuehoenicka' },
-    { name: 'TikTok', url: 'https://www.tiktok.com/@josue.hoenicka' },
-    { name: 'YouTube', url: 'https://www.youtube.com/@josuehoenicka' },
-    { name: 'GitHub', url: 'https://github.com/josuehoenicka' },
-  ];
-
-  ngOnInit() {
-    this.startSectionAutoPlay();
+  scrollToSections() {
+    document.getElementById(this.sections[0].id)?.scrollIntoView({ behavior: 'smooth' });
   }
 
-  ngOnDestroy() {
-    this.stopSectionAutoPlay();
+  onMouseMove(event: MouseEvent) {
+    if (this.isTouching) return;
+    const area = event.currentTarget as HTMLElement;
+    const rect = area.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const third = rect.width / 3;
+
+    let zone: string;
+    if (x < third) zone = 'left';
+    else if (x < third * 2) zone = 'center';
+    else zone = 'right';
+
+    if (area.dataset['zone'] === zone) return;
+    area.dataset['zone'] = zone;
+    this.applyZone(area, zone);
   }
 
-  toggleMode() {
-    if (this.mode() === 'auto') {
-      this.mode.set('manual');
-      this.stopSectionAutoPlay();
-      this.paused.set(false);
-    } else {
-      this.mode.set('auto');
-      this.startSectionAutoPlay();
-    }
+  onMouseLeave(event: MouseEvent) {
+    if (this.isTouching) return;
+    const area = event.currentTarget as HTMLElement;
+    area.dataset['zone'] = 'none';
+    this.applyZone(area, 'none');
   }
 
-  onPointerDown() {
-    if (this.mode() === 'auto') {
-      this.paused.set(true);
-    }
+  onTouchStart(event: TouchEvent) {
+    this.isTouching = true;
+    this.applyZone(event.currentTarget as HTMLElement, 'center');
   }
 
-  onPointerUp() {
-    this.paused.set(false);
-  }
-
-  goTo(index: number) {
-    if (index === this.activeIndex()) return;
-    this.fading.set(true);
-    this.fadeTimeoutId = setTimeout(() => {
-      this.activeIndex.set(index);
-      this.fading.set(false);
-    }, 400);
+  onTouchEnd(event: TouchEvent) {
+    this.isTouching = false;
+    this.applyZone(event.currentTarget as HTMLElement, 'none');
   }
 
   openLightbox(item: CarouselItem) {
@@ -130,24 +188,27 @@ export class Home implements OnInit, OnDestroy {
     }
   }
 
-  private startSectionAutoPlay() {
-    this.sectionIntervalId = setInterval(() => {
-      this.fading.set(true);
-      this.fadeTimeoutId = setTimeout(() => {
-        this.activeIndex.set((this.activeIndex() + 1) % this.sections.length);
-        this.fading.set(false);
-      }, 400);
-    }, 5000);
-  }
-
-  private stopSectionAutoPlay() {
-    if (this.sectionIntervalId) {
-      clearInterval(this.sectionIntervalId);
-      this.sectionIntervalId = null;
-    }
-    if (this.fadeTimeoutId) {
-      clearTimeout(this.fadeTimeoutId);
-      this.fadeTimeoutId = null;
-    }
+  private applyZone(area: HTMLElement, zone: string) {
+    area.querySelectorAll('.carousel-track').forEach(track => {
+      (track as HTMLElement).getAnimations().forEach(anim => {
+        switch (zone) {
+          case 'left':
+            if (anim.playState === 'paused') anim.play();
+            anim.playbackRate = 3;
+            break;
+          case 'center':
+            anim.pause();
+            break;
+          case 'right':
+            if (anim.playState === 'paused') anim.play();
+            anim.playbackRate = 0.5;
+            break;
+          default:
+            if (anim.playState === 'paused') anim.play();
+            anim.playbackRate = 1;
+            break;
+        }
+      });
+    });
   }
 }

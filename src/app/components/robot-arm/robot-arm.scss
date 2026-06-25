@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible; // let the arm reach beyond the viewBox, over the name below
+}

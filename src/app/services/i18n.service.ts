@@ -16,13 +16,13 @@ const LANG_COOKIE_KEY = 'portfolio_lang';
 @Injectable({ providedIn: 'root' })
 export class I18nService {
   readonly lang = signal<Lang>(this.getInitialLang());
-  private _ready = false;
+  readonly ready = signal(false);
 
   constructor() {
     const lang = this.lang();
     this.persistLang(lang);
     this.syncDocumentLang(lang);
-    this.loadTranslations(lang);
+    this.loadTranslations(lang).then(() => this.ready.set(true));
   }
 
   async setLang(lang: Lang) {
@@ -47,8 +47,7 @@ export class I18nService {
   }
 
   private getInitialLang(): Lang {
-    const storedLang = this.readStoredLang();
-    return storedLang ?? 'en';
+    return 'en';
   }
 
   private readStoredLang(): Lang | null {

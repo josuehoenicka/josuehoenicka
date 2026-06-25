@@ -51,6 +51,11 @@
   "brands": {
     "title": "Brands"
   },
+  "sections": {
+    "experience": "Experience",
+    "education": "Education",
+    "brand": "Brand"
+  },
   "biography": {
     "title": "Biography",
     "quote": "I was born on August 31, 2001 in Caracas, Venezuela. I'm passionate about learning technology, music, languages and more. I constantly seek to step out of my comfort zone and live grateful to God and everything around me."
@@ -79,7 +84,7 @@
   "contact": {
     "title": "Ready to work together?",
     "subtitle": "Let's connect and make your next project a reality",
-    "footer": "All rights reserved."
+    "footer": "josuegabrielhoenicka@gmail.com"
   },
   "content_type": {
     "projects": "Projects",

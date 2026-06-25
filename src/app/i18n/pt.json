@@ -51,6 +51,11 @@
   "brands": {
     "title": "Brands"
   },
+  "sections": {
+    "experience": "Experiência",
+    "education": "Educação",
+    "brand": "Brand"
+  },
   "biography": {
     "title": "Biografia",
     "quote": "Nasci em 31 de agosto de 2001 em Caracas, Venezuela. Sou apaixonado por aprender tecnologia, música, idiomas e mais. Constantemente busco sair da zona de conforto e viver agradecido a Deus e a tudo ao meu redor."

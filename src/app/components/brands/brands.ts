@@ -18,7 +18,6 @@ export class Brands {
 
   readonly brands: Brand[] = [
     { name: 'Matgigi', image: 'assets/brands/matgigi.png', url: 'https://matgigi.web.app/' },
-    { name: 'Mihwave', image: 'assets/brands/mihwave.png', url: 'https://mihwave.web.app/' },
   ];
 
   get looped(): Brand[] {
