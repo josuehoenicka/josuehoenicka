@@ -64,6 +64,7 @@
 - **Módulos / capacidades extra (2026)**: búsqueda y secondary indexing, JSON nativo, series temporales, probabilísticos (HyperLogLog, Bloom filters) y **vector search** para RAG/embeddings — Redis se usa cada vez más como vector store en apps de IA.
 
 # Mis notas
+- Aprendi que usar cache con Redis es necesario si o si cuando hay un tema de negocio de por medio: los clientes van a exigir velocidad. Casi nunca lo dicen con tecnicismos, lo dicen como usuarios — "veo la plataforma lenta" o "se cuelga" — y la respuesta de fondo suele ser cachear lo que mas se consulta para que la experiencia sea rapida.
 - Los hashes en Redis son como los objetos en JavaScript: pares campo-valor. `HSET user:42 nombre "Josue" rol "dev"` es basicamente `{ nombre: "Josue", rol: "dev" }` guardado bajo la clave `user:42`.
 - Aplicar cache con Redis mejora mucho el rendimiento y la latencia. En una prueba sobre Azure (Azure SQL DB + Azure Cache for Redis), poniendo Redis como cache delante de la base de datos:
   - **Throughput**: paso de **1.1K** a **10.2K** transacciones/seg (~**9X mas**).
@@ -76,3 +77,11 @@
   - Conexion con mi mundo: es justo lo que hace **n8n en queue mode**, que usa Redis como broker entre el proceso main y los workers; y para mi bot de WhatsApp encaja igual (encolar recordatorios y que un worker los procese uno a uno).
 - **Cache privado vs cache compartido** (por que conviene Redis): el cache *privado* vive en memoria DENTRO de cada instancia de la app. El problema aparece con varias instancias: cada una guarda su propio snapshot en un momento distinto — la instancia A cachea en el **tiempo X** y la B en el **tiempo Y** — y si la base de datos cambia entre X e Y, cada instancia sirve datos **distintos y desactualizados** (stale). La solucion es un **cache compartido/distribuido** como Redis (Azure Cache for Redis): una unica fuente de cache para todas las instancias, asi no se desincronizan.
   - Lo veo como el mismo problema de tener estado duplicado en varias pestañas del front: si cada una guarda su copia local, se desincronizan; mejor un store central. Redis es ese "store central" para el backend con varias instancias.
+- **Como cachear datos de forma efectiva** (estrategias que aprendi):
+  - **On load / on demand**: precargar el cache al arrancar (lo que ya se que voy a necesitar) o cachear bajo demanda la primera vez que se pide (cache-aside).
+  - **Analisis de patrones de uso**: cachear lo que mas se consulta (p. ej. usuarios/datos frecuentes), no todo. Es el 20% de los datos que se pide el 80% de las veces.
+  - **Datos inmutables o poco mutables**: lo que casi no cambia es el mejor candidato a cache (catalogos, configuracion, paises); lo que cambia cada segundo, no.
+  - **Actualizacion en background**: refrescar el cache por detras (un cron/worker) en vez de que el usuario pague la espera del miss.
+  - **Split dataset structure**: partir el dataset y cachear por trozos/claves en lugar de un blob gigante, para leer e invalidar solo lo que toca.
+  - **Cache de computo**: no solo cachear datos crudos, tambien resultados de calculos/consultas caras (agregaciones, reportes) para no recalcular cada vez.
+  - **Pruebas de rendimiento y escalabilidad**: medir (hit ratio, latencia, throughput) y probar carga para confirmar que el cache de verdad ayuda y escala.
